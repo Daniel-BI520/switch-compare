@@ -1216,7 +1216,7 @@ function findBestMatches(req) {
         const tier2 = scored.filter(sw => !sw.allHardPass && sw.score >= MIN_SCORE);
         tier2.sort((a, b) => b.score - a.score);
         // 合并：先取第一层，不足TOP_N的用第二层补充
-        const combined = [...tier1];
+        const combined = tier1.slice(0, TOP_N);
         for (const item of tier2) {
             if (combined.length >= TOP_N) break;
             combined.push(item);
