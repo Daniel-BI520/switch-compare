@@ -1124,7 +1124,7 @@ function calcMatchScore(sw, req) {
     // 5. PoE（权重8%）
     if (req.poe) {
         weight += 8;
-        if (sw.poe_support && /支持|PoE|是/.test(sw.poe_support)) {
+        if (sw.poe_support && !/不支持|不提供|否|无|不支持PoE/.test(sw.poe_support) && /支持|PoE|是|提供/.test(sw.poe_support)) {
             if (req.poe_plus) {
                 if (/PoE\+|802.3at|PoE\+\+/.test(sw.poe_support)) {
                     score += 8;
