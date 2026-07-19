@@ -910,13 +910,58 @@ function parseNum(str) {
 function countPorts(sw, portType) {
     const ports = sw.ports || '';
     const patterns = {
-        'copper_ge': [/(\d+)个?千兆电/, /(\d+)个?10\/100\/1000BASE-T/, /(\d+)个?RJ45/],
-        'sfp_ge': [/(\d+)个?千兆光/],
-        'sfp_10g': [/(\d+)个?万兆光/, /(\d+)个?SFP\+/],
-        'sfp_25g': [/(\d+)个?25G.*光/, /(\d+)个?SFP28/],
-        'sfp_40g': [/(\d+)个?40G.*光/],
-        'sfp_100g': [/(\d+)个?100G.*光/, /(\d+)个?QSFP28/],
-        'copper_10g': [/(\d+)个?万兆电/, /(\d+)个?10GBASE-T/],
+        'copper_ge': [
+            /(\d+)\s*[个口]\s*千兆电/,
+            /(\d+)\s*个\s*10\/100\/1000BASE-T/i,
+            /(\d+)\s*个\s*RJ45/i,
+            /(\d+)\s*[×xX]\s*10\/100\/1000BASE-T/i,
+            /(\d+)\s*口\s*千兆(?:电)?/,
+            /(\d+)\s*GE\s*电/i,
+            /(\d+)\s*个\s*10\/100\/1000M?\s*(?:电|RJ45|铜)/i,
+        ],
+        'sfp_ge': [
+            /(\d+)\s*[个口]\s*千兆光/,
+            /(\d+)\s*个\s*千兆SFP/i,
+            /(\d+)\s*[×xX]\s*SFP(?![+\d])/i,
+            /(\d+)\s*口\s*千兆光/,
+            /(\d+)\s*GE\s*光/i,
+        ],
+        'sfp_10g': [
+            /(\d+)\s*[个口]\s*万兆光/,
+            /(\d+)\s*个\s*SFP\+/i,
+            /(\d+)\s*个\s*1\/10GE\s*SFP/i,
+            /(\d+)\s*[×xX]\s*10G\s*SFP/i,
+            /(\d+)\s*[×xX]\s*SFP\+/i,
+            /(\d+)\s*口\s*万兆光/,
+            /(\d+)\s*个\s*万兆SFP/i,
+            /(\d+)\s*10GE\s*SFP/i,
+            /(\d+)\s*个\s*10G\s*光/i,
+        ],
+        'sfp_25g': [
+            /(\d+)\s*[个口]\s*25G.*光/i,
+            /(\d+)\s*个\s*SFP28/i,
+            /(\d+)\s*[×xX]\s*SFP28/i,
+            /(\d+)\s*个\s*25G/i,
+            /(\d+)\s*[×xX]\s*25G/i,
+        ],
+        'sfp_40g': [
+            /(\d+)\s*[个口]\s*40G.*光/i,
+            /(\d+)\s*个\s*QSFP\+(?![28])/i,
+            /(\d+)\s*[×xX]\s*40G/i,
+        ],
+        'sfp_100g': [
+            /(\d+)\s*[个口]\s*100G.*光/i,
+            /(\d+)\s*个\s*QSFP28/i,
+            /(\d+)\s*[×xX]\s*100G/i,
+            /(\d+)\s*[×xX]\s*QSFP28/i,
+            /(\d+)\s*个\s*100GE/i,
+        ],
+        'copper_10g': [
+            /(\d+)\s*[个口]\s*万兆电/,
+            /(\d+)\s*个\s*10GBASE-T/i,
+            /(\d+)\s*[×xX]\s*10GE?\s*电/i,
+            /(\d+)\s*个\s*10G\s*电/i,
+        ],
     };
     const pats = patterns[portType] || [];
     for (const p of pats) {
@@ -1047,12 +1092,15 @@ function calcMatchScore(sw, req) {
 function findBestMatches(req) {
     const vendors = ['锐捷', '华为', 'H3C'];
     const results = {};
+    const MIN_SCORE = 40;
+    const TOP_N = 3;
     for (const v of vendors) {
         const scored = switchData.filter(sw => sw.vendor === v).map(sw => ({
             ...sw, score: calcMatchScore(sw, req)
         }));
         scored.sort((a, b) => b.score - a.score);
-        results[v] = scored[0] || null;
+        const valid = scored.filter(sw => sw.score >= MIN_SCORE).slice(0, TOP_N);
+        results[v] = valid;
     }
     return results;
 }
@@ -1060,30 +1108,47 @@ function findBestMatches(req) {
 function displayMatchResults(results) {
     const cardsDiv = document.getElementById('matchCards');
     const vendorClass = { '锐捷': 'vendor-ruijie', '华为': 'vendor-huawei', 'H3C': 'vendor-h3c' };
+    const badgeText = ['最佳匹配', '次优推荐', '参考备选'];
     let html = '';
+    
     for (const vendor of ['锐捷', '华为', 'H3C']) {
-        const sw = results[vendor];
-        if (!sw) {
-            html += '<div class="match-card ' + vendorClass[vendor] + '"><div class="match-card-header"><span class="match-card-model">暂无匹配</span></div></div>';
+        const list = results[vendor] || [];
+        if (list.length === 0) {
+            html += '<div class="match-card ' + vendorClass[vendor] + '">';
+            html += '<div class="match-card-header"><span class="match-card-model">暂无匹配型号</span></div>';
+            html += '<div style="font-size:12px;color:#9ca3af;margin-top:8px;">当前条件下未找到合适的' + vendor + '交换机</div>';
+            html += '</div>';
             continue;
         }
-        const portShort = (sw.ports || '--').toString();
-        const portDisp = portShort.length > 30 ? portShort.slice(0,30) + '...' : portShort;
-        html += '<div class="match-card ' + vendorClass[vendor] + '">';
-        html += '<div class="match-card-header"><span class="match-card-model">' + sw.model + '</span>';
-        html += '<span class="match-score">匹配度 ' + sw.score + '%</span></div>';
-        html += '<div style="font-size:11px;color:#6b7280;margin-bottom:8px;">' + (sw.series || '') + '</div>';
-        html += '<div class="match-card-spec"><label>层级</label><value>' + (sw.tier || '--') + '</value></div>';
-        html += '<div class="match-card-spec"><label>交换容量</label><value>' + (sw.switching_capacity || '--') + '</value></div>';
-        html += '<div class="match-card-spec"><label>包转发率</label><value>' + (sw.forwarding_rate || '--') + '</value></div>';
-        html += '<div class="match-card-spec"><label>端口</label><value style="font-size:11px;text-align:right;">' + portDisp + '</value></div>';
-        html += '<div class="match-card-spec"><label>PoE</label><value>' + ((sw.poe_support || '--').toString().slice(0,12)) + '</value></div>';
-        if (sw.url && sw.url !== '--') {
-            html += '<a href="' + sw.url + '" target="_blank">查看官网详情 →</a>';
+        
+        for (let idx = 0; idx < list.length; idx++) {
+            const sw = list[idx];
+            const isBest = idx === 0;
+            const portShort = (sw.ports || '--').toString();
+            const portDisp = portShort.length > 35 ? portShort.slice(0, 35) + '...' : portShort;
+            
+            html += '<div class="match-card ' + vendorClass[vendor] + (isBest ? ' match-card-best' : '') + '">';
+            html += '<div class="match-card-header">';
+            html += '<span class="match-card-model">' + sw.model + '</span>';
+            html += '<span class="match-score">' + sw.score + '% 匹配</span>';
+            html += '</div>';
+            html += '<div class="match-card-series">' + (sw.series || '') + '</div>';
+            if (idx < badgeText.length) {
+                html += '<div class="match-badge badge-' + idx + '">' + badgeText[idx] + '</div>';
+            }
+            html += '<div class="match-card-spec"><label>层级</label><value>' + (sw.tier || '--') + '</value></div>';
+            html += '<div class="match-card-spec"><label>交换容量</label><value>' + (sw.switching_capacity || '--') + '</value></div>';
+            html += '<div class="match-card-spec"><label>包转发率</label><value>' + (sw.forwarding_rate || '--') + '</value></div>';
+            html += '<div class="match-card-spec"><label>端口</label><value style="font-size:11px;text-align:right;max-width:55%;">' + portDisp + '</value></div>';
+            html += '<div class="match-card-spec"><label>PoE</label><value>' + ((sw.poe_support || '--').toString().slice(0, 14)) + '</value></div>';
+            if (sw.url && sw.url !== '--') {
+                html += '<a href="' + sw.url + '" target="_blank">查看官网详情 &rarr;</a>';
+            }
+            html += '</div>';
         }
-        html += '</div>';
     }
     cardsDiv.innerHTML = html;
+    document.getElementById('matchResults').classList.add('show');
 }
 
 </script>
