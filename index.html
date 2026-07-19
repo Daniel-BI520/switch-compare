@@ -175,6 +175,85 @@ tr.vendor-ruijie:hover { background: linear-gradient(90deg, #d1fae5 0%, #f9fafb 
     border-radius: 8px; display: none;
 }
 .scene-result.show { display: block; }
+.match-panel {
+    margin-top: 16px; padding: 16px; background: linear-gradient(135deg, #eff6ff 0%, #f0f9ff 100%);
+    border-radius: 8px; border: 1px solid #bfdbfe;
+}
+.match-panel h3 { font-size: 15px; margin-bottom: 12px; color: #1e3a8a; }
+.match-textarea {
+    width: 100%; min-height: 80px; padding: 10px 12px;
+    border: 1px solid #93c5fd; border-radius: 6px; font-size: 13px;
+    font-family: inherit; resize: vertical; box-sizing: border-box;
+    background: #fff; line-height: 1.5;
+}
+.match-textarea:focus { outline: none; border-color: #3b82f6; box-shadow: 0 0 0 3px rgba(59,130,246,0.15); }
+.match-hint { font-size: 12px; color: #64748b; margin-top: 6px; margin-bottom: 10px; }
+.match-btn {
+    padding: 8px 18px; background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%);
+    color: #fff; border: none; border-radius: 6px; cursor: pointer;
+    font-size: 13px; font-weight: 500;
+}
+.match-btn:hover { opacity: 0.9; }
+.parsed-info {
+    margin-top: 12px; padding: 10px 12px; background: #fff;
+    border-radius: 6px; font-size: 12px; color: #334155;
+    display: none; flex-wrap: wrap; gap: 6px;
+}
+.parsed-info.show { display: flex; }
+.parsed-info span {
+    background: #dbeafe; color: #1e40af; padding: 3px 8px;
+    border-radius: 4px; font-size: 11px;
+}
+.match-results {
+    margin-top: 12px; display: none;
+}
+.match-results.show { display: block; }
+.match-cards { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 4px; }
+.match-card {
+    flex: 1; min-width: 220px; background: #fff; border-radius: 8px;
+    padding: 14px; border-top: 3px solid #3b82f6;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.08);
+}
+.match-card.vendor-ruijie { border-top-color: #059669; }
+.match-card.vendor-huawei { border-top-color: #dc2626; }
+.match-card.vendor-h3c { border-top-color: #7c3aed; }
+.match-card-header {
+    display: flex; justify-content: space-between; align-items: center;
+    margin-bottom: 8px;
+}
+.match-card-model { font-size: 14px; font-weight: 600; color: #1e293b; }
+.match-card-spec {
+    display: flex; justify-content: space-between;
+    padding: 4px 0; font-size: 12px;
+    border-bottom: 1px solid #f1f5f9;
+}
+.match-card-spec label { color: #64748b; }
+.match-card-spec value { color: #1e293b; font-weight: 500; }
+.match-card a {
+    display: block; margin-top: 10px; text-align: center;
+    padding: 6px; background: #f1f5f9; border-radius: 4px;
+    font-size: 12px; color: #3b82f6; text-decoration: none;
+}
+.match-card a:hover { background: #e0f2fe; }
+
+.match-result-card {
+    background: #fff; border-radius: 6px; padding: 12px;
+    margin-bottom: 8px; border-left: 4px solid #3b82f6;
+}
+.match-result-card.ruijie { border-left-color: #059669; }
+.match-result-card.huawei { border-left-color: #dc2626; }
+.match-result-card.h3c { border-left-color: #7c3aed; }
+.match-vendor { font-size: 11px; font-weight: 600; text-transform: uppercase; margin-bottom: 4px; }
+.match-vendor.ruijie { color: #059669; }
+.match-vendor.huawei { color: #dc2626; }
+.match-vendor.h3c { color: #7c3aed; }
+.match-model { font-size: 14px; font-weight: 600; color: #1e293b; margin-bottom: 4px; }
+.match-score {
+    display: inline-block; padding: 2px 8px; background: #dbeafe;
+    color: #1e40af; border-radius: 4px; font-size: 11px; font-weight: 600;
+}
+.match-details { font-size: 12px; color: #64748b; margin-top: 6px; line-height: 1.6; }
+
 
 .footer { text-align: center; padding: 20px; color: #9ca3af; font-size: 12px; }
 
@@ -249,6 +328,18 @@ input[type="checkbox"] { cursor: pointer; width: 16px; height: 16px; }
         <button class="scene-btn" onclick="recommendScene()">🔍 智能推荐</button>
     </div>
     <div class="scene-result" id="scene-result"></div>
+</div>
+
+<div class="match-panel">
+    <h3>🤖 智能需求匹配（粘贴标书/需求，自动推荐型号）</h3>
+    <textarea class="match-textarea" id="matchInput" placeholder="粘贴招标参数或需求描述，例如：
+核心层交换机，交换容量≥40Tbps，包转发率≥10000Mpps，支持48个万兆光口，8个100G上行，支持PoE+，三层路由，双电源冗余..."></textarea>
+    <div class="match-hint">支持自动识别：层级、交换容量、包转发率、各类型端口数量、PoE、三层交换、扩展槽位等参数</div>
+    <button class="match-btn" onclick="smartMatch()">🔮 开始智能匹配</button>
+    <div class="parsed-info" id="parsedInfo"></div>
+    <div class="match-results" id="matchResults">
+    <div class="match-cards" id="matchCards"></div>
+</div>
 </div>
 
 <div class="compare-bar hidden" id="compare-bar">
