@@ -804,6 +804,7 @@ function parseRequirement(text) {
         sfp_40g: null, sfp_100g: null, copper_ge: null, copper_10g: null,
         switching_cap: null, forwarding_rate: null, poe: false, poe_plus: false,
         layer3: false, expansion: null,
+        power_redundancy: false, engine_count: null, fabric_count: null,
     };
     
     if (/核心|核心层|核心交换机|核心层交换机/.test(text)) req.tier = '核心';
@@ -857,6 +858,23 @@ function parseRequirement(text) {
     const slotMatch = text.match(/扩展槽位.*?(\d+)|(\d+).*?扩展槽/i);
     if (slotMatch) req.expansion = parseInt(slotMatch[1] || slotMatch[2]);
     
+    // 电源冗余
+    if (/电源冗余|冗余电源|双电源|1\+1电源|N\+M电源|电源备份/.test(text)) {
+        req.power_redundancy = true;
+    }
+    
+    // 引擎数/主控数（数字必须紧邻"引擎/主控"，中间不能有逗号/句号等分隔符）
+    const engineMatch = text.match(/(\d+)\s*(?:个)?\s*(?:主控|管理引擎|引擎)(?:槽)?/);
+    if (engineMatch) {
+        req.engine_count = parseInt(engineMatch[1]);
+    } else if (/双主控|双引擎|1\+1主控|1\+1引擎/.test(text)) {
+        req.engine_count = 2;
+    }
+    
+    // 交换网板数
+    const fabricMatch = text.match(/(\d+)\s*(?:个|块)?\s*(?:交换网板|网板|交换矩阵)/);
+    if (fabricMatch) req.fabric_count = parseInt(fabricMatch[1]);
+    
     return req;
 }
 
@@ -883,6 +901,9 @@ function displayParsed(req) {
     else if (req.poe) items.push('支持PoE');
     if (req.layer3) items.push('三层交换');
     if (req.expansion) items.push('扩展槽：≥' + req.expansion + '个');
+    if (req.power_redundancy) items.push('电源冗余');
+    if (req.engine_count) items.push('引擎数：≥' + req.engine_count + '个');
+    if (req.fabric_count) items.push('交换网板：≥' + req.fabric_count + '块');
     
     if (items.length === 0) {
         parsedDiv.innerHTML = '<span style="opacity:0.8">未能识别明确参数，将按整体匹配度推荐</span>';
@@ -969,6 +990,56 @@ function countPorts(sw, portType) {
         if (m) return parseInt(m[1]);
     }
     return 0;
+}
+
+
+function parseEngineAndFabric(sw) {
+    const ports = sw.ports || '';
+    const result = { engines: 0, fabrics: 0 };
+    
+    // 解析引擎/主控数量：数字必须紧邻"主控/引擎"关键词
+    const enginePats = [
+        /(\d+)\s*个?\s*(?:主控槽位|主控|管理引擎|引擎)(?:槽)?/i,
+        /(?:主控槽位|主控|管理引擎).*?(\d+)\s*个/i,
+    ];
+    for (const p of enginePats) {
+        const m = ports.match(p);
+        if (m && m[1]) {
+            // 确保匹配的不是业务槽位的数字
+            const matchedText = m[0];
+            if (!/业务/.test(matchedText)) {
+                result.engines = parseInt(m[1]);
+                break;
+            }
+        }
+    }
+    if (/双主控|1\+1主控|双引擎/.test(ports) && result.engines === 0) {
+        result.engines = 2;
+    }
+    
+    // 解析交换网板数量
+    const fabricPats = [
+        /(\d+)\s*个?\s*(?:独立交换网板|交换网板|交换矩阵)(?:槽位)?/i,
+        /(?:独立交换网板|交换网板|交换矩阵).*?(\d+)\s*个/i,
+    ];
+    for (const p of fabricPats) {
+        const m = ports.match(p);
+        if (m && m[1]) {
+            result.fabrics = parseInt(m[1]);
+            break;
+        }
+    }
+    if (/内置交换网板|集成交换网板|随板交换/.test(ports) && result.fabrics === 0) {
+        result.fabrics = 1;
+    }
+    
+    return result;
+}
+
+function hasPowerRedundancy(sw) {
+    const pr = sw.power_redundancy || '';
+    if (!pr || pr === '--') return false;
+    return /冗余|1\+1|N\+M|备份|双电源|双可插拔|支持.*冗余|RPS/.test(pr);
 }
 
 function calcMatchScore(sw, req) {
@@ -1080,13 +1151,52 @@ function calcMatchScore(sw, req) {
         } else if (val > 0) {
             score += 1;
             allHardPass = false;
+        } else {
+            allHardPass = false;
         }
     }
     
-    if (weight === 0) return 0;
+    // 7. 电源冗余（权重3%，硬指标）
+    if (req.power_redundancy) {
+        weight += 3;
+        if (hasPowerRedundancy(sw)) {
+            score += 3;
+        } else {
+            allHardPass = false;
+        }
+    }
+    
+    // 8. 引擎数（权重3%，硬指标）
+    if (req.engine_count) {
+        weight += 3;
+        const ef = parseEngineAndFabric(sw);
+        if (ef.engines >= req.engine_count) {
+            score += 3;
+        } else if (ef.engines > 0) {
+            score += Math.round(3 * (ef.engines / req.engine_count) * 0.4);
+            allHardPass = false;
+        } else {
+            allHardPass = false;
+        }
+    }
+    
+    // 9. 交换网板数（权重3%，硬指标）
+    if (req.fabric_count) {
+        weight += 3;
+        const ef = parseEngineAndFabric(sw);
+        if (ef.fabrics >= req.fabric_count) {
+            score += 3;
+        } else if (ef.fabrics > 0) {
+            score += Math.round(3 * (ef.fabrics / req.fabric_count) * 0.4);
+            allHardPass = false;
+        } else {
+            allHardPass = false;
+        }
+    }
+    
+    if (weight === 0) return { score: 0, allHardPass: false };
     const rawScore = Math.round(score / weight * 100);
-    // 全部硬指标通过的才是有效推荐，没通过的标记为低匹配度
-    return allHardPass ? rawScore : Math.min(rawScore, 40);
+    return { score: rawScore, allHardPass: allHardPass };
 }
 
 function findBestMatches(req) {
@@ -1095,12 +1205,23 @@ function findBestMatches(req) {
     const MIN_SCORE = 40;
     const TOP_N = 3;
     for (const v of vendors) {
-        const scored = switchData.filter(sw => sw.vendor === v).map(sw => ({
-            ...sw, score: calcMatchScore(sw, req)
-        }));
-        scored.sort((a, b) => b.score - a.score);
-        const valid = scored.filter(sw => sw.score >= MIN_SCORE).slice(0, TOP_N);
-        results[v] = valid;
+        const scored = switchData.filter(sw => sw.vendor === v).map(sw => {
+            const res = calcMatchScore(sw, req);
+            return { ...sw, score: res.score, allHardPass: res.allHardPass };
+        });
+        // 第一层：全部硬指标满足的，按得分从高到低
+        const tier1 = scored.filter(sw => sw.allHardPass && sw.score >= MIN_SCORE);
+        tier1.sort((a, b) => b.score - a.score);
+        // 第二层：部分硬指标不满足但得分尚可的
+        const tier2 = scored.filter(sw => !sw.allHardPass && sw.score >= MIN_SCORE);
+        tier2.sort((a, b) => b.score - a.score);
+        // 合并：先取第一层，不足TOP_N的用第二层补充
+        const combined = [...tier1];
+        for (const item of tier2) {
+            if (combined.length >= TOP_N) break;
+            combined.push(item);
+        }
+        results[v] = combined;
     }
     return results;
 }
@@ -1134,7 +1255,20 @@ function displayMatchResults(results) {
             html += '</div>';
             html += '<div class="match-card-series">' + (sw.series || '') + '</div>';
             if (idx < badgeText.length) {
-                html += '<div class="match-badge badge-' + idx + '">' + badgeText[idx] + '</div>';
+                let badgeLabel = badgeText[idx];
+                let badgeExtra = '';
+                if (sw.allHardPass) {
+                    badgeExtra = '<span style="font-size:10px;margin-left:6px;opacity:0.9;">✓ 全满足硬指标</span>';
+                } else {
+                    badgeExtra = '<span style="font-size:10px;margin-left:6px;opacity:0.9;">⚠ 部分硬指标未满足</span>';
+                }
+                html += '<div class="match-badge badge-' + idx + '">' + badgeLabel + badgeExtra + '</div>';
+            } else {
+                if (sw.allHardPass) {
+                    html += '<div class="match-badge badge-2" style="margin-top:4px;"><span style="font-size:10px;">✓ 全满足硬指标</span></div>';
+                } else {
+                    html += '<div class="match-badge badge-2" style="margin-top:4px;opacity:0.7;"><span style="font-size:10px;">⚠ 部分硬指标未满足</span></div>';
+                }
             }
             html += '<div class="match-card-spec"><label>层级</label><value>' + (sw.tier || '--') + '</value></div>';
             html += '<div class="match-card-spec"><label>交换容量</label><value>' + (sw.switching_capacity || '--') + '</value></div>';
