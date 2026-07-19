@@ -814,6 +814,14 @@ function parseRequirement(text) {
     if (/PoE\+|poe\+|POE\+/.test(text)) { req.poe = true; req.poe_plus = true; }
     else if (/PoE|poe|POE/.test(text)) { req.poe = true; }
     
+    // PoE电口数量解析（PoE口默认是电口，"24口千兆PoE"=24个千兆电口）
+    if (req.poe && !req.copper_ge) {
+        const poePortMatch = text.match(/(\d+)\s*(?:个|口)?\s*(?:千兆|10\/100\/1000|1000M)?\s*PoE(?:\+|\+\+)?(?:供电|口|交换机)?/i);
+        if (poePortMatch) {
+            req.copper_ge = parseInt(poePortMatch[1]);
+        }
+    }
+    
     if (/三层|L3|三层交换|三层路由/.test(text)) req.layer3 = true;
     
     // 交换容量：匹配多种说法 + 比较符 + 数字 + 单位
@@ -840,8 +848,13 @@ function parseRequirement(text) {
     const geSfpMatch = text.match(/(\d+)个?千兆光口/i);
     if (geSfpMatch) req.sfp_ge = parseInt(geSfpMatch[1]);
     
-    const xgSfpMatch = text.match(/(\d+)个?万兆光口|(\d+)个?SFP\+/i);
-    if (xgSfpMatch) req.sfp_10g = parseInt(xgSfpMatch[1] || xgSfpMatch[2]);
+    const xgSfpMatch = text.match(/(\d+)\s*(?:个|口)?\s*(?:万兆(?:光口|上行|SFP\+|端口)|SFP\+|10G\s*SFP|10GE\s*SFP)/i);
+    if (xgSfpMatch) req.sfp_10g = parseInt(xgSfpMatch[1]);
+    // "4个万兆上行"、"万兆上行口"
+    if (!req.sfp_10g) {
+        const uplinkMatch = text.match(/(\d+)\s*(?:个|口)?\s*万兆(?:上行|上联)(?:口|端口)?/i);
+        if (uplinkMatch) req.sfp_10g = parseInt(uplinkMatch[1]);
+    }
     
     const sfp28Match = text.match(/(\d+)个?25G.*光|(\d+)个?SFP28/i);
     if (sfp28Match) req.sfp_25g = parseInt(sfp28Match[1] || sfp28Match[2]);
@@ -1100,8 +1113,8 @@ function calcMatchScore(sw, req) {
     
     // 4. 端口类型与数量（总权重约20%）
     const portTypes = [
-        ['copper_ge', 5], ['copper_10g', 3], ['sfp_ge', 3], ['sfp_10g', 5],
-        ['sfp_25g', 3], ['sfp_40g', 3], ['sfp_100g', 3],
+        ['copper_ge', 12], ['copper_10g', 5], ['sfp_ge', 5], ['sfp_10g', 10],
+        ['sfp_25g', 5], ['sfp_40g', 5], ['sfp_100g', 5],
     ];
     for (const [ptype, w] of portTypes) {
         if (req[ptype]) {
