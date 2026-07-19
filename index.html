@@ -811,7 +811,7 @@ function parseRequirement(text) {
     else if (/汇聚|汇聚层|汇聚交换机|汇聚层交换机/.test(text)) req.tier = '汇聚';
     else if (/接入|接入层|接入交换机|接入层交换机/.test(text)) req.tier = '接入';
     
-    if (/PoE\+|poe\+|POE\+/.test(text)) { req.poe = true; req.poe_plus = true; }
+    if (/PoE\s*\+|poe\s*\+|POE\s*\+|802\.3at|PoE\+\+/.test(text)) { req.poe = true; req.poe_plus = true; }
     else if (/PoE|poe|POE/.test(text)) { req.poe = true; }
     
     // PoE电口数量解析（PoE口默认是电口，"24口千兆PoE"=24个千兆电口）
@@ -842,14 +842,41 @@ function parseRequirement(text) {
         req.forwarding_rate = val;
     }
     
-    const geCopperMatch = text.match(/(\d+)个?千兆电口|(\d+)个?10\/100\/1000BASE-T|(\d+)个?RJ45/i);
-    if (geCopperMatch) req.copper_ge = parseInt(geCopperMatch[1] || geCopperMatch[2] || geCopperMatch[3]);
+    // 千兆电口：支持"48个千兆电口"和"10/100/1000M端口≥48个"两种格式
+    let geCopperMatch = text.match(/(\d+)\s*(?:个|口)?\s*(?:千兆电口|千兆电|10\/100\/1000BASE-T|RJ45电口|铜缆|电口)/i);
+    if (geCopperMatch) {
+        req.copper_ge = parseInt(geCopperMatch[1]);
+    } else {
+        // 标书格式：端口类型在前，数字在后，如"10/100/1000M以太网端口≥48个"
+        const bidFormat1 = text.match(/(?:10\/100\/1000M|千兆)(?:以太网)?(?:端口|接口)\s*[≥>=不小于最低不低于]+\s*(\d+)/i);
+        if (bidFormat1) req.copper_ge = parseInt(bidFormat1[1]);
+        // "千兆电口≥48个"
+        const bidFormat2 = text.match(/千兆电(?:口|端口|接口)\s*[≥>=不小于最低不低于]+\s*(\d+)/i);
+        if (bidFormat2 && !req.copper_ge) req.copper_ge = parseInt(bidFormat2[1]);
+    }
     
     const geSfpMatch = text.match(/(\d+)个?千兆光口/i);
     if (geSfpMatch) req.sfp_ge = parseInt(geSfpMatch[1]);
     
-    const xgSfpMatch = text.match(/(\d+)\s*(?:个|口)?\s*(?:万兆(?:光口|上行|SFP\+|端口)|SFP\+|10G\s*SFP|10GE\s*SFP)/i);
-    if (xgSfpMatch) req.sfp_10g = parseInt(xgSfpMatch[1]);
+    // 万兆光口：支持"4个万兆光口"和"SFP+光接口≥4个"两种格式
+    let xgSfpMatch = text.match(/(\d+)\s*(?:个|口)?\s*(?:万兆(?:光口|上行|SFP\+|端口)|SFP\+|10G\s*SFP|10GE\s*SFP)/i);
+    if (xgSfpMatch) {
+        req.sfp_10g = parseInt(xgSfpMatch[1]);
+    } else {
+        // 标书格式：如"1G/10G SFP+光接口≥4个"、"万兆光口≥4个"、"SFP+端口≥4个"
+        const bidPatterns = [
+            /(?:1G\/10G|10G|万兆)\s*(?:SFP\+)?(?:光)?(?:端口|接口|光口)\s*[≥>=不小于最低不低于]+\s*(\d+)/i,
+            /SFP\+(?:光)?(?:端口|接口|光口)?\s*[≥>=不小于最低不低于]+\s*(\d+)/i,
+            /万兆光(?:口|端口|接口)\s*[≥>=不小于最低不低于]+\s*(\d+)/i,
+        ];
+        for (const pat of bidPatterns) {
+            const m = text.match(pat);
+            if (m) {
+                req.sfp_10g = parseInt(m[1]);
+                break;
+            }
+        }
+    }
     // "4个万兆上行"、"万兆上行口"
     if (!req.sfp_10g) {
         const uplinkMatch = text.match(/(\d+)\s*(?:个|口)?\s*万兆(?:上行|上联)(?:口|端口)?/i);
