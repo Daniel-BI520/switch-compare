@@ -654,6 +654,227 @@ document.getElementById('compare-modal').addEventListener('click', function(e) {
 document.getElementById('total-count').textContent = allSwitches.length;
 document.getElementById('total-count2').textContent = allSwitches.length;
 applyFilters();
+
+
+// ===== 智能需求匹配 =====
+function smartMatch() {
+    const input = document.getElementById('matchInput').value.trim();
+    if (!input) { alert('请先输入需求描述'); return; }
+    
+    const req = parseRequirement(input);
+    displayParsed(req);
+    const results = findBestMatches(req);
+    displayMatchResults(results, req);
+}
+
+function parseRequirement(text) {
+    const req = {
+        tier: null, ports: null, sfp_ge: null, sfp_10g: null, sfp_25g: null,
+        sfp_40g: null, sfp_100g: null, copper_ge: null, copper_10g: null,
+        switching_cap: null, forwarding_rate: null, poe: false, poe_plus: false,
+        layer3: false, expansion: null,
+    };
+    
+    if (/核心|核心层|核心交换机/.test(text)) req.tier = '核心';
+    else if (/汇聚|汇聚层|汇聚交换机/.test(text)) req.tier = '汇聚';
+    else if (/接入|接入层|接入交换机/.test(text)) req.tier = '接入';
+    
+    if (/PoE\+|poe\+|POE\+/.test(text)) { req.poe = true; req.poe_plus = true; }
+    else if (/PoE|poe|POE/.test(text)) { req.poe = true; }
+    
+    if (/三层|L3|三层交换/.test(text)) req.layer3 = true;
+    
+    const scMatch = text.match(/交换容量\s*[≥>=不小于最低]+\s*(\d+\.?\d*)/i);
+    if (scMatch) {
+        let val = parseFloat(scMatch[1]);
+        if (/Tbps|TBPS/.test(scMatch[0])) val *= 1000;
+        req.switching_cap = val;
+    }
+    
+    const fwdMatch = text.match(/包转发率\s*[≥>=不小于最低]+\s*(\d+\.?\d*)/i);
+    if (fwdMatch) {
+        let val = parseFloat(fwdMatch[1]);
+        if (/Tpps|TPPS/.test(fwdMatch[0])) val *= 1000;
+        req.forwarding_rate = val;
+    }
+    
+    const geCopperMatch = text.match(/(\d+)个?千兆电口|(\d+)个?10\/100\/1000BASE-T|(\d+)个?RJ45/i);
+    if (geCopperMatch) req.copper_ge = parseInt(geCopperMatch[1] || geCopperMatch[2] || geCopperMatch[3]);
+    
+    const geSfpMatch = text.match(/(\d+)个?千兆光口/i);
+    if (geSfpMatch) req.sfp_ge = parseInt(geSfpMatch[1]);
+    
+    const xgSfpMatch = text.match(/(\d+)个?万兆光口|(\d+)个?SFP\+/i);
+    if (xgSfpMatch) req.sfp_10g = parseInt(xgSfpMatch[1] || xgSfpMatch[2]);
+    
+    const sfp28Match = text.match(/(\d+)个?25G.*光|(\d+)个?SFP28/i);
+    if (sfp28Match) req.sfp_25g = parseInt(sfp28Match[1] || sfp28Match[2]);
+    
+    const qsfpMatch = text.match(/(\d+)个?40G.*光|(\d+)个?QSFP[^2]/i);
+    if (qsfpMatch) req.sfp_40g = parseInt(qsfpMatch[1] || qsfpMatch[2]);
+    
+    const qsfp28Match = text.match(/(\d+)个?100G.*光|(\d+)个?QSFP28/i);
+    if (qsfp28Match) req.sfp_100g = parseInt(qsfp28Match[1] || qsfp28Match[2]);
+    
+    const xgCopperMatch = text.match(/(\d+)个?万兆电口|(\d+)个?10GBASE-T/i);
+    if (xgCopperMatch) req.copper_10g = parseInt(xgCopperMatch[1] || xgCopperMatch[2]);
+    
+    const slotMatch = text.match(/扩展槽位.*?(\d+)|(\d+).*?扩展槽/i);
+    if (slotMatch) req.expansion = parseInt(slotMatch[1] || slotMatch[2]);
+    
+    return req;
+}
+
+function displayParsed(req) {
+    const parsedDiv = document.getElementById('parsedInfo');
+    const items = [];
+    if (req.tier) items.push('层级：' + req.tier);
+    if (req.copper_ge) items.push('千兆电：≥' + req.copper_ge + '口');
+    if (req.copper_10g) items.push('万兆电：≥' + req.copper_10g + '口');
+    if (req.sfp_ge) items.push('千兆光：≥' + req.sfp_ge + '口');
+    if (req.sfp_10g) items.push('万兆光：≥' + req.sfp_10g + '口');
+    if (req.sfp_25g) items.push('25G光：≥' + req.sfp_25g + '口');
+    if (req.sfp_40g) items.push('40G光：≥' + req.sfp_40g + '口');
+    if (req.sfp_100g) items.push('100G光：≥' + req.sfp_100g + '口');
+    if (req.switching_cap) items.push('交换容量：≥' + req.switching_cap + 'Gbps');
+    if (req.forwarding_rate) items.push('包转发率：≥' + req.forwarding_rate + 'Mpps');
+    if (req.poe_plus) items.push('支持PoE+');
+    else if (req.poe) items.push('支持PoE');
+    if (req.layer3) items.push('三层交换');
+    if (req.expansion) items.push('扩展槽：≥' + req.expansion + '个');
+    
+    if (items.length === 0) {
+        parsedDiv.innerHTML = '<span style="opacity:0.8">未能识别明确参数，将按整体匹配度推荐</span>';
+    } else {
+        parsedDiv.innerHTML = items.map(i => '<span>' + i + '</span>').join('');
+    }
+    document.getElementById('matchResults').classList.add('show');
+}
+
+function parseNum(str) {
+    if (!str || str === '--') return 0;
+    const m = String(str).match(/(\d+\.?\d*)/);
+    return m ? parseFloat(m[1]) : 0;
+}
+
+function countPorts(sw, portType) {
+    const ports = sw.ports || '';
+    const patterns = {
+        'copper_ge': [/(\d+)个?千兆电/, /(\d+)个?10\/100\/1000BASE-T/, /(\d+)个?RJ45/],
+        'sfp_ge': [/(\d+)个?千兆光/],
+        'sfp_10g': [/(\d+)个?万兆光/, /(\d+)个?SFP\+/],
+        'sfp_25g': [/(\d+)个?25G.*光/, /(\d+)个?SFP28/],
+        'sfp_40g': [/(\d+)个?40G.*光/],
+        'sfp_100g': [/(\d+)个?100G.*光/, /(\d+)个?QSFP28/],
+        'copper_10g': [/(\d+)个?万兆电/, /(\d+)个?10GBASE-T/],
+    };
+    const pats = patterns[portType] || [];
+    for (const p of pats) {
+        const m = ports.match(p);
+        if (m) return parseInt(m[1]);
+    }
+    return 0;
+}
+
+function calcMatchScore(sw, req) {
+    let score = 0, weight = 0;
+    
+    if (req.tier) {
+        weight += 30;
+        if (sw.tier === req.tier) score += 30;
+        else if ((req.tier === '汇聚' && sw.tier === '核心') || (req.tier === '接入' && sw.tier === '汇聚')) score += 15;
+    }
+    
+    if (req.switching_cap && sw.switching_cap) {
+        weight += 20;
+        let val = parseNum(sw.switching_cap);
+        if (/Tbps|TBPS/.test(sw.switching_cap)) val *= 1000;
+        if (val >= req.switching_cap) score += 20;
+        else score += Math.round(20 * (val / req.switching_cap) * 0.5);
+    }
+    
+    if (req.forwarding_rate && sw.forwarding_rate) {
+        weight += 15;
+        let val = parseNum(sw.forwarding_rate);
+        if (/Tpps|TPPS/.test(sw.forwarding_rate)) val *= 1000;
+        if (val >= req.forwarding_rate) score += 15;
+        else score += Math.round(15 * (val / req.forwarding_rate) * 0.5);
+    }
+    
+    const portTypes = [
+        ['copper_ge', 8], ['copper_10g', 5], ['sfp_ge', 5], ['sfp_10g', 8],
+        ['sfp_25g', 5], ['sfp_40g', 5], ['sfp_100g', 5],
+    ];
+    for (const [ptype, w] of portTypes) {
+        if (req[ptype]) {
+            weight += w;
+            const count = countPorts(sw, ptype);
+            if (count >= req[ptype]) score += w;
+            else if (count > 0) score += Math.round(w * 0.4);
+        }
+    }
+    
+    if (req.poe) {
+        weight += 10;
+        if (sw.poe_support && /支持|PoE|是/.test(sw.poe_support)) {
+            score += 10;
+            if (req.poe_plus && /PoE\+|802.3at/.test(sw.poe_support)) score += 3;
+        }
+    }
+    
+    if (req.expansion && sw.expansion_slots) {
+        weight += 5;
+        const val = parseNum(sw.expansion_slots);
+        if (val >= req.expansion) score += 5;
+        else if (val > 0) score += 2;
+    }
+    
+    if (weight === 0) return 0;
+    return Math.round(score / weight * 100);
+}
+
+function findBestMatches(req) {
+    const vendors = ['锐捷', '华为', 'H3C'];
+    const results = {};
+    for (const v of vendors) {
+        const scored = switchData.filter(sw => sw.vendor === v).map(sw => ({
+            ...sw, score: calcMatchScore(sw, req)
+        }));
+        scored.sort((a, b) => b.score - a.score);
+        results[v] = scored[0] || null;
+    }
+    return results;
+}
+
+function displayMatchResults(results) {
+    const cardsDiv = document.getElementById('matchCards');
+    const vendorClass = { '锐捷': 'vendor-ruijie', '华为': 'vendor-huawei', 'H3C': 'vendor-h3c' };
+    let html = '';
+    for (const vendor of ['锐捷', '华为', 'H3C']) {
+        const sw = results[vendor];
+        if (!sw) {
+            html += '<div class="match-card ' + vendorClass[vendor] + '"><div class="match-card-header"><span class="match-card-model">暂无匹配</span></div></div>';
+            continue;
+        }
+        const portShort = (sw.ports || '--').toString();
+        const portDisp = portShort.length > 30 ? portShort.slice(0,30) + '...' : portShort;
+        html += '<div class="match-card ' + vendorClass[vendor] + '">';
+        html += '<div class="match-card-header"><span class="match-card-model">' + sw.model + '</span>';
+        html += '<span class="match-score">匹配度 ' + sw.score + '%</span></div>';
+        html += '<div style="font-size:11px;color:#6b7280;margin-bottom:8px;">' + (sw.series || '') + '</div>';
+        html += '<div class="match-card-spec"><label>层级</label><value>' + (sw.tier || '--') + '</value></div>';
+        html += '<div class="match-card-spec"><label>交换容量</label><value>' + (sw.switching_capacity || '--') + '</value></div>';
+        html += '<div class="match-card-spec"><label>包转发率</label><value>' + (sw.forwarding_rate || '--') + '</value></div>';
+        html += '<div class="match-card-spec"><label>端口</label><value style="font-size:11px;text-align:right;">' + portDisp + '</value></div>';
+        html += '<div class="match-card-spec"><label>PoE</label><value>' + ((sw.poe_support || '--').toString().slice(0,12)) + '</value></div>';
+        if (sw.url && sw.url !== '--') {
+            html += '<a href="' + sw.url + '" target="_blank">查看官网详情 →</a>';
+        }
+        html += '</div>';
+    }
+    cardsDiv.innerHTML = html;
+}
+
 </script>
 </body>
 </html>
