@@ -236,6 +236,46 @@ tr.vendor-ruijie:hover { background: linear-gradient(90deg, #d1fae5 0%, #f9fafb 
 }
 .match-card a:hover { background: #e0f2fe; }
 
+.match-card-best {
+    border-width: 2px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.12);
+    transform: translateY(-2px);
+}
+.match-card-series {
+    font-size: 11px;
+    color: #6b7280;
+    margin-bottom: 6px;
+}
+.match-badge {
+    display: inline-block;
+    padding: 3px 10px;
+    border-radius: 12px;
+    font-size: 11px;
+    font-weight: 600;
+    margin-bottom: 10px;
+}
+.match-badge.badge-0 { background: #fef3c7; color: #92400e; }
+.match-badge.badge-1 { background: #e0e7ff; color: #3730a3; }
+.match-badge.badge-2 { background: #f3e8ff; color: #6b21a8; }
+.match-cards {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-top: 4px;
+    align-items: stretch;
+}
+.match-card {
+    flex: 1 1 calc(33% - 12px);
+    min-width: 220px;
+    background: #fff;
+    border-radius: 8px;
+    padding: 14px;
+    border-top: 3px solid #3b82f6;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.08);
+    display: flex;
+    flex-direction: column;
+}
+
 .match-result-card {
     background: #fff; border-radius: 6px; padding: 12px;
     margin-bottom: 8px; border-left: 4px solid #3b82f6;
