@@ -5026,7 +5026,7 @@ function getModelConfig(modelType) {
     const configs = {
         zhipu: {
             url: 'https://open.bigmodel.cn/api/paas/v4/chat/completions',
-            modelName: 'glm-4.7-flash',
+            modelName: 'glm-4-flash',
         },
         deepseek: {
             url: 'https://api.deepseek.com/v1/chat/completions',
@@ -5050,7 +5050,7 @@ async function aiSmartMatch() {
     
     const cfg = getAIConfig();
     if (!cfg.apiKey) {
-        alert('请先点击⚙️设置API Key\n\n推荐使用智谱AI GLM-4-Flash，完全免费：\nhttps://open.bigmodel.cn/');
+        alert('请先点击⚙️设置API Key\n\n推荐使用智谱AI GLM-4-Flash，完全免费\n注册地址：https://open.bigmodel.cn/\n\n注意：填"API密钥"的值（不是API Key ID）');
         toggleAISettings();
         return;
     }
@@ -5114,7 +5114,20 @@ async function aiSmartMatch() {
         });
         
         if (!response.ok) {
-            throw new Error('API请求失败: ' + response.status);
+            let errMsg = 'API请求失败: ' + response.status;
+            try {
+                const errData = await response.json();
+                if (errData.error && errData.error.message) {
+                    errMsg += ' - ' + errData.error.message;
+                } else if (errData.message) {
+                    errMsg += ' - ' + errData.message;
+                } else {
+                    errMsg += ' - ' + JSON.stringify(errData).slice(0, 200);
+                }
+            } catch(e) {
+                // 无法解析JSON错误
+            }
+            throw new Error(errMsg);
         }
         
         const data = await response.json();
