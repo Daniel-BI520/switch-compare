@@ -5396,24 +5396,31 @@ function calcMatchScore(sw, req) {
         }
     }
     
-    // 6. 扩展槽位（权重2%）
-    if (req.expansion && sw.expansion_slots) {
-        weight += 2;
+    // 6. 扩展槽位（权重15%，核心硬指标）
+    // 标书中明确要求槽位数的，槽位是核心选型依据，权重大幅提升
+    if (req.expansion && req.expansion > 0) {
+        weight += 15;
         const val = parseNum(sw.expansion_slots);
         if (val >= req.expansion) {
+            // 槽位贴近度优先：够用的前提下，槽位数越接近需求得分越高
+            // 槽位多了代表机框更大、价格更贵，所以富余惩罚要重
             const ratio = val / req.expansion;
-            if (ratio <= 2) score += 2;
-            else score += 1;
-        } else if (val > 0) {
-            score += 1;
+            if (ratio <= 1.0) score += 15;           // 刚好满足，满分
+            else if (ratio <= 1.5) score += 12;       // 富余≤50%，80分
+            else if (ratio <= 2) score += 9;          // 富余≤100%，60分
+            else if (ratio <= 3) score += 6;          // 富余≤200%，40分
+            else score += 3;                          // 富余更多，20分
+        } else {
+            // 槽位不够的，硬指标不通过，直接淘汰
             allHardPass = false;
+            score += 0;
         }
     }
     
     if (weight === 0) return 0;
     const rawScore = Math.round(score / weight * 100);
     // 全部硬指标通过的才是有效推荐，没通过的标记为低匹配度
-    return allHardPass ? rawScore : Math.min(rawScore, 40);
+    return allHardPass ? rawScore : Math.min(rawScore, 20);
 }
 
 function findBestMatches(req) {
