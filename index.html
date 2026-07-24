@@ -5396,24 +5396,38 @@ function calcMatchScore(sw, req) {
         }
     }
     
-    // 6. 扩展槽位（权重15%，核心硬指标）
-    // 标书中明确要求槽位数的，槽位是核心选型依据，权重大幅提升
+    // 6. 扩展槽位（区分框式/盒式）
+    // 框式交换机（业务槽位≥2的模块化设备）：槽位是核心硬指标，权重15%
+    // 盒式交换机（固定端口，0-1个扩展槽）：槽位是加分项，权重5%，不作为硬指标
     if (req.expansion && req.expansion > 0) {
-        weight += 15;
         const val = parseNum(sw.expansion_slots);
-        if (val >= req.expansion) {
-            // 槽位贴近度优先：够用的前提下，槽位数越接近需求得分越高
-            // 槽位多了代表机框更大、价格更贵，所以富余惩罚要重
-            const ratio = val / req.expansion;
-            if (ratio <= 1.0) score += 15;           // 刚好满足，满分
-            else if (ratio <= 1.5) score += 12;       // 富余≤50%，80分
-            else if (ratio <= 2) score += 9;          // 富余≤100%，60分
-            else if (ratio <= 3) score += 6;          // 富余≤200%，40分
-            else score += 3;                          // 富余更多，20分
+        const isChassis = val >= 2;  // 槽位≥2判断为框式/模块化交换机
+        if (isChassis) {
+            // 框式交换机：槽位是核心硬指标
+            weight += 15;
+            if (val >= req.expansion) {
+                // 槽位贴近度优先：够用的前提下，槽位数越接近需求得分越高
+                const ratio = val / req.expansion;
+                if (ratio <= 1.0) score += 15;           // 刚好满足，满分
+                else if (ratio <= 1.5) score += 12;       // 富余≤50%，80分
+                else if (ratio <= 2) score += 9;          // 富余≤100%，60分
+                else if (ratio <= 3) score += 6;          // 富余≤200%，40分
+                else score += 3;                          // 富余更多，20分
+            } else {
+                // 框式但槽位不够，硬指标不通过
+                allHardPass = false;
+                score += 0;
+            }
         } else {
-            // 槽位不够的，硬指标不通过，直接淘汰
-            allHardPass = false;
-            score += 0;
+            // 盒式交换机：槽位是加分项，不作为硬指标
+            weight += 5;
+            if (val >= req.expansion) {
+                score += 5;  // 有扩展槽且满足，加分
+            } else if (val > 0) {
+                score += 3;  // 有扩展槽但数量少，部分加分
+            } else {
+                score += 0;  // 无扩展槽，不加分但也不淘汰
+            }
         }
     }
     
