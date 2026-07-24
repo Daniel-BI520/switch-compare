@@ -4838,14 +4838,6 @@ function recommendScene() {
             }
         });
         
-        if (ruijie.length > 0) {
-            html += '<div style="margin-top:16px; padding:12px; background:white; border-radius:6px; font-size:13px;"><strong style="color:#059669;">💡 锐捷打单建议：</strong><br>';
-            html += '主推 <strong>' + ruijie[0].model + '</strong>，';
-            const features = ruijie[0].features;
-            if (features) html += '核心卖点：' + features.substring(0, 150) + '...';
-            html += '</div>';
-        }
-        
         resultDiv.innerHTML = html;
     }
     resultDiv.classList.add('show');
