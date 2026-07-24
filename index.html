@@ -375,7 +375,36 @@ input[type="checkbox"] { cursor: pointer; width: 16px; height: 16px; }
     <textarea class="match-textarea" id="matchInput" placeholder="粘贴招标参数或需求描述，例如：
 核心层交换机，交换容量≥40Tbps，包转发率≥10000Mpps，支持48个万兆光口，8个100G上行，支持PoE+，三层路由，双电源冗余..."></textarea>
     <div class="match-hint">支持自动识别：层级、交换容量、包转发率、各类型端口数量、PoE、三层交换、扩展槽位等参数</div>
-    <button class="match-btn" onclick="smartMatch()">🔮 开始智能匹配</button>
+    <div style="display:flex; gap:8px; flex-wrap:wrap; align-items:center;">
+        <button class="match-btn" onclick="smartMatch()">🔮 规则匹配</button>
+        <button class="match-btn ai-btn" onclick="aiSmartMatch()" id="aiMatchBtn">✨ AI智能解析</button>
+        <button class="match-btn setting-btn" onclick="toggleAISettings()" title="API设置">⚙️</button>
+        <span class="match-hint" style="margin:0;">AI解析更准，支持复杂标书语义提取</span>
+    </div>
+    <div class="ai-settings" id="aiSettings" style="display:none; margin-top:10px; padding:12px; background:#fff; border-radius:6px; border:1px solid #e2e8f0;">
+        <div style="font-size:13px; font-weight:500; color:#1e293b; margin-bottom:8px;">AI 解析设置</div>
+        <div style="margin-bottom:8px;">
+            <label style="font-size:12px; color:#64748b; display:block; margin-bottom:4px;">选择模型</label>
+            <select id="aiModel" style="padding:6px 10px; border:1px solid #cbd5e1; border-radius:4px; font-size:12px; width:100%; box-sizing:border-box;">
+                <option value="zhipu">智谱AI GLM-4-Flash（免费）</option>
+                <option value="deepseek">DeepSeek-V3（约0.0005元/次）</option>
+                <option value="qwen">通义千问 Qwen-Turbo（免费额度）</option>
+                <option value="custom">自定义OpenAI兼容接口</option>
+            </select>
+        </div>
+        <div style="margin-bottom:8px;">
+            <label style="font-size:12px; color:#64748b; display:block; margin-bottom:4px;">API Key</label>
+            <input type="password" id="aiApiKey" placeholder="输入你的API Key，保存在本地浏览器" style="padding:6px 10px; border:1px solid #cbd5e1; border-radius:4px; font-size:12px; width:100%; box-sizing:border-box;" />
+        </div>
+        <div id="customApiUrlWrap" style="margin-bottom:8px; display:none;">
+            <label style="font-size:12px; color:#64748b; display:block; margin-bottom:4px;">API 地址</label>
+            <input type="text" id="aiApiUrl" placeholder="https://api.example.com/v1/chat/completions" style="padding:6px 10px; border:1px solid #cbd5e1; border-radius:4px; font-size:12px; width:100%; box-sizing:border-box;" />
+        </div>
+        <div style="display:flex; gap:8px; justify-content:flex-end;">
+            <button onclick="saveAISettings()" style="padding:6px 14px; background:#3b82f6; color:#fff; border:none; border-radius:4px; cursor:pointer; font-size:12px;">保存设置</button>
+        </div>
+        <div style="font-size:11px; color:#94a3b8; margin-top:8px;">💡 API Key仅保存在你本地浏览器（localStorage），不会上传到任何服务器</div>
+    </div>
     <div class="parsed-info" id="parsedInfo"></div>
     <div class="match-results" id="matchResults">
     <div class="match-cards" id="matchCards"></div>
@@ -4694,11 +4723,93 @@ document.getElementById('total-count2').textContent = allSwitches.length;
 applyFilters();
 
 
+
+// ===== 方案A：文本预处理归一化（规则强化的基础） =====
+function normalizeText(text) {
+    if (!text) return '';
+    let t = text;
+    
+    // 1. 全角转半角（数字、字母、常见符号）
+    t = t.replace(/[\uff01-\uff5e]/g, function(ch) {
+        return String.fromCharCode(ch.charCodeAt(0) - 0xfee0);
+    });
+    // 全角空格转半角
+    t = t.replace(/\u3000/g, ' ');
+    
+    // 2. 统一换行和多余空白
+    t = t.replace(/\r\n|\r/g, '\n').replace(/\s+/g, ' ').trim();
+    
+    // 3. 常见中文比较符号统一
+    const cmpMap = {
+        '≥': '≥', '>=': '≥', '＞=': '≥', '≧': '≥',
+        '不小于': '≥', '不低于': '≥', '不少于': '≥', '至少': '≥',
+        '大于等于': '≥', '大于或等于': '≥', '及以上': '≥',
+        '不低于': '≥', '满足': '≥', '要求': '≥',
+        '>': '>', '＞': '>', '大于': '>',
+        '≤': '≤', '<=': '≤', '小于等于': '≤', '不大于': '≤', '不超过': '≤',
+        '<': '<', '＜': '<', '小于': '<',
+        '＝': '=', '等于': '=', '为': '=',
+    };
+    
+    // 4. 同义词替换（标书常见表述归一化）
+    const synMap = {
+        // 交换容量
+        '交换容量': '交换容量', '背板带宽': '交换容量', '背板容量': '交换容量',
+        '带宽容量': '交换容量', '交换带宽': '交换容量', '交换能力': '交换容量',
+        '交换矩阵带宽': '交换容量', '交换网板带宽': '交换容量',
+        // 包转发率
+        '包转发率': '包转发率', '转发性能': '包转发率', '包转发速率': '包转发率',
+        '转发能力': '包转发率', '吞吐量': '包转发率', '吞吐能力': '包转发率',
+        '包交换能力': '包转发率', '报文转发率': '包转发率',
+        // 端口类型 - 电口
+        '电接口': '电口', '以太网电口': '电口', '以太网端口': '电口',
+        'RJ45': '电口', 'RJ45端口': '电口', '铜口': '电口',
+        '10/100/1000BASE-T': '千兆电口', '千兆电': '千兆电口',
+        '1000BASE-T': '千兆电口',
+        // 端口类型 - 光口
+        '千兆光': '千兆光口', 'SFP口': '千兆光口', 'SFP端口': '千兆光口',
+        '万兆光': '万兆光口', 'SFP+': '万兆光口', '10G SFP': '万兆光口',
+        '10GE SFP+': '万兆光口', '10G光': '万兆光口',
+        '25G光': '25G光口', 'SFP28': '25G光口',
+        '40G光': '40G光口', 'QSFP+': '40G光口',
+        '100G光': '100G光口', 'QSFP28': '100G光口', '100GE': '100G光口',
+        // PoE
+        'POE+': 'PoE+', 'poe+': 'PoE+', 'POE Plus': 'PoE+',
+        'POE': 'PoE', 'poe': 'PoE', '以太网供电': 'PoE',
+        // 三层
+        'L3': '三层', '三层交换': '三层', '三层路由': '三层',
+        '支持路由': '三层',
+        // 层级
+        '核心层交换机': '核心层交换机', '核心交换机': '核心层交换机', '核心层': '核心层交换机',
+        '汇聚层交换机': '汇聚层交换机', '汇聚交换机': '汇聚层交换机', '汇聚层': '汇聚层交换机',
+        '接入层交换机': '接入层交换机', '接入交换机': '接入层交换机', '接入层': '接入层交换机',
+        // 扩展槽
+        '扩展槽位': '扩展槽位', '扩展插槽': '扩展槽位', '业务槽位': '扩展槽位',
+        '线卡槽位': '扩展槽位',
+    };
+    
+    // 按长度排序，长的先替换，避免短词先匹配
+    const synKeys = Object.keys(synMap).sort((a, b) => b.length - a.length);
+    for (const key of synKeys) {
+        // 注意：只替换完整出现的，避免破坏其他词
+        // 用简单的全局替换，因为都是专有名词
+        const re = new RegExp(key.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'), 'gi');
+        t = t.replace(re, synMap[key]);
+    }
+    
+    // 5. 处理冒号前后的空格
+    t = t.replace(/\s*[:：]\s*/g, ': ');
+    
+    return t;
+}
+
 // ===== 智能需求匹配 =====
 function smartMatch() {
-    const input = document.getElementById('matchInput').value.trim();
-    if (!input) { alert('请先输入需求描述'); return; }
+    const rawInput = document.getElementById('matchInput').value.trim();
+    if (!rawInput) { alert('请先输入需求描述'); return; }
     
+    // 方案A：先做文本归一化预处理
+    const input = normalizeText(rawInput);
     const req = parseRequirement(input);
     displayParsed(req);
     const results = findBestMatches(req);
@@ -4791,6 +4902,26 @@ function parseRequirement(text) {
         req.copper_ge = parseInt(plainPortMatch[1]);
     }
     
+    // 方案A增强："端口：X个" 或 "端口数：X" 格式（标书常见格式）
+    const portCountRe = new RegExp(
+        '(?:端口(?:数量|数)?|接口(?:数量|数)?)\s*[:：]?\s*[≥>=]?\s*(\\d+)\s*(?:个|口)?(?!\s*(?:光|电|SFP|千兆|万兆|25G|40G|100G))',
+        'i'
+    );
+    const portCountMatch = text.match(portCountRe);
+    if (portCountMatch && !req.copper_ge && !req.sfp_ge && !req.sfp_10g && !req.copper_10g) {
+        req.copper_ge = parseInt(portCountMatch[1]);
+    }
+    
+    // 方案A增强："X个端口"（后面跟了限定词的，比如"24个端口接入交换机"）
+    const numPortsRe = new RegExp(
+        '[≥>=]?\s*(\\d+)\\s*个\\s*(?:端口|接口)\s*(?:的?\s*(?:接入|汇聚|核心|交换机|设备|机型))?',
+        'i'
+    );
+    const numPortsMatch = text.match(numPortsRe);
+    if (numPortsMatch && !req.copper_ge && !req.sfp_ge && !req.sfp_10g && !req.copper_10g) {
+        req.copper_ge = parseInt(numPortsMatch[1]);
+    }
+    
     // 千兆光口
     const geSfpRe = new RegExp('(\\d+)\\s*(?:个|口)\\s*(?:千兆(?:光口?|SFP(?!\\+))?|SFP(?!\\+)口?)', 'i');
     const geSfpMatch = text.match(geSfpRe);
@@ -4847,6 +4978,197 @@ function parseRequirement(text) {
     
     return req;
 }
+
+// ===== 方案B：AI 智能解析（大语言模型语义提取） =====
+const AI_CONFIG_KEY = 'switch_compare_ai_config';
+
+function getAIConfig() {
+    try {
+        const saved = localStorage.getItem(AI_CONFIG_KEY);
+        return saved ? JSON.parse(saved) : { model: 'zhipu', apiKey: '', apiUrl: '' };
+    } catch(e) {
+        return { model: 'zhipu', apiKey: '', apiUrl: '' };
+    }
+}
+
+function saveAISettings() {
+    const model = document.getElementById('aiModel').value;
+    const apiKey = document.getElementById('aiApiKey').value.trim();
+    const apiUrl = document.getElementById('aiApiUrl').value.trim();
+    localStorage.setItem(AI_CONFIG_KEY, JSON.stringify({ model, apiKey, apiUrl }));
+    alert('设置已保存到本地');
+    toggleAISettings();
+}
+
+function toggleAISettings() {
+    const panel = document.getElementById('aiSettings');
+    panel.style.display = panel.style.display === 'none' ? 'block' : 'none';
+    // 加载已保存的设置
+    const cfg = getAIConfig();
+    document.getElementById('aiModel').value = cfg.model;
+    document.getElementById('aiApiKey').value = cfg.apiKey || '';
+    document.getElementById('aiApiUrl').value = cfg.apiUrl || '';
+    document.getElementById('customApiUrlWrap').style.display = cfg.model === 'custom' ? 'block' : 'none';
+}
+
+// 监听模型切换
+document.addEventListener('DOMContentLoaded', function() {
+    const modelSel = document.getElementById('aiModel');
+    if (modelSel) {
+        modelSel.addEventListener('change', function() {
+            document.getElementById('customApiUrlWrap').style.display = 
+                this.value === 'custom' ? 'block' : 'none';
+        });
+    }
+});
+
+function getModelConfig(modelType) {
+    const configs = {
+        zhipu: {
+            url: 'https://open.bigmodel.cn/api/paas/v4/chat/completions',
+            modelName: 'glm-4-flash',
+        },
+        deepseek: {
+            url: 'https://api.deepseek.com/v1/chat/completions',
+            modelName: 'deepseek-chat',
+        },
+        qwen: {
+            url: 'https://dashscope.aliyuncs.com/compatible-mode/v1/chat/completions',
+            modelName: 'qwen-turbo',
+        },
+        custom: {
+            url: '', // 从配置读取
+            modelName: 'gpt-3.5-turbo',
+        }
+    };
+    return configs[modelType] || configs.zhipu;
+}
+
+async function aiSmartMatch() {
+    const rawInput = document.getElementById('matchInput').value.trim();
+    if (!rawInput) { alert('请先输入需求描述'); return; }
+    
+    const cfg = getAIConfig();
+    if (!cfg.apiKey) {
+        alert('请先点击⚙️设置API Key\n\n推荐使用智谱AI GLM-4-Flash，完全免费：\nhttps://open.bigmodel.cn/');
+        toggleAISettings();
+        return;
+    }
+    
+    const btn = document.getElementById('aiMatchBtn');
+    const originalText = btn.innerHTML;
+    btn.innerHTML = '⏳ 解析中...';
+    btn.disabled = true;
+    
+    try {
+        const modelCfg = getModelConfig(cfg.model);
+        let apiUrl = modelCfg.url;
+        if (cfg.model === 'custom') {
+            apiUrl = cfg.apiUrl || modelCfg.url;
+        }
+        
+        const systemPrompt = `你是网络设备招标参数解析专家。请从用户输入的招标参数或需求描述中，提取交换机的关键参数要求，输出严格的JSON格式。
+
+需要提取的字段：
+- tier: 层级（"核心" / "汇聚" / "接入" / null）
+- switching_cap: 交换容量，单位Gbps（数字，Tbps自动x1000）
+- forwarding_rate: 包转发率，单位Mpps（数字，Tpps自动x1000）
+- copper_ge: 千兆电口数量（数字）
+- copper_10g: 万兆电口数量（数字）
+- sfp_ge: 千兆光口数量（数字）
+- sfp_10g: 万兆光口数量（数字）
+- sfp_25g: 25G光口数量（数字）
+- sfp_40g: 40G光口数量（数字）
+- sfp_100g: 100G光口数量（数字）
+- poe: 是否支持PoE（布尔值）
+- poe_plus: 是否支持PoE+（布尔值）
+- layer3: 是否三层交换（布尔值）
+- expansion: 扩展槽位数量（数字）
+- ports: 总端口数（数字，仅当无法区分类型时填写）
+
+规则：
+1. 标书中写"提供X个端口"或"X口交换机"，默认按≥X个电口算，填copper_ge
+2. 没有比较符的参数默认按≥处理（招标参数都是最低要求）
+3. 单位简写要识别：G=Gbps（交换容量）、M=Mpps（包转发率）、T=Tbps/Tpps
+4. "电接口"、"RJ45"、"铜口"都算电口
+5. 无法识别的字段填null
+6. 只输出JSON，不要任何解释文字，不要markdown代码块标记
+
+输出示例：
+{"tier":"接入","switching_cap":670,"forwarding_rate":200,"copper_ge":24,"sfp_10g":4,"poe":true,"poe_plus":false,"layer3":false,"sfp_ge":null,"sfp_25g":null,"sfp_40g":null,"sfp_100g":null,"copper_10g":null,"expansion":null}`;
+
+        const response = await fetch(apiUrl, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': 'Bearer ' + cfg.apiKey,
+            },
+            body: JSON.stringify({
+                model: modelCfg.modelName,
+                messages: [
+                    { role: 'system', content: systemPrompt },
+                    { role: 'user', content: rawInput }
+                ],
+                temperature: 0.1,
+            })
+        });
+        
+        if (!response.ok) {
+            throw new Error('API请求失败: ' + response.status);
+        }
+        
+        const data = await response.json();
+        let content = data.choices[0].message.content;
+        
+        // 清理可能的markdown标记
+        content = content.replace(/^```json\s*/i, '').replace(/^```\s*/, '').replace(/```$/, '').trim();
+        
+        let aiResult;
+        try {
+            aiResult = JSON.parse(content);
+        } catch(e) {
+            // 尝试提取JSON部分
+            const jsonMatch = content.match(/\{[\s\S]*\}/);
+            if (jsonMatch) {
+                aiResult = JSON.parse(jsonMatch[0]);
+            } else {
+                throw new Error('AI返回格式无法解析');
+            }
+        }
+        
+        // 合并AI结果和规则结果（AI优先，规则补充）
+        const ruleReq = parseRequirement(normalizeText(rawInput));
+        const req = {};
+        for (const key of Object.keys(ruleReq)) {
+            req[key] = (aiResult[key] !== undefined && aiResult[key] !== null) ? aiResult[key] : ruleReq[key];
+        }
+        // 处理ports总端口（AI可能返回这个）
+        if (aiResult.ports && !req.copper_ge && !req.sfp_ge && !req.sfp_10g) {
+            req.copper_ge = aiResult.ports;
+        }
+        
+        // 显示解析来源标记
+        const parsedDiv = document.getElementById('parsedInfo');
+        displayParsed(req);
+        
+        // 加个AI标记
+        const aiBadge = document.createElement('span');
+        aiBadge.style.cssText = 'background:#8b5cf6;color:#fff;padding:3px 8px;border-radius:4px;font-size:11px;';
+        aiBadge.textContent = '✨ AI解析';
+        parsedDiv.insertBefore(aiBadge, parsedDiv.firstChild);
+        
+        const results = findBestMatches(req);
+        displayMatchResults(results, req);
+        
+    } catch(err) {
+        alert('AI解析失败：' + err.message + '\n\n请检查API Key和网络连接，或切换到规则匹配模式');
+        console.error(err);
+    } finally {
+        btn.innerHTML = originalText;
+        btn.disabled = false;
+    }
+}
+
 function displayParsed(req) {
     const parsedDiv = document.getElementById('parsedInfo');
     const items = [];
