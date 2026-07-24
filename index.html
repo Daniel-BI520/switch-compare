@@ -4836,7 +4836,7 @@ function parseRequirement(text) {
     if (/PoE\+|poe\+|POE\+/.test(text)) { req.poe = true; req.poe_plus = true; }
     else if (/PoE|poe|POE/.test(text)) { req.poe = true; }
     
-    if (/三层|L3|三层交换|三层路由/.test(text)) req.layer3 = true;
+    if (/三层|L3|三层交换|三层路由|支持.*OSPF|支持.*BGP|静态路由/.test(text)) req.layer3 = true;
     
     // ========== 交换容量：多种说法 + 可选比较符 + 数字 + 宽泛单位简写 ==========
     const scRe = new RegExp(
@@ -4881,7 +4881,7 @@ function parseRequirement(text) {
     // 千兆电口：X个/口 千兆电/千兆端口/10/100/1000BASE-T/RJ45/电接口
     // 同时支持带比较符的格式，如：端口≥24个电接口
     const geCuRe = new RegExp(
-        '(?:端口)?[≥>=不小于至少及以上]*\\s*(\\d+)\\s*(?:个|口)\\s*(?:千兆(?:电口?|端口?|铜口)?|10\\/100\\/1000BASE-T|RJ45|电(?:口|接口|端口))',
+        '(?:端口)?[≥>=不小于至少及以上]*\\s*(\\d+)\\s*(?:个|口)\\s*(?:千兆(?:电口?|端口?|铜口)?|10\\/100\\/1000\\s*BASE-T|RJ45|电(?:口|接口|端口))',
         'i'
     );
     const geCuMatch = text.match(geCuRe);
@@ -4923,32 +4923,58 @@ function parseRequirement(text) {
     }
     
     // 千兆光口
-    const geSfpRe = new RegExp('(\\d+)\\s*(?:个|口)\\s*(?:千兆(?:光口?|SFP(?!\\+))?|SFP(?!\\+)口?)', 'i');
+    const geSfpRe = new RegExp('(\\d+)\\s*(?:个|口)\\s*(?:千兆(?:光口?|SFP(?!\\+))?|SFP(?!\\+)口?|1G\s*SFP)', 'i');
     const geSfpMatch = text.match(geSfpRe);
-    if (geSfpMatch) req.sfp_ge = parseInt(geSfpMatch[1]);
+    if (geSfpMatch && !req.sfp_ge) req.sfp_ge = parseInt(geSfpMatch[1]);
     
-    // 万兆光口：X个/口 万兆光/SFP+/10G SFP 等
+    // 反序：千兆光口X个 / SFP端口X个（不跨句）
+    const geSfpRev = text.match(/(?:千兆光(?:口|端口)|千兆SFP|SFP(?:\+)?端口|1G\s*SFP|1G\/2\.5G\s*BASE-X\s*SFP)[^0-9,.;，。；\n]{0,12}?(\d+)\s*个?/i);
+    if (geSfpRev && !req.sfp_ge) req.sfp_ge = parseInt(geSfpRev[1]);
+    
+    // 万兆光口：X个/口 万兆光/SFP+/10G SFP / 10GE SFP+ 等
     const xgSfpRe = new RegExp(
-        '(\\d+)\\s*(?:个|口)\\s*(?:万兆(?:光口?|SFP|端口)?|SFP\\+|10G\\s*SFP|10GE\\s*SFP|10G\\s*光口?)',
+        '(\\d+)\\s*(?:个|口)\\s*(?:万兆(?:光口?|SFP|端口)?|SFP\\+|10G\\s*SFP|10GE\\s*SFP\\+?|10G\\s*光口?)',
         'i'
     );
     const xgSfpMatch = text.match(xgSfpRe);
-    if (xgSfpMatch) req.sfp_10g = parseInt(xgSfpMatch[1]);
+    if (xgSfpMatch && !req.sfp_10g) req.sfp_10g = parseInt(xgSfpMatch[1]);
+    
+    // 反序：万兆光口X个 / SFP+端口X个
+    const xgSfpRev = text.match(/(?:万兆光(?:口|端口)|SFP\+端口|10GE?\s*SFP\+)[^0-9,.;，。；\n]{0,15}?(\d+)\s*个?/i);
+    if (xgSfpRev && !req.sfp_10g) req.sfp_10g = parseInt(xgSfpRev[1]);
     
     // 25G光口
-    const sfp28Re = new RegExp('(\\d+)\\s*(?:个|口)\\s*(?:25G(?:光|\\s*SFP28)?|SFP28)', 'i');
+    const sfp28Re = new RegExp('(\\d+)\\s*(?:个|口)\\s*(?:25G(?:光|\\s*SFP28|自适应光口)?|SFP28)', 'i');
     const sfp28Match = text.match(sfp28Re);
-    if (sfp28Match) req.sfp_25g = parseInt(sfp28Match[1]);
+    if (sfp28Match && !req.sfp_25g) req.sfp_25g = parseInt(sfp28Match[1]);
+    
+    // 反序：25G光口X个 / 25G自适应光口X个
+    const sfp28Rev = text.match(/25G(?:光(?:口|端口)?|自适应光口|\s*SFP28)[^0-9,.;，。；\n]{0,12}?(\d+)\s*个?/i);
+    if (sfp28Rev && !req.sfp_25g) req.sfp_25g = parseInt(sfp28Rev[1]);
     
     // 40G光口
-    const qsfpRe = new RegExp('(\\d+)\\s*(?:个|口)\\s*(?:40G(?:光|\\s*QSFP)?|QSFP\\+(?!28))', 'i');
+    const qsfpRe = new RegExp('(\\d+)\\s*(?:个|口)\\s*(?:40G(?:光|\\s*QSFP\\+?)?|QSFP\\+(?!28))', 'i');
     const qsfpMatch = text.match(qsfpRe);
-    if (qsfpMatch) req.sfp_40g = parseInt(qsfpMatch[1]);
+    if (qsfpMatch && !req.sfp_40g) req.sfp_40g = parseInt(qsfpMatch[1]);
     
-    // 100G光口
-    const qsfp28Re = new RegExp('(\\d+)\\s*(?:个|口)\\s*(?:100G(?:光|\\s*QSFP28)?|QSFP28|100GE)', 'i');
+    // 反序：40G光口X个 / 40GE QSFP+ X个
+    const qsfpRev = text.match(/(?:40G(?:光口|端口|自适应光口)?|40GE?\s*QSFP\+)[^0-9,.;，。；\n]{0,15}?(\d+)\s*个?/i);
+    if (qsfpRev && !req.sfp_40g) req.sfp_40g = parseInt(qsfpRev[1]);
+    
+    // 100G光口（含40G/100G自适应，按最高速率100G算）
+    const qsfp28Re = new RegExp('(\\d+)\\s*(?:个|口)\\s*(?:100G(?:光|\\s*QSFP28|自适应光口)?|QSFP28|100GE)', 'i');
     const qsfp28Match = text.match(qsfp28Re);
-    if (qsfp28Match) req.sfp_100g = parseInt(qsfp28Match[1]);
+    if (qsfp28Match && !req.sfp_100g) req.sfp_100g = parseInt(qsfp28Match[1]);
+    
+    // 反序：100G光口X个（注意不跨逗号/句号/分号）
+    const qsfp28Rev = text.match(/(?:100G(?:光口|端口|自适应光口)?|100GE?\s*QSFP28)[^0-9,.;，。；\n]{0,15}?(\d+)\s*个?/i);
+    if (qsfp28Rev && !req.sfp_100g) req.sfp_100g = parseInt(qsfp28Rev[1]);
+    
+    // 40G/100G自适应光口X个 / ≥X个40G/100G自适应
+    const adapt100g = text.match(/(?:40G\s*\/\s*100G|100G\s*\/\s*40G)(?:自适应)?[^0-9,.;，。；\n]{0,10}?(\d+)\s*个?/i);
+    if (adapt100g && !req.sfp_100g) req.sfp_100g = parseInt(adapt100g[1]);
+    const adapt100gCmp = text.match(/[≥>=]\s*(\d+)\s*个?[^0-9,.;，。；\n]{0,10}?(?:40G\s*\/\s*100G|100G\s*\/\s*40G)/i);
+    if (adapt100gCmp && !req.sfp_100g) req.sfp_100g = parseInt(adapt100gCmp[1]);
     
     // 万兆电口
     const xgCuRe = new RegExp('(\\d+)\\s*(?:个|口)\\s*(?:万兆(?:电口?|端口)?|10GBASE-T|10G\\s*电口?)', 'i');
@@ -4973,8 +4999,10 @@ function parseRequirement(text) {
     }
     
     // 扩展槽位
-    const slotMatch = text.match(/扩展槽位.*?(\d+)|(\d+).*?扩展槽/i);
-    if (slotMatch) req.expansion = parseInt(slotMatch[1] || slotMatch[2]);
+    // 扩展槽位/插槽/业务槽位（正向+反向）
+    let slotMatch = text.match(/(?:扩展(?:槽位|插槽|槽)|业务(?:接口)?的?(?:槽位|插槽|槽)|业务槽数)[^0-9]{0,15}?(\d+)/i);
+    if (!slotMatch) slotMatch = text.match(/(\d+)\s*个?[^0-9]{0,10}?(?:扩展(?:槽位|插槽|槽)|业务(?:槽位|插槽))/i);
+    if (slotMatch) req.expansion = parseInt(slotMatch[1]);
     
     return req;
 }
@@ -5069,72 +5097,30 @@ async function aiSmartMatch() {
         
         const systemPrompt = `你是网络设备招标参数解析专家。请从用户输入的招标参数或需求描述中，提取交换机的关键参数要求，输出严格的JSON格式。
 
-【字段定义（必须严格遵循以下规则，与规则匹配引擎100%对齐）：
+需要提取的字段：
+- tier: 层级（"核心" / "汇聚" / "接入" / null）
+- switching_cap: 交换容量，单位Gbps（数字，Tbps自动x1000）
+- forwarding_rate: 包转发率，单位Mpps（数字，Tpps自动x1000）
+- copper_ge: 千兆电口数量（数字）
+- copper_10g: 万兆电口数量（数字）
+- sfp_ge: 千兆光口数量（数字）
+- sfp_10g: 万兆光口数量（数字）
+- sfp_25g: 25G光口数量（数字）
+- sfp_40g: 40G光口数量（数字）
+- sfp_100g: 100G光口数量（数字）
+- poe: 是否支持PoE（布尔值）
+- poe_plus: 是否支持PoE+（布尔值）
+- layer3: 是否三层交换（布尔值）
+- expansion: 扩展槽位数量（数字）
+- ports: 总端口数（数字，仅当无法区分类型时填写）
 
-1. tier: 设备层级
-   - 出现"核心/核心层/核心交换机" → "核心"
-   - 出现"汇聚/汇聚层/汇聚交换机" → "汇聚"
-   - 出现"接入/接入层/接入交换机/POE交换机/楼层交换机" → "接入"
-   - 无法判断 → null
-
-2. switching_cap: 交换容量（单位Gbps，数字）
-   - 识别关键词：交换容量、交换能力、背板带宽、带宽容量、背板容量、交换带宽
-   - 单位换算：Tbps/Tb/T → ×1000；Mbps/Mb/M → ÷1000；无单位且值<10 → ×1000
-   - 比较符：≥/>=/＞/≧/不小于/不低于/不少于/至少/大于等于/大于/及以上/最低 都识别为最低要求
-   - 没有比较符默认按≥处理（招标参数都是最低要求）
-
-3. forwarding_rate: 包转发率（单位Mpps，数字）
-   - 识别关键词：包转发率、包转发速率、转发性能、转发能力、吞吐量、吞吐能力、包交换能力
-   - 单位换算：Tpps/Tp/T → ×1000；Mbps/mbps → 直接用（标书常把Mpps简写为Mbps）
-   - 无单位且值<10 → ×1000
-
-4. copper_ge: 千兆电口数量（数字）
-   - 识别：千兆电口、千兆端口、10/100/1000BASE-T、RJ45、电口、电接口、以太网端口、铜口
-   - "X个电口"、"X个10/100/1000BASE-T" → copper_ge=X
-   - 只说"X个端口/接口"且未说明类型 → 默认按千兆电口算，copper_ge=X
-   - "X口交换机" → copper_ge=X
-
-5. copper_10g: 万兆电口数量（数字）
-   - 识别：万兆电口、10GBASE-T、10G电口
-
-6. sfp_ge: 千兆光口数量（数字）
-   - 识别：千兆光口、SFP口、千兆SFP、1000BASE-X、千兆光接口
-
-7. sfp_10g: 万兆光口数量（数字）
-   - 识别：万兆光口、SFP+、10G SFP、10GE SFP、10G光口、万兆SFP+
-
-8. sfp_25g: 25G光口数量（数字）
-   - 识别：25G光口、SFP28、25G SFP28
-
-9. sfp_40g: 40G光口数量（数字）
-   - 识别：40G光口、QSFP+、40G QSFP
-
-10. sfp_100g: 100G光口数量（数字）
-    - 识别：100G光口、QSFP28、100G QSFP28、100GE
-
-11. poe: 是否支持PoE（布尔值）
-    - 出现PoE/POE/poe → true
-
-12. poe_plus: 是否支持PoE+（布尔值）
-    - 出现PoE+/POE+/poe+、802.3at → true
-
-13. layer3: 是否三层交换（布尔值）
-    - 出现三层/L3/三层交换/三层路由/支持OSPF/BGP/RIP（路由协议）→ true
-
-14. expansion: 扩展槽位/业务插槽数量（数字）
-    - 识别：扩展槽位、扩展插槽、业务插槽、业务槽位、槽位数
-    - "冗余引擎"、"电源槽位"不算业务槽位，不要计入
-    - 框式交换机的"业务接口插槽"才计入
-
-15. ports: 总端口数（数字，仅当完全无法区分端口类型时填写，否则留null）
-
-【重要规则】
-- 只提取硬参数指标，功能特性（如QoS、ACL、堆叠、虚拟化、认证等）忽略，不输出
-- 数量型参数都按最低要求值提取（即写"≥24"就填24，写"24个"也填24）
-- 无法确定的字段填null，布尔型默认为false/null
-- 光电复用口（Combo）计入光口，不计入电口
-- "中心端口"、"上联端口"等模糊表述按速率归类到对应光口/电口
-- 只输出纯JSON对象，不要任何解释文字，不要markdown代码块标记，不要开头结尾的多余内容
+规则：
+1. 标书中写"提供X个端口"或"X口交换机"，默认按≥X个电口算，填copper_ge
+2. 没有比较符的参数默认按≥处理（招标参数都是最低要求）
+3. 单位简写要识别：G=Gbps（交换容量）、M=Mpps（包转发率）、T=Tbps/Tpps
+4. "电接口"、"RJ45"、"铜口"都算电口
+5. 无法识别的字段填null
+6. 只输出JSON，不要任何解释文字，不要markdown代码块标记
 
 输出示例：
 {"tier":"接入","switching_cap":670,"forwarding_rate":200,"copper_ge":24,"sfp_10g":4,"poe":true,"poe_plus":false,"layer3":false,"sfp_ge":null,"sfp_25g":null,"sfp_40g":null,"sfp_100g":null,"copper_10g":null,"expansion":null}`;
@@ -5191,26 +5177,11 @@ async function aiSmartMatch() {
             }
         }
         
-        // 合并规则 + AI 双向校验合并（规则为主，AI补漏+修正）
+        // 合并AI结果和规则结果（AI优先，规则补充）
         const ruleReq = parseRequirement(normalizeText(rawInput));
         const req = {};
-        
-        // 规则能解析的用规则（保证一致性），AI只补充规则没识别到的字段
-        // 布尔型字段：AI识别到true但规则是false时，用AI结果（规则可能漏识别功能类表述）
-        const boolKeys = ['poe', 'poe_plus', 'layer3'];
         for (const key of Object.keys(ruleReq)) {
-            if (boolKeys.includes(key)) {
-                // 布尔型：规则或AI任一为true即为true
-                req[key] = ruleReq[key] || (aiResult[key] === true);
-            } else if (ruleReq[key] !== null && ruleReq[key] !== undefined) {
-                // 数值型：规则能解析的优先用规则
-                req[key] = ruleReq[key];
-            } else if (aiResult[key] !== undefined && aiResult[key] !== null && aiResult[key] !== '') {
-                // 规则没解析出来的，用AI补充
-                req[key] = aiResult[key];
-            } else {
-                req[key] = ruleReq[key];
-            }
+            req[key] = (aiResult[key] !== undefined && aiResult[key] !== null) ? aiResult[key] : ruleReq[key];
         }
         // 处理ports总端口（AI可能返回这个）
         if (aiResult.ports && !req.copper_ge && !req.sfp_ge && !req.sfp_10g) {
