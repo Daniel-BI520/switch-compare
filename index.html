@@ -4521,6 +4521,10 @@ function parseRequirement(text) {
         layer3: false, expansion: null,
     };
     
+    // ========== 通用比较符模式（支持各种"大于等于/不低于/至少"等表述，也支持没有比较符） ==========
+    // 标书里写"交换容量670G"默认按≥处理（参数指标都是最低要求）
+    const cmpOpt = '(?:\\s*(?:≥|>=|＞|≧|不小于|不低于|不少于|至少|大于等于|大于|及以上|最低))?\\s*';
+    
     if (/核心|核心层|核心交换机|核心层交换机/.test(text)) req.tier = '核心';
     else if (/汇聚|汇聚层|汇聚交换机|汇聚层交换机/.test(text)) req.tier = '汇聚';
     else if (/接入|接入层|接入交换机|接入层交换机/.test(text)) req.tier = '接入';
@@ -4530,51 +4534,125 @@ function parseRequirement(text) {
     
     if (/三层|L3|三层交换|三层路由/.test(text)) req.layer3 = true;
     
-    // 交换容量：匹配多种说法 + 比较符 + 数字 + 单位
-    const scMatch = text.match(/(?:交换容量|交换能力|背板带宽|带宽)\s*[≥>=不小于最低不低于]+\s*(\d+\.?\d*)\s*(Tbps|Gbps|TBPS|GBPS|T|G)?/i);
+    // ========== 交换容量：多种说法 + 可选比较符 + 数字 + 宽泛单位简写 ==========
+    const scRe = new RegExp(
+        '(?:交换容量|交换能力|背板带宽|带宽容量|背板容量|交换带宽)' + cmpOpt +
+        '(\\d+\\.?\\d*)\\s*' +
+        '(Tbps|TBPS|Tbps|Tb|T|Gbps|GBPS|Gb|G|Mbps|MBPS|Mb|M)?',
+        'i'
+    );
+    const scMatch = text.match(scRe);
     if (scMatch) {
         let val = parseFloat(scMatch[1]);
         const unit = (scMatch[2] || '').toUpperCase();
         if (unit.startsWith('T')) val *= 1000;
+        else if (unit.startsWith('M')) val /= 1000;
+        else if (!unit) {
+            if (val < 10) val *= 1000; // 比如"交换容量2.4" → 2.4T = 2400G
+        }
         req.switching_cap = val;
     }
     
-    // 包转发率：匹配多种说法
-    const fwdMatch = text.match(/(?:包转发率|包转发速率|转发性能|转发能力|吞吐量)\s*[≥>=不小于最低不低于]+\s*(\d+\.?\d*)\s*(Tpps|Mpps|TPPS|MPPS|T|M)?/i);
+    // ========== 包转发率：多种说法 + 可选比较符 + 数字 + 宽泛单位简写 ==========
+    const fwdRe = new RegExp(
+        '(?:包转发率|包转发速率|转发性能|转发能力|吞吐(?:量|能力)|包交换能力)' + cmpOpt +
+        '(\\d+\\.?\\d*)\\s*' +
+        '(Tpps|TPPS|Tpps|Tp|T|Mpps|MPPS|Mpps|Mp|M)?',
+        'i'
+    );
+    const fwdMatch = text.match(fwdRe);
     if (fwdMatch) {
         let val = parseFloat(fwdMatch[1]);
         const unit = (fwdMatch[2] || '').toUpperCase();
         if (unit.startsWith('T')) val *= 1000;
+        else if (!unit) {
+            if (val < 10) val *= 1000; // 比如"包转发率2.4" → 2.4T = 2400M
+        }
         req.forwarding_rate = val;
     }
     
-    const geCopperMatch = text.match(/(\d+)个?千兆电口|(\d+)个?10\/100\/1000BASE-T|(\d+)个?RJ45/i);
-    if (geCopperMatch) req.copper_ge = parseInt(geCopperMatch[1] || geCopperMatch[2] || geCopperMatch[3]);
+    // ========== 端口识别：多模式模糊匹配 ==========
+    // 优先匹配明确类型的端口，再 fallback 到总端口数
     
-    const geSfpMatch = text.match(/(\d+)个?千兆光口/i);
+    // 千兆电口：X个/口 千兆电/千兆端口/10/100/1000BASE-T/RJ45
+    const geCuRe = new RegExp(
+        '(\\d+)\\s*(?:个|口)\\s*(?:千兆(?:电口?|端口?|铜口)?|10\\/100\\/1000BASE-T|RJ45)',
+        'i'
+    );
+    const geCuMatch = text.match(geCuRe);
+    if (geCuMatch) req.copper_ge = parseInt(geCuMatch[1]);
+    
+    // 反序：千兆电口X个
+    const geCuRev = text.match(/(?:千兆(?:电口?|电))\s*(\d+)\s*个?/i);
+    if (geCuRev && !req.copper_ge) req.copper_ge = parseInt(geCuRev[1]);
+    
+    // 纯"电口/端口"模糊匹配（没明确说千兆也没说万兆的，默认按千兆电口算）
+    // 仅在还没识别到任何端口类型时生效
+    const plainPortRe = new RegExp(
+        '(\\d+)\\s*个?\\s*(?:电口|以太网端口|RJ45端口|铜口)',
+        'i'
+    );
+    const plainPortMatch = text.match(plainPortRe);
+    if (plainPortMatch && !req.copper_ge && !req.copper_10g && !req.sfp_ge && !req.sfp_10g) {
+        req.copper_ge = parseInt(plainPortMatch[1]);
+    }
+    
+    // 千兆光口
+    const geSfpRe = new RegExp('(\\d+)\\s*(?:个|口)\\s*(?:千兆(?:光口?|SFP(?!\\+))?|SFP(?!\\+)口?)', 'i');
+    const geSfpMatch = text.match(geSfpRe);
     if (geSfpMatch) req.sfp_ge = parseInt(geSfpMatch[1]);
     
-    const xgSfpMatch = text.match(/(\d+)个?万兆光口|(\d+)个?SFP\+/i);
-    if (xgSfpMatch) req.sfp_10g = parseInt(xgSfpMatch[1] || xgSfpMatch[2]);
+    // 万兆光口：X个/口 万兆光/SFP+/10G SFP 等
+    const xgSfpRe = new RegExp(
+        '(\\d+)\\s*(?:个|口)\\s*(?:万兆(?:光口?|SFP|端口)?|SFP\\+|10G\\s*SFP|10GE\\s*SFP|10G\\s*光口?)',
+        'i'
+    );
+    const xgSfpMatch = text.match(xgSfpRe);
+    if (xgSfpMatch) req.sfp_10g = parseInt(xgSfpMatch[1]);
     
-    const sfp28Match = text.match(/(\d+)个?25G.*光|(\d+)个?SFP28/i);
-    if (sfp28Match) req.sfp_25g = parseInt(sfp28Match[1] || sfp28Match[2]);
+    // 25G光口
+    const sfp28Re = new RegExp('(\\d+)\\s*(?:个|口)\\s*(?:25G(?:光|\\s*SFP28)?|SFP28)', 'i');
+    const sfp28Match = text.match(sfp28Re);
+    if (sfp28Match) req.sfp_25g = parseInt(sfp28Match[1]);
     
-    const qsfpMatch = text.match(/(\d+)个?40G.*光|(\d+)个?QSFP[^2]/i);
-    if (qsfpMatch) req.sfp_40g = parseInt(qsfpMatch[1] || qsfpMatch[2]);
+    // 40G光口
+    const qsfpRe = new RegExp('(\\d+)\\s*(?:个|口)\\s*(?:40G(?:光|\\s*QSFP)?|QSFP\\+(?!28))', 'i');
+    const qsfpMatch = text.match(qsfpRe);
+    if (qsfpMatch) req.sfp_40g = parseInt(qsfpMatch[1]);
     
-    const qsfp28Match = text.match(/(\d+)个?100G.*光|(\d+)个?QSFP28/i);
-    if (qsfp28Match) req.sfp_100g = parseInt(qsfp28Match[1] || qsfp28Match[2]);
+    // 100G光口
+    const qsfp28Re = new RegExp('(\\d+)\\s*(?:个|口)\\s*(?:100G(?:光|\\s*QSFP28)?|QSFP28|100GE)', 'i');
+    const qsfp28Match = text.match(qsfp28Re);
+    if (qsfp28Match) req.sfp_100g = parseInt(qsfp28Match[1]);
     
-    const xgCopperMatch = text.match(/(\d+)个?万兆电口|(\d+)个?10GBASE-T/i);
-    if (xgCopperMatch) req.copper_10g = parseInt(xgCopperMatch[1] || xgCopperMatch[2]);
+    // 万兆电口
+    const xgCuRe = new RegExp('(\\d+)\\s*(?:个|口)\\s*(?:万兆(?:电口?|端口)?|10GBASE-T|10G\\s*电口?)', 'i');
+    const xgCuMatch = text.match(xgCuRe);
+    if (xgCuMatch) req.copper_10g = parseInt(xgCuMatch[1]);
     
+    // ========== 总端口数模糊匹配（fallback） ==========
+    // 仅当没有识别出具体端口类型时生效
+    // 格式："24口交换机"、"48口接入层"、"16端口设备"、"提供24个端口"
+    // 必须带限定词（交换机/设备/接入/汇聚/核心），避免误匹配"8口万兆光"这类有明确类型的
+    if (!req.copper_ge && !req.sfp_ge && !req.sfp_10g && !req.copper_10g) {
+        const totalRe = new RegExp(
+            '(?:提供|配置|具备|有|支持)?\\s*(\\d+)\\s*' +
+            '(?:个?端口(?:交换机|设备|机型|机器|接入|汇聚|核心)?|' +
+            '口(?:交换机|设备|机型|机器|接入层?|汇聚层?|核心层?))',
+            'i'
+        );
+        const totalMatch = text.match(totalRe);
+        if (totalMatch) {
+            req.copper_ge = parseInt(totalMatch[1]);
+        }
+    }
+    
+    // 扩展槽位
     const slotMatch = text.match(/扩展槽位.*?(\d+)|(\d+).*?扩展槽/i);
     if (slotMatch) req.expansion = parseInt(slotMatch[1] || slotMatch[2]);
     
     return req;
 }
-
 function displayParsed(req) {
     const parsedDiv = document.getElementById('parsedInfo');
     const items = [];
