@@ -77,7 +77,9 @@ body {
 
 .table-wrapper {
     background: white; border-radius: 12px;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.06); overflow: hidden; overflow-x: auto;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+    overflow: auto; overflow-x: auto;
+    max-height: 70vh;
 }
 table { width: 100%; border-collapse: collapse; min-width: 1200px; }
 thead { background: #f8fafc; position: sticky; top: 0; z-index: 10; }
@@ -328,10 +330,21 @@ input[type="checkbox"] { cursor: pointer; width: 16px; height: 16px; }
 </div>
 
 <div class="scene-panel">
-    <h3>🎯 场景智能推荐（锐捷视角）</h3>
+    <h3>💡 快速选型（6步找到最合适的交换机）</h3>
     <div class="scene-inputs">
         <div class="filter-group">
-            <label>应用层级</label>
+            <label>使用场景</label>
+            <select id="scene-scene">
+                <option value="">全部场景</option>
+                <option value="campus">园区网</option>
+                <option value="datacenter">数据中心</option>
+                <option value="industry">工业安防</option>
+                <option value="fulloptical">全光网</option>
+                <option value="monitor">监控专用</option>
+            </select>
+        </div>
+        <div class="filter-group">
+            <label>设备层级</label>
             <select id="scene-tier">
                 <option value="">全部</option>
                 <option value="核心">核心层</option>
@@ -340,29 +353,45 @@ input[type="checkbox"] { cursor: pointer; width: 16px; height: 16px; }
             </select>
         </div>
         <div class="filter-group">
-            <label>端口数量</label>
+            <label>端口规模</label>
             <select id="scene-ports">
                 <option value="">不限</option>
-                <option value="8">8口左右</option>
+                <option value="12">≤12口</option>
                 <option value="24">24口左右</option>
                 <option value="48">48口左右</option>
+                <option value="chassis">框式(可扩展)</option>
+            </select>
+        </div>
+        <div class="filter-group">
+            <label>端口类型</label>
+            <select id="scene-porttype">
+                <option value="">不限</option>
+                <option value="copper_ge">千兆电口为主</option>
+                <option value="sfp_10g">万兆光口为主</option>
+                <option value="copper_2_5g">2.5G电口</option>
+                <option value="all_optical">全光口</option>
             </select>
         </div>
         <div class="filter-group">
             <label>PoE需求</label>
             <select id="scene-poe">
                 <option value="">不限</option>
-                <option value="yes">需要PoE</option>
                 <option value="no">不需要</option>
+                <option value="yes">需要PoE</option>
+                <option value="poeplus">PoE+(30W)</option>
+                <option value="poepp">PoE++(60W)</option>
+                <option value="upoe">UPOE(90W)</option>
             </select>
         </div>
         <div class="filter-group">
             <label>上行速率</label>
             <select id="scene-uplink">
                 <option value="">不限</option>
-                <option value="10G">万兆及以上</option>
-                <option value="25G">25G及以上</option>
-                <option value="100G">100G及以上</option>
+                <option value="1G">千兆</option>
+                <option value="10G">万兆</option>
+                <option value="25G">25G</option>
+                <option value="100G">100G</option>
+                <option value="400G">400G</option>
             </select>
         </div>
         <button class="scene-btn" onclick="recommendScene()">🔍 智能推荐</button>
@@ -4669,17 +4698,125 @@ function closeCompare() {
 }
 
 function recommendScene() {
+    const scene = document.getElementById('scene-scene').value;
     const tier = document.getElementById('scene-tier').value;
+    const ports = document.getElementById('scene-ports').value;
+    const porttype = document.getElementById('scene-porttype').value;
     const poe = document.getElementById('scene-poe').value;
     const uplink = document.getElementById('scene-uplink').value;
     
+    // 端口计数辅助函数
+    function countPortTypes(sw) {
+        const p = (sw.ports || '') + (sw.features || '');
+        return {
+            copper_ge: (p.match(/千兆电|10\/100\/1000BASE-T|1000BASE-T|RJ45.*千兆|GE电/g) || []).length,
+            sfp_10g: (p.match(/万兆光|10G\s*SFP|10GE\s*SFP\+|SFP\+|SFP28|25G光/g) || []).length,
+            copper_2_5g: (p.match(/2\.5G.*电|2\.5GE.*电|多速率.*电|UPoE.*2\.5G/g) || []).length,
+            total_ge_copper: (p.match(/[0-9]+个[0-9\/]*BASE-T/g) || []).reduce((s, m) => { const n = parseInt(m); return s + (isNaN(n) ? 0 : n); }, 0)
+        };
+    }
+    
+    // 判断是否框式
+    function isChassis(sw) {
+        const slots = sw.expansion_slots || '';
+        if (/业务槽|插槽|槽位/.test(slots) && !/0[（(]/.test(slots) && !/^0/.test(slots)) return true;
+        if (/框式|CLOS|正交/.test(sw.features || '')) return true;
+        return false;
+    }
+    
+    // 统计端口总数（粗略估计）
+    function estimateTotalPorts(sw) {
+        const p = sw.ports || '';
+        // 提取所有数字+端口描述的组合
+        const matches = p.match(/[0-9]+[个×x*]?[^，+。；]*?(端口|电口|光口|SFP|BASE-T|BASE-X|QSFP)/g);
+        if (!matches) return 0;
+        let total = 0;
+        matches.forEach(m => {
+            const num = parseInt(m);
+            if (!isNaN(num) && num < 200) total += num;
+        });
+        return total;
+    }
+    
     let candidates = allSwitches.filter(s => {
+        // 层级
         if (tier && s.tier !== tier) return false;
-        if (poe === 'yes' && !hasPoE(s.poe_support)) return false;
-        if (poe === 'no' && hasPoE(s.poe_support)) return false;
-        if (uplink === '10G' && !/10G|万兆|SFP\+|10GE/i.test((s.ports||'') + (s.features||'') + s.model)) return false;
-        if (uplink === '25G' && !/25G|25GE/i.test((s.ports||'') + (s.features||'') + s.model)) return false;
-        if (uplink === '100G' && !/100G|100GE/i.test((s.ports||'') + (s.features||'') + s.model)) return false;
+        
+        // 使用场景
+        const feat = s.features || '';
+        const ser = s.series || '';
+        const mod = s.model || '';
+        const fullText = feat + ser + mod;
+        if (scene === 'datacenter') {
+            if (!/数据中心|IDC|CE\s?[0-9]|S125|S105|N18000|VXLAN.*EVPN|CLOS.*数据中心/i.test(fullText)) return false;
+        }
+        if (scene === 'industry') {
+            if (!/工业|安防|宽温|室外|IP\d+|防盐雾/i.test(fullText)) return false;
+        }
+        if (scene === 'fulloptical') {
+            if (!/全光|极简光|POL|全光网|光入室|IF2920|SF2920|OLT|全光入室/i.test(fullText)) return false;
+        }
+        if (scene === 'monitor') {
+            if (!/监控|安防|摄像头|PoE.*监控|平安城市/i.test(fullText)) {
+                // 监控场景也可以用普通PoE交换机，放宽条件
+                if (!hasPoE(s.poe_support)) return false;
+            }
+        }
+        if (scene === 'campus') {
+            // 园区网排除明显的工业/数据中心专用
+            if (/工业交换机|室外型|CE12|CE16|数据中心核心/i.test(fullText)) return false;
+        }
+        
+        // 端口规模
+        if (ports === 'chassis') {
+            if (!isChassis(s)) return false;
+        } else if (ports) {
+            const total = estimateTotalPorts(s);
+            const target = parseInt(ports);
+            if (total > 0) {
+                if (target === 12 && total > 18) return false;
+                if (target === 24 && (total < 18 || total > 36)) return false;
+                if (target === 48 && (total < 36 || total > 60)) return false;
+            }
+        }
+        
+        // 端口类型
+        const pStr = s.ports || '';
+        if (porttype === 'copper_ge') {
+            if (!/千兆电|BASE-T|GE电|以太网电口/i.test(pStr)) return false;
+        }
+        if (porttype === 'sfp_10g') {
+            if (!/万兆光|10G.*SFP|SFP\+|SFP28/i.test(pStr)) return false;
+        }
+        if (porttype === 'copper_2_5g') {
+            if (!/2\.5G.*电|2\.5GE.*电|多速率电|mGig/i.test(pStr + feat)) return false;
+        }
+        if (porttype === 'all_optical') {
+            if (/BASE-T|电口|RJ45|千兆电/i.test(pStr)) return false;
+            if (!/SFP|光口|全光/i.test(pStr)) return false;
+        }
+        
+        // PoE
+        const poeStr = s.poe_support || '';
+        if (poe === 'no' && hasPoE(poeStr)) return false;
+        if (poe === 'yes' && !hasPoE(poeStr)) return false;
+        if (poe === 'poeplus' && !/PoE\+|PoE Plus|30W/i.test(poeStr)) {
+            if (!hasPoE(poeStr)) return false;
+        }
+        if (poe === 'poepp' && !/PoE\+\+|60W|HPOE/i.test(poeStr + feat)) return false;
+        if (poe === 'upoe' && !/UPOE|90W|PoE\+\+.*90W|Ultra/i.test(poeStr + feat)) return false;
+        
+        // 上行速率
+        const allText = (s.ports||'') + (s.features||'') + s.model;
+        if (uplink === '1G') {
+            // 千兆上行：有千兆光口但没有万兆及以上
+            if (/万兆|10G|25G|40G|100G|SFP\+|QSFP/i.test(allText)) return false;
+        }
+        if (uplink === '10G' && !/10G|万兆|SFP\+|10GE|SFP28/i.test(allText)) return false;
+        if (uplink === '25G' && !/25G|25GE|SFP28/i.test(allText)) return false;
+        if (uplink === '100G' && !/100G|100GE|QSFP28|40G.*100G/i.test(allText)) return false;
+        if (uplink === '400G' && !/400G|400GE/i.test(allText)) return false;
+        
         return true;
     });
     
