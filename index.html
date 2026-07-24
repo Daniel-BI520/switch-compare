@@ -4715,7 +4715,8 @@ function parseRequirement(text) {
     
     // ========== 通用比较符模式（支持各种"大于等于/不低于/至少"等表述，也支持没有比较符） ==========
     // 标书里写"交换容量670G"默认按≥处理（参数指标都是最低要求）
-    const cmpOpt = '(?:\\s*(?:≥|>=|＞|≧|不小于|不低于|不少于|至少|大于等于|大于|及以上|最低))?\\s*';
+    // 关键词与数值之间允许冒号+比较符+空格的组合（支持半角/全角冒号、半角/全角大于号等）
+    const cmpOpt = '[:：]?\\s*(?:≥|>=|>|＞|≧|不小于|不低于|不少于|至少|大于等于|大于|及以上|最低)?\\s*';
     
     if (/核心|核心层|核心交换机|核心层交换机/.test(text)) req.tier = '核心';
     else if (/汇聚|汇聚层|汇聚交换机|汇聚层交换机/.test(text)) req.tier = '汇聚';
@@ -4749,7 +4750,7 @@ function parseRequirement(text) {
     const fwdRe = new RegExp(
         '(?:包转发率|包转发速率|转发性能|转发能力|吞吐(?:量|能力)|包交换能力)' + cmpOpt +
         '(\\d+\\.?\\d*)\\s*' +
-        '(Tpps|TPPS|Tpps|Tp|T|Mpps|MPPS|Mpps|Mp|M)?',
+        '(Tpps|TPPS|Tpps|Tp|T|Mpps|MPPS|Mpps|Mp|M|Mbps|mbps|MBPS)?',
         'i'
     );
     const fwdMatch = text.match(fwdRe);
@@ -4766,9 +4767,10 @@ function parseRequirement(text) {
     // ========== 端口识别：多模式模糊匹配 ==========
     // 优先匹配明确类型的端口，再 fallback 到总端口数
     
-    // 千兆电口：X个/口 千兆电/千兆端口/10/100/1000BASE-T/RJ45
+    // 千兆电口：X个/口 千兆电/千兆端口/10/100/1000BASE-T/RJ45/电接口
+    // 同时支持带比较符的格式，如：端口≥24个电接口
     const geCuRe = new RegExp(
-        '(\\d+)\\s*(?:个|口)\\s*(?:千兆(?:电口?|端口?|铜口)?|10\\/100\\/1000BASE-T|RJ45)',
+        '(?:端口)?[≥>=不小于至少及以上]*\\s*(\\d+)\\s*(?:个|口)\\s*(?:千兆(?:电口?|端口?|铜口)?|10\\/100\\/1000BASE-T|RJ45|电(?:口|接口|端口))',
         'i'
     );
     const geCuMatch = text.match(geCuRe);
@@ -4778,10 +4780,10 @@ function parseRequirement(text) {
     const geCuRev = text.match(/(?:千兆(?:电口?|电))\s*(\d+)\s*个?/i);
     if (geCuRev && !req.copper_ge) req.copper_ge = parseInt(geCuRev[1]);
     
-    // 纯"电口/端口"模糊匹配（没明确说千兆也没说万兆的，默认按千兆电口算）
+    // 纯"电口/端口/电接口"模糊匹配（没明确说千兆也没说万兆的，默认按千兆电口算）
     // 仅在还没识别到任何端口类型时生效
     const plainPortRe = new RegExp(
-        '(\\d+)\\s*个?\\s*(?:电口|以太网端口|RJ45端口|铜口)',
+        '(\\d+)\\s*个?\\s*(?:电口|电接口|以太网端口|以太网电口|RJ45端口|铜口)',
         'i'
     );
     const plainPortMatch = text.match(plainPortRe);
