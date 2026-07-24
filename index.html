@@ -379,14 +379,14 @@ input[type="checkbox"] { cursor: pointer; width: 16px; height: 16px; }
         <button class="match-btn" onclick="smartMatch()">🔮 规则匹配</button>
         <button class="match-btn ai-btn" onclick="aiSmartMatch()" id="aiMatchBtn">✨ AI智能解析</button>
         <button class="match-btn setting-btn" onclick="toggleAISettings()" title="API设置">⚙️</button>
-        <span class="match-hint" style="margin:0;">AI解析更准，支持复杂标书语义提取</span>
+        <span class="match-hint" style="margin:0;">AI语义理解复杂标书（单次单设备），需配置API Key</span>
     </div>
     <div class="ai-settings" id="aiSettings" style="display:none; margin-top:10px; padding:12px; background:#fff; border-radius:6px; border:1px solid #e2e8f0;">
         <div style="font-size:13px; font-weight:500; color:#1e293b; margin-bottom:8px;">AI 解析设置</div>
         <div style="margin-bottom:8px;">
             <label style="font-size:12px; color:#64748b; display:block; margin-bottom:4px;">选择模型</label>
             <select id="aiModel" style="padding:6px 10px; border:1px solid #cbd5e1; border-radius:4px; font-size:12px; width:100%; box-sizing:border-box;">
-                <option value="zhipu">智谱AI GLM-4.7-Flash（免费）</option>
+                <option value="zhipu">智谱AI GLM-4-Flash（免费）</option>
                 <option value="deepseek">DeepSeek-V3（约0.0005元/次）</option>
                 <option value="qwen">通义千问 Qwen-Turbo（免费额度）</option>
                 <option value="custom">自定义OpenAI兼容接口</option>
