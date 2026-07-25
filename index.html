@@ -1446,13 +1446,20 @@ function displayParsed(req) {
 
 function parseNum(str) {
     if (!str || str === '--') return 0;
-    // 处理 "X/Y" 格式（如 4.8T/48T），取较大值表示最大能力
+    // 处理 "X/Y" 格式（如 4.8T/48T、336Gbps/3.36Tbps），取较大值表示最大能力
+    // 每部分单独解析数字+单位，统一到基本单位（Gbps / Mpps）
     const parts = String(str).split(/[\/／]/);
     let maxVal = 0;
     for (const p of parts) {
-        const m = p.match(/(\d+\.?\d*)/);
+        const m = p.match(/(\d+\.?\d*)\s*(Tbps|TBPS|Tbps|Tb|T|Gbps|GBPS|Gb|G|Mbps|MBPS|Mb|M|Tpps|TPPS|Tpps|Tp|Mpps|MPPS|Mpps|Mp)?/i);
         if (m) {
-            const v = parseFloat(m[1]);
+            let v = parseFloat(m[1]);
+            const unit = (m[2] || '').toUpperCase();
+            // 单位转换：T→基本单位（容量Tbps→Gbps, 转发率Tpps→Mpps，都乘1000）
+            // 注意：统一乘1000，因为容量T*1000=G、转发率T*1000=M
+            if (unit.startsWith('T')) {
+                v *= 1000;
+            }
             if (v > maxVal) maxVal = v;
         }
     }
@@ -1545,10 +1552,26 @@ function calcMatchScore(sw, req) {
         weight += 25;
         if (sw.tier === req.tier) {
             score += 25;
-        } else if ((req.tier === '汇聚' && sw.tier === '核心') || (req.tier === '接入' && sw.tier === '汇聚')) {
-            score += 8;  // 高端可降级，但惩罚加大，优先同层级
-            allHardPass = false;
         } else {
+            // 层级弹性：根据场景和端口密度调整惩罚
+            const swSfp10g = countPorts(sw, 'sfp_10g') + countPorts(sw, 'sfp_25g');
+            const reqSfp10g = (req.sfp_10g || 0) + (req.sfp_25g || 0);
+            let crossScore = 8;  // 默认降级分
+            
+            // 场景1：接入层需求 + 汇聚层设备 + 高密度万兆光口(≥24) → 万兆接入场景
+            if (req.tier === '接入' && sw.tier === '汇聚' && swSfp10g >= 24 && reqSfp10g >= 24) {
+                crossScore = 18;  // 高密度万兆光口的汇聚可视为万兆接入，惩罚减轻
+            }
+            // 场景2：汇聚层需求 + 核心层设备
+            else if (req.tier === '汇聚' && sw.tier === '核心') {
+                crossScore = 12;
+            }
+            // 场景3：接入层需求 + 汇聚层设备（普通情况）
+            else if (req.tier === '接入' && sw.tier === '汇聚') {
+                crossScore = 8;
+            }
+            
+            score += crossScore;
             allHardPass = false;
         }
     }
@@ -1557,7 +1580,6 @@ function calcMatchScore(sw, req) {
     if (req.switching_cap && sw.switching_capacity) {
         weight += 20;
         let val = parseNum(sw.switching_capacity);
-        if (/Tbps|TBPS/.test(sw.switching_capacity)) val *= 1000;
         if (val >= req.switching_cap) {
             const ratio = val / req.switching_cap;
             // 富余惩罚梯度加严：越贴近需求得分越高，超出太多大幅扣分
@@ -1577,7 +1599,6 @@ function calcMatchScore(sw, req) {
     if (req.forwarding_rate && sw.forwarding_rate) {
         weight += 20;
         let val = parseNum(sw.forwarding_rate);
-        if (/Tpps|TPPS/.test(sw.forwarding_rate)) val *= 1000;
         if (val >= req.forwarding_rate) {
             const ratio = val / req.forwarding_rate;
             if (ratio <= 1.2) score += 20;
@@ -1689,8 +1710,58 @@ function calcMatchScore(sw, req) {
     
     if (weight === 0) return 0;
     const rawScore = Math.round(score / weight * 100);
-    // 全部硬指标通过的才是有效推荐，没通过的标记为低匹配度
-    return allHardPass ? rawScore : Math.min(rawScore, 20);
+    // 全部硬指标通过的才是有效推荐
+    if (allHardPass) return rawScore;
+    
+    // 硬指标惩罚梯度化：根据不通过的严重程度调整
+    let hardFailCount = 0;
+    let hasTierMismatch = false;
+    
+    // 层级不匹配（单独统计）
+    if (req.tier && sw.tier !== req.tier) {
+        hasTierMismatch = true;
+        // 高密度万兆接入场景的层级不匹配算轻微
+        const swSfp10g = countPorts(sw, 'sfp_10g') + countPorts(sw, 'sfp_25g');
+        const reqSfp10g = (req.sfp_10g || 0) + (req.sfp_25g || 0);
+        if (!(req.tier === '接入' && sw.tier === '汇聚' && swSfp10g >= 24 && reqSfp10g >= 24)) {
+            hardFailCount++;
+        }
+    }
+    
+    // 交换容量不满足
+    if (req.switching_cap && sw.switching_capacity) {
+        let val = parseNum(sw.switching_capacity);
+        if (val < req.switching_cap) hardFailCount++;
+    }
+    
+    // 包转发率不满足
+    if (req.forwarding_rate && sw.forwarding_rate) {
+        let val = parseNum(sw.forwarding_rate);
+        if (val < req.forwarding_rate) hardFailCount++;
+    }
+    
+    // 端口不满足的数量
+    const hardPortTypes = [
+        ['copper_ge', 10], ['copper_10g', 5], ['sfp_ge', 4], ['sfp_10g', 8],
+        ['sfp_25g', 4], ['sfp_40g', 3], ['sfp_100g', 3],
+    ];
+    for (const [ptype, w] of hardPortTypes) {
+        if (req[ptype]) {
+            const count = countPorts(sw, ptype);
+            if (count < req[ptype]) hardFailCount++;
+        }
+    }
+    
+    // 梯度惩罚
+    if (hardFailCount === 0) {
+        return Math.max(rawScore, 65);  // 仅层级不匹配但其他都满足 → 65分档
+    } else if (hardFailCount === 1) {
+        return Math.max(Math.min(rawScore, 50), 40);  // 1项不通过 → 50分档
+    } else if (hardFailCount === 2) {
+        return Math.max(Math.min(rawScore, 35), 25);  // 2项不通过 → 35分档
+    } else {
+        return Math.min(rawScore, 20);  // 3项及以上 → 20分档
+    }
 }
 
 function findBestMatches(req) {
