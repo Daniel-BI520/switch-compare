@@ -5321,7 +5321,7 @@ function parseRequirement(text) {
 
     // ---- 千兆电口 ----
     // 支持中间带PoE/PoE+的格式，如"48个千兆PoE+电口"
-    const geCuRe = /(\d+)\s*(?:个|口)\s*(?:千兆(?:PoE\+?\s*)?(?:电口|电|铜口)|10\/100\/1000\s*BASE-T|RJ45(?:端口)?|电(?:口|接口|端口))/i;
+    const geCuRe = /(\d+)\s*(?:个|口)\s*(?:千兆(?:PoE\+?\s*)?(?:以太网电口|电口|电|铜口)|10\/100\/1000\s*(?:M\s*)?(?:BASE-T|以太网(?:电)?端口)|RJ45(?:端口)?|电(?:口|接口|端口))/i;
     const geCuMatch = text.match(geCuRe);
     if (geCuMatch) req.copper_ge = parseInt(geCuMatch[1]);
 
@@ -5349,12 +5349,13 @@ function parseRequirement(text) {
     // 严格匹配：必须有光/SFP/QSFP等光口关键词，不能有电
     const xgSfpRe = new RegExp(
         '(\\d+)\\s*(?:个|口)\\s*(' +
-        '万兆光|万兆SFP|' +
+        '万兆(?:以太网)?光|万兆SFP|' +
         'SFP\\+|' +   // SFP+ 默认为光口
         '10G\\s*SFP(?!\\s*(?:28|电|BASE-T))|' +
         '10GE?\\s*SFP\\+?|' +
         '10G\\s*光(?:口)?|' +
         '1G\\/10G\\s*SFP\\+|' +
+        '10G\\/1G\\s*SFP\\+|' +
         '1\\/10GE?\\s*SFP\\+|' +
         '10\\s*Gig?\\s*SFP\\+|' +
         'SFP\\s*Plus|' +
@@ -5393,8 +5394,12 @@ function parseRequirement(text) {
     const sfp40Match = text.match(sfp40Re);
     if (sfp40Match && !req.sfp_40g) req.sfp_40g = parseInt(sfp40Match[1]);
 
+    // 40/100GE混合格式的40G识别（100G已经识别的话就不算40G了）
+    const mixed40GE = /(\d+)\s*(?:个|口)\s*40G?\/100GE?\s*(?:光(?:口|接口|端口)?)?/i.exec(text);
+    if (mixed40GE && !req.sfp_40g && !req.sfp_100g) req.sfp_40g = parseInt(mixed40GE[1]);
+
     // 40G/100G自适应：如果已经匹配到100G就不算，否则算40G
-    const adaptive40 = /(\d+)\s*(?:个|口)\s*40G\s*\/\s*100G/i.exec(text);
+    const adaptive40 = /(\d+)\s*(?:个|口)\s*40G?\s*\/\s*100GE?/i.exec(text);
     if (adaptive40 && !req.sfp_100g && !req.sfp_40g) req.sfp_40g = parseInt(adaptive40[1]);
 
     // ---- 100G光口 ----
@@ -5402,9 +5407,13 @@ function parseRequirement(text) {
     const sfp100Match = text.match(sfp100Re);
     if (sfp100Match && !req.sfp_100g) req.sfp_100g = parseInt(sfp100Match[1]);
 
+    // 40/100GE混合格式：如"4个40/100GE光口"
+    const mixed100GE = /(\d+)\s*(?:个|口)\s*(?:40G?\/)?100GE?\s*(?:光(?:口|接口|端口)?)?/i.exec(text);
+    if (mixed100GE && !req.sfp_100g) req.sfp_100g = parseInt(mixed100GE[1]);
+
     // ---- 扩展槽位 ----
     const expRe = new RegExp(
-        '(?:扩展槽位[数]?|扩展插槽|业务槽位[数]?|业务板槽位|业务槽|线卡槽位|槽位[数]?|插槽)[：:]?\\s*' +
+        '(?:扩展槽位[数]?|扩展插槽|业务槽位[数]?|业务板卡槽位|业务板槽位|业务槽|线卡槽位|槽位[数]?|插槽)[：:]?\\s*' +
         '(?:≥|>=|>|＞|≧|不小于|不低于|不少于|至少|大于等于|大于|及以上|最低)?\\s*' +
         '(\\d+)\\s*(?:个|口)?',
         'i'
@@ -5413,7 +5422,7 @@ function parseRequirement(text) {
     if (expMatch) req.expansion = parseInt(expMatch[1]);
 
     // 反序：X个槽位 / X个业务槽位
-    const expRev = /(\d+)\s*个\s*(?:扩展槽位?|插槽|业务槽位?|业务板槽位|槽位)/i.exec(text);
+    const expRev = /(\d+)\s*个\s*(?:扩展槽位?|插槽|业务槽位?|业务板卡槽位|业务板槽位|槽位)/i.exec(text);
     if (expRev && !req.expansion) req.expansion = parseInt(expRev[1]);
 
     // ---- 端口总数兜底（完全没识别到端口类型时） ----
@@ -5812,8 +5821,14 @@ function calcMatchScore(sw, req) {
             else if (ratio <= 5) score += 3;       // 富余≤400%，15分
             else score += 1;                        // 富余更多，5分
         } else {
-            allHardPass = false;
-            score += Math.round(20 * (val / req.switching_cap) * 0.3);
+            const capRatio = val / req.switching_cap;
+            if (capRatio >= 0.9) {
+                // 近距宽容：差距≤10%，不算硬失败，给70-80%分
+                score += Math.round(20 * (0.7 + capRatio * 0.1));
+            } else {
+                allHardPass = false;
+                score += Math.round(20 * capRatio * 0.3);
+            }
         }
     }
     
@@ -5830,8 +5845,14 @@ function calcMatchScore(sw, req) {
             else if (ratio <= 5) score += 3;
             else score += 1;
         } else {
-            allHardPass = false;
-            score += Math.round(20 * (val / req.forwarding_rate) * 0.3);
+            const fwdRatio = val / req.forwarding_rate;
+            if (fwdRatio >= 0.9) {
+                // 近距宽容：差距≤10%，不算硬失败，给70-80%分
+                score += Math.round(20 * (0.7 + fwdRatio * 0.1));
+            } else {
+                allHardPass = false;
+                score += Math.round(20 * fwdRatio * 0.3);
+            }
         }
     }
     
@@ -5876,9 +5897,9 @@ function calcMatchScore(sw, req) {
         else score += 1;                              // 富余更多
     }
     
-    // 5. PoE（权重8%）
+    // 5. PoE（权重12%）
     if (req.poe) {
-        weight += 8;
+        weight += 12;
         if (sw.poe_support && /支持|PoE|是/.test(sw.poe_support)) {
             if (req.poe_plus) {
                 if (/PoE\+|802.3at|PoE\+\+/.test(sw.poe_support)) {
@@ -5891,6 +5912,7 @@ function calcMatchScore(sw, req) {
                 score += 8;
             }
         } else {
+                score -= 8;  // PoE需求但不支持，额外惩罚
             allHardPass = false;
         }
     }
@@ -5908,9 +5930,9 @@ function calcMatchScore(sw, req) {
                 // 槽位贴近度优先：够用的前提下，槽位数越接近需求得分越高
                 const ratio = val / req.expansion;
                 if (ratio <= 1.0) score += 20;            // 刚好满足，满分
-                else if (ratio <= 1.3) score += 15;       // 富余≤30%，75分
-                else if (ratio <= 1.7) score += 10;       // 富余≤70%，50分
-                else if (ratio <= 2.5) score += 5;        // 富余≤150%，25分
+                else if (ratio <= 1.2) score += 16;       // 富余≤30%，75分
+                else if (ratio <= 1.5) score += 10;       // 富余≤70%，50分
+                else if (ratio <= 2.0) score += 4;        // 富余≤150%，25分
                 else score += 2;                           // 富余更多，10分
             } else {
                 // 框式但槽位不够，硬指标不通过
