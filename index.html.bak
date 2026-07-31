@@ -352,7 +352,7 @@ input[type="checkbox"] { cursor: pointer; width: 16px; height: 16px; }
 <div class="header">
     <h1>🔧 三厂商交换机横向对比工具</h1>
     <p>锐捷 vs 华为 vs H3C | 核心·汇聚·接入全层级参数对标 | 售前工程师专属</p>
-    <div class="update-time">数据更新时间：2026-07-29 | 数据源：各厂商官网产品彩页 | 数据源：各厂商官网产品彩页 | 共 <strong id="total-count">0</strong> 款型号 | V2版</div>
+    <div class="update-time">数据更新时间：2026-07-24 (V2 补充版) | 数据源：各厂商官网产品彩页 | 共 <strong id="total-count">0</strong> 款型号 | V2版</div>
 </div>
 
 <div class="stats-bar">
@@ -6614,23 +6614,6 @@ function displayParsed(req) {
     document.getElementById('matchResults').classList.add('show');
 }
 
-    function parseNumNominal(str) {
-    if (!str || str === '--') return 0;
-    const parts = String(str).split(/[\/／]/);
-    let firstVal = 0;
-    for (const p of parts) {
-        const m = p.match(/(\d+\.?\d*)\s*(Tbps|TBPS|Tbps|Tb|T|Gbps|GBPS|Gb|G|Mbps|MBPS|Mb|M|Tpps|TPPS|Tpps|Tp|Mpps|MPPS|Mpps|Mp)?/i);
-        if (m) {
-            let v = parseFloat(m[1]);
-            const unit = (m[2] || '').toUpperCase();
-            if (unit.startsWith('T')) { v *= 1000; }
-            firstVal = v;
-            break;  // 只取第一个值
-        }
-    }
-    return firstVal;
-}
-
 function parseNum(str) {
     if (!str || str === '--') return 0;
     // 处理 "X/Y" 格式（如 4.8T/48T、336Gbps/3.36Tbps），取较大值表示最大能力
@@ -6692,9 +6675,6 @@ function countPorts(sw, portType) {
             /(\d+)\s*个\s*SFP28/i,
             /(\d+)\s*[×xX]\s*SFP28/i,
             /(\d+)\s*个\s*25G\s*SFP28/i,
-            // 多速率前缀SFP28（如"1G/2.5G/10G/25G SFP28光口"）
-            /(\d+)\s*个[\dG./\s]+SFP28.*光口/i,
-            /(\d+)\s*[×xX][\dG./\s]+SFP28/i,
         ],
         'sfp_25g': [
             /(\d+)\s*[个口]\s*25G.*光/i,
@@ -6705,9 +6685,8 @@ function countPorts(sw, portType) {
         ],
         'sfp_40g': [
             /(\d+)\s*[个口]\s*40G.*光/i,
-            /(\d+)\s*个\s*QSFP\+(?!28)/i,
+            /(\d+)\s*个\s*QSFP\+(?![28])/i,
             /(\d+)\s*[×xX]\s*40G/i,
-            /(\d+)\s*个\s*40GE?\s*QSFP\+/i,
         ],
         'sfp_100g': [
             /(\d+)\s*[个口]\s*100G.*光/i,
@@ -6715,9 +6694,6 @@ function countPorts(sw, portType) {
             /(\d+)\s*[×xX]\s*100G/i,
             /(\d+)\s*[×xX]\s*QSFP28/i,
             /(\d+)\s*个\s*100GE/i,
-            // 40G/100G混合格式QSFP28
-            /(\d+)\s*个[\dG./\s]+QSFP28/i,
-            /(\d+)\s*个\s*40G?\/100GE?\s*(?:QSFP28|光口|端口)/i,
         ],
         'copper_10g': [
             /(\d+)\s*[个口]\s*万兆电/,
@@ -6762,18 +6738,7 @@ function calcMatchScore(sw, req) {
             }
             // 场景3：接入层需求 + 汇聚层设备（普通情况）
             else if (req.tier === '接入' && sw.tier === '汇聚') {
-                // 多电口+万兆上行形态的汇聚设备，实际选型中常作高规格接入
-                const swCopperGe = countPorts(sw, 'copper_ge');
-                const reqCopperGe = req.copper_ge || 0;
-                // 电口数≥24且有万兆上行，且电口数贴近需求 → 视为接入层设备
-                if (swCopperGe >= 24 && swSfp10g >= 2 && reqCopperGe > 0 && Math.abs(swCopperGe - reqCopperGe) <= 8) {
-                    crossScore = 22;  // 端口形态完全匹配接入场景，层级几乎不扣分
-                    allHardPass = true;  // 视为满足层级硬指标
-                } else if (swCopperGe >= 24 && swSfp10g >= 2) {
-                    crossScore = 18;  // 多电口+万兆上行形态，可视为高规格接入
-                } else {
-                    crossScore = 10;
-                }
+                crossScore = 8;
             }
             
             score += crossScore;
@@ -6786,27 +6751,19 @@ function calcMatchScore(sw, req) {
         weight += 20;
         let val = parseNum(sw.switching_capacity);
         if (val >= req.switching_cap) {
-            // 满足需求用最大值判断（宽松），富余惩罚用标称值计算（更精准反映型号定位）
-            const nominalVal = parseNumNominal(sw.switching_capacity);
-            const ratio = Math.max(1, nominalVal / req.switching_cap);  // 至少为1（已满足需求）
-            // 富余惩罚梯度：标称值越贴近需求，得分越高
-            // 接入层需求对容量富余更宽容（接入层选型主要看端口形态，容量够用就行）
-            const isAccessTier = req.tier === '接入';
+            const ratio = val / req.switching_cap;
+            // 富余惩罚梯度加严：越贴近需求得分越高，超出太多大幅扣分
             if (ratio <= 1.2) score += 20;        // 富余≤20%，满分
-            else if (ratio <= 1.8) score += isAccessTier ? 18 : 17;    // 富余≤80%
-            else if (ratio <= 2.8) score += isAccessTier ? 15 : 12;    // 富余≤180%
-            else if (ratio <= 5) score += isAccessTier ? 12 : 7;       // 富余≤400%
-            else if (ratio <= 10) score += isAccessTier ? 8 : 3;       // 富余≤900%
-            else score += isAccessTier ? 5 : 1;                        // 富余更多
+            else if (ratio <= 1.5) score += 15;    // 富余≤50%，75分
+            else if (ratio <= 2) score += 10;      // 富余≤100%，50分
+            else if (ratio <= 3) score += 6;       // 富余≤200%，30分
+            else if (ratio <= 5) score += 3;       // 富余≤400%，15分
+            else score += 1;                        // 富余更多，5分
         } else {
             const capRatio = val / req.switching_cap;
-            if (capRatio >= 0.85) {
-                // 近距宽容：差距≤15%，不算硬失败，给65-80%分
-                score += Math.round(20 * (0.6 + capRatio * 0.2));
-            } else if (capRatio >= 0.6 && req.tier === '汇聚') {
-                // 汇聚层扩展宽容：差距≤40%（汇聚型号标称偏保守）
-                allHardPass = false;
-                score += Math.round(20 * (0.3 + (capRatio - 0.6) / 0.25 * 0.3));
+            if (capRatio >= 0.9) {
+                // 近距宽容：差距≤10%，不算硬失败，给70-80%分
+                score += Math.round(20 * (0.7 + capRatio * 0.1));
             } else {
                 allHardPass = false;
                 score += Math.round(20 * capRatio * 0.3);
@@ -6819,26 +6776,18 @@ function calcMatchScore(sw, req) {
         weight += 20;
         let val = parseNum(sw.forwarding_rate);
         if (val >= req.forwarding_rate) {
-            // 满足需求用最大值判断，富余惩罚用标称值计算
-            const nominalVal = parseNumNominal(sw.forwarding_rate);
-            const ratio = Math.max(1, nominalVal / req.forwarding_rate);
-            // 富余惩罚梯度：接入层更宽容
-            const isAccessTierFwd = req.tier === '接入';
+            const ratio = val / req.forwarding_rate;
             if (ratio <= 1.2) score += 20;
-            else if (ratio <= 1.5) score += isAccessTierFwd ? 18 : 15;
-            else if (ratio <= 2.5) score += isAccessTierFwd ? 15 : 10;
-            else if (ratio <= 4) score += isAccessTierFwd ? 12 : 6;
-            else if (ratio <= 8) score += isAccessTierFwd ? 8 : 3;
-            else score += isAccessTierFwd ? 5 : 1;
+            else if (ratio <= 1.5) score += 15;
+            else if (ratio <= 2) score += 10;
+            else if (ratio <= 3) score += 6;
+            else if (ratio <= 5) score += 3;
+            else score += 1;
         } else {
             const fwdRatio = val / req.forwarding_rate;
-            if (fwdRatio >= 0.85) {
-                // 近距宽容：差距≤15%，不算硬失败，给65-80%分
-                score += Math.round(20 * (0.6 + fwdRatio * 0.2));
-            } else if (fwdRatio >= 0.6 && req.tier === '汇聚') {
-                // 汇聚层扩展宽容：差距≤40%（汇聚型号标称偏保守，实际性能更高）
-                allHardPass = false;
-                score += Math.round(20 * (0.3 + (fwdRatio - 0.6) / 0.25 * 0.3));
+            if (fwdRatio >= 0.9) {
+                // 近距宽容：差距≤10%，不算硬失败，给70-80%分
+                score += Math.round(20 * (0.7 + fwdRatio * 0.1));
             } else {
                 allHardPass = false;
                 score += Math.round(20 * fwdRatio * 0.3);
@@ -6876,9 +6825,9 @@ function calcMatchScore(sw, req) {
         }
     }
     
-    // 4.5 总端口数贴近度（额外权重10%，奖励整体端口数接近需求的型号）
+    // 4.5 总端口数贴近度（额外权重8%，奖励整体端口数接近需求的型号）
     if (totalReqPorts > 0 && totalSwPorts > 0) {
-        weight += 10;
+        weight += 8;
         const totalRatio = totalSwPorts / totalReqPorts;
         if (totalRatio <= 1.15) score += 8;         // 整体富余≤15%，最优
         else if (totalRatio <= 1.4) score += 6;     // 整体富余≤40%
@@ -6945,57 +6894,7 @@ function calcMatchScore(sw, req) {
     if (weight === 0) return 0;
     const rawScore = Math.round(score / weight * 100);
     // 全部硬指标通过的才是有效推荐
-    if (allHardPass) {
-        // 同分数档精细排序：多维度综合微调（最高约1.0分）
-        let fineTune = 0;
-        
-        // 1. 容量贴近度（用标称值，最高0.2分）
-        if (req.switching_cap && sw.switching_capacity) {
-            const nominalVal = parseNumNominal(sw.switching_capacity);
-            if (nominalVal >= req.switching_cap) {
-                const ratio = nominalVal / req.switching_cap;
-                fineTune += 0.2 * Math.max(0, 1 - Math.min(ratio - 1, 2) / 2);
-            }
-        }
-        
-        // 2. 转发率贴近度（用标称值，最高0.2分）
-        if (req.forwarding_rate && sw.forwarding_rate) {
-            const nominalVal = parseNumNominal(sw.forwarding_rate);
-            if (nominalVal >= req.forwarding_rate) {
-                const ratio = nominalVal / req.forwarding_rate;
-                fineTune += 0.2 * Math.max(0, 1 - Math.min(ratio - 1, 2) / 2);
-            }
-        }
-        
-        // 3. 端口数量贴近度（最高0.5分）- 端口越接近需求越好
-        const portTypesFt = ['copper_ge', 'sfp_ge', 'sfp_10g', 'sfp_25g', 'sfp_40g', 'sfp_100g'];
-        let totalReqFt = 0, totalSwFt = 0;
-        for (const pt of portTypesFt) {
-            if (req[pt]) {
-                totalReqFt += req[pt];
-                totalSwFt += Math.min(countPorts(sw, pt), req[pt] * 2);
-            }
-        }
-        if (totalReqFt > 0 && totalSwFt >= totalReqFt) {
-            const portRatio = totalSwFt / totalReqFt;
-            fineTune += 0.5 * Math.max(0, 1 - Math.min(portRatio - 1, 2) / 2);
-        }
-        
-        // 4. 业务槽位贴近度（核心层，最高0.1分）
-        if (req.expansion && req.tier === '核心') {
-            let swSlots = 0;
-            if (sw.expansion_slots) {
-                const sm = String(sw.expansion_slots).match(/(\d+)/);
-                if (sm) swSlots = parseInt(sm[1]);
-            }
-            if (swSlots >= req.expansion) {
-                const slotRatio = swSlots / req.expansion;
-                fineTune += 0.1 * Math.max(0, 1 - Math.min(slotRatio - 1, 1));
-            }
-        }
-        
-        return Math.round((rawScore + fineTune) * 10) / 10;
-    }
+    if (allHardPass) return rawScore;
     
     // 硬指标惩罚梯度化：根据不通过的严重程度调整
     let hardFailCount = 0;
@@ -7004,16 +6903,10 @@ function calcMatchScore(sw, req) {
     // 层级不匹配（单独统计）
     if (req.tier && sw.tier !== req.tier) {
         hasTierMismatch = true;
-        // 判断是否应该豁免层级不匹配（端口形态完全匹配接入场景的汇聚设备）
-        const swSfp10g_m = countPorts(sw, 'sfp_10g') + countPorts(sw, 'sfp_25g');
-        const reqSfp10g_m = (req.sfp_10g || 0) + (req.sfp_25g || 0);
-        const swCopperGe_m = countPorts(sw, 'copper_ge');
-        const reqCopperGe_m = req.copper_ge || 0;
-        // 豁免场景1：高密度万兆光口(≥24)的汇聚做接入
-        const exempt1 = req.tier === '接入' && sw.tier === '汇聚' && swSfp10g_m >= 24 && reqSfp10g_m >= 24;
-        // 豁免场景2：多电口(≥24)+万兆上行(≥2)的汇聚设备，且电口数贴近需求
-        const exempt2 = req.tier === '接入' && sw.tier === '汇聚' && swCopperGe_m >= 24 && swSfp10g_m >= 2 && reqCopperGe_m > 0 && Math.abs(swCopperGe_m - reqCopperGe_m) <= 8;
-        if (!exempt1 && !exempt2) {
+        // 高密度万兆接入场景的层级不匹配算轻微
+        const swSfp10g = countPorts(sw, 'sfp_10g') + countPorts(sw, 'sfp_25g');
+        const reqSfp10g = (req.sfp_10g || 0) + (req.sfp_25g || 0);
+        if (!(req.tier === '接入' && sw.tier === '汇聚' && swSfp10g >= 24 && reqSfp10g >= 24)) {
             hardFailCount++;
         }
     }
