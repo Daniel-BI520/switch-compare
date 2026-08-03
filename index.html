@@ -580,6 +580,11 @@ switchData.forEach(item => {
         }
     }
 });
+// 给switchData也添加标签转换
+switchData.forEach(s => {
+    s.hot_tag = (s.is_hot === true || s.is_hot === 'true') ? '🔥热门' : '';
+    s.new_tag = (s.is_new === true || s.is_new === 'true') ? '🆕新品' : '';
+});
 </script>
 <script>
 const allSwitches = [
@@ -5992,6 +5997,11 @@ const allSwitches = [
       "is_new": true
     },
 ];
+// 将 is_hot/is_new 布尔值转换为显示标签
+allSwitches.forEach(s => {
+    s.hot_tag = (s.is_hot === true || s.is_hot === 'true') ? '🔥热门' : '';
+    s.new_tag = (s.is_new === true || s.is_new === 'true') ? '🆕新品' : '';
+});
 let filteredSwitches = [...allSwitches];
 let currentSort = { key: null, asc: true };
 let selectedModels = new Set();
