@@ -587,8 +587,7 @@ switchData.forEach(s => {
 });
 </script>
 <script>
-const allSwitches = [
-
+const allSwitches =[
   {
     "vendor": "锐捷",
     "series": "RG-N18000-E (Newton) 系列",
@@ -1444,8 +1443,8 @@ const allSwitches = [
     "series": "CloudEngine S8700 系列",
     "model": "CloudEngine S8700-6",
     "tier": "核心",
-    "switching_capacity": "102.4Tbps/460.8Tbps",
-    "forwarding_rate": "76800Mpps",
+    "switching_capacity": "230.4Tbps/691.2Tbps",
+    "forwarding_rate": "230400Mpps",
     "ports": "6个业务槽位",
     "poe_support": "不支持",
     "expansion_slots": "6个业务槽",
@@ -1462,8 +1461,8 @@ const allSwitches = [
     "series": "S7700 系列",
     "model": "S7703",
     "tier": "核心",
-    "switching_capacity": "51.2Tbps/201.6Tbps",
-    "forwarding_rate": "576Mpps/1440Mpps",
+    "switching_capacity": "38.4Tbps/144Tbps",
+    "forwarding_rate": "7200Mpps/28800Mpps",
     "ports": "3个业务槽位",
     "poe_support": "支持（需配PoE板卡）",
     "expansion_slots": "3个业务槽",
@@ -1480,8 +1479,8 @@ const allSwitches = [
     "series": "S7700 系列",
     "model": "S7706",
     "tier": "核心",
-    "switching_capacity": "102.4Tbps/403.2Tbps",
-    "forwarding_rate": "1152Mpps/2880Mpps",
+    "switching_capacity": "76.8Tbps/288Tbps",
+    "forwarding_rate": "14400Mpps/57600Mpps",
     "ports": "6个业务槽位",
     "poe_support": "支持（需配PoE板卡）",
     "expansion_slots": "6个业务槽",
@@ -1498,8 +1497,8 @@ const allSwitches = [
     "series": "S7700 系列",
     "model": "S7712",
     "tier": "核心",
-    "switching_capacity": "204.8Tbps/806.4Tbps",
-    "forwarding_rate": "1344Mpps/3360Mpps",
+    "switching_capacity": "153.6Tbps/576Tbps",
+    "forwarding_rate": "28800Mpps/115200Mpps",
     "ports": "12个业务槽位",
     "poe_support": "支持（需配PoE板卡）",
     "expansion_slots": "12个业务槽",
@@ -2311,8 +2310,8 @@ const allSwitches = [
     "series": "CloudEngine S6730-S-V2系列",
     "model": "S6730-S24X6Q-V2",
     "tier": "汇聚",
-    "switching_capacity": "1.68Tbps/2.4Tbps",
-    "forwarding_rate": "490Mpps",
+    "switching_capacity": "2.4Tbps",
+    "forwarding_rate": "720Mpps",
     "ports": "24个1/10GE SFP+端口，6个40/100GE QSFP28端口",
     "poe_support": "不支持",
     "expansion_slots": "无",
@@ -2327,9 +2326,9 @@ const allSwitches = [
     "vendor": "华为",
     "series": "CloudEngine S6730-S-V2系列",
     "model": "S6730-S48X6Q-V2",
-    "tier": "汇聚",
-    "switching_capacity": "2.16Tbps/2.4Tbps",
-    "forwarding_rate": "490Mpps",
+    "tier": "接入",
+    "switching_capacity": "4.8Tbps",
+    "forwarding_rate": "1080Mpps",
     "ports": "48个1/10GE SFP+端口，6个40/100GE QSFP28端口",
     "poe_support": "不支持",
     "expansion_slots": "无",
@@ -5696,7 +5695,7 @@ const allSwitches = [
     "series": "CloudEngine 6881 系列",
     "model": "CE6881-48S6CQ",
     "tier": "接入",
-    "switching_capacity": "4.8Tbps/96Tbps",
+    "switching_capacity": "4.8Tbps",
     "forwarding_rate": "2000Mpps",
     "ports": "48个10GE SFP+ + 6个100GE QSFP28",
     "poe_support": "否",
@@ -5730,8 +5729,8 @@ const allSwitches = [
     "series": "CloudEngine 9800 系列",
     "model": "CE9865-4C",
     "tier": "核心",
-    "switching_capacity": "25.6Tbps",
-    "forwarding_rate": "19200Mpps",
+    "switching_capacity": "576Tbps",
+    "forwarding_rate": "288000Mpps",
     "ports": "4个业务槽位，支持128x100GE或32x400GE",
     "poe_support": "否",
     "expansion_slots": "4个业务槽",
@@ -5798,8 +5797,8 @@ const allSwitches = [
     "series": "S6850 系列",
     "model": "S6850-56HF",
     "tier": "接入",
-    "switching_capacity": "3.2Tbps",
-    "forwarding_rate": "2560Mpps",
+    "switching_capacity": "12.8Tbps",
+    "forwarding_rate": "8400Mpps",
     "ports": "48个25GE SFP28 + 8个100GE QSFP28",
     "poe_support": "否",
     "expansion_slots": "0",
@@ -5815,8 +5814,8 @@ const allSwitches = [
     "series": "S7500X 系列",
     "model": "S7506X-G",
     "tier": "核心",
-    "switching_capacity": "76.8Tbps/336Tbps",
-    "forwarding_rate": "8640Mpps/57600Mpps",
+    "switching_capacity": "120Tbps/360Tbps",
+    "forwarding_rate": "36000Mpps/72000Mpps",
     "ports": "6个业务槽位 + 2个主控槽位 + 2个交换网槽位",
     "poe_support": "否",
     "expansion_slots": "6个业务槽",
@@ -6709,8 +6708,41 @@ const allSwitches = [
     "is_hot": true,
     "is_new": true,
     "status": "active"
+  },
+  {
+    "vendor": "锐捷",
+    "series": "RG-S6510 系列",
+    "model": "RG-S6510-48VS8CQ",
+    "tier": "汇聚",
+    "switching_capacity": "12.8Tbps",
+    "forwarding_rate": "8400Mpps",
+    "ports": "48个10G/25G SFP28光口，8个100G QSFP28口",
+    "poe_support": "否",
+    "expansion_slots": "0",
+    "power_redundancy": "双电源冗余",
+    "fan_redundancy": "风扇冗余",
+    "url": "https://www.ruijie.com.cn/cp/jh-yqw-sjjh/s6510-48vs8cq/",
+    "features": "数据中心TOR/EOR，支持VXLAN，开放式网络操作系统",
+    "is_hot": false,
+    "is_new": false
+  },
+  {
+    "vendor": "华为",
+    "series": "CloudEngine S12700E 系列",
+    "model": "CloudEngine S12700E-8",
+    "tier": "核心",
+    "switching_capacity": "512Tbps/2880Tbps",
+    "forwarding_rate": "230400Mpps",
+    "ports": "8个业务槽位 + 2个主控槽位",
+    "poe_support": "否（支持PoE线卡）",
+    "expansion_slots": "8个业务槽",
+    "power_redundancy": "电源冗余",
+    "fan_redundancy": "风扇冗余",
+    "url": "https://e.huawei.com/cn/products/switches/campus-switches/s12700e",
+    "features": "SVF超级虚拟交换网、iPCA网络质量感知、VXLAN",
+    "is_hot": false,
+    "is_new": false
   }
-
 ];
 // 将 is_hot/is_new 布尔值转换为显示标签
 allSwitches.forEach(s => {
@@ -7754,12 +7786,19 @@ function countPorts(sw, portType) {
             /(\d+)\s*[×xX]\s*SFP28/i,
             /(\d+)\s*个\s*25G/i,
             /(\d+)\s*[×xX]\s*25G/i,
+            // 多速率SFP28（如10GE/25GE SFP28）
+            /(\d+)\s*个[\dG.\/]*SFP28/i,
+            /(\d+)\s*[×xX][\dG.\/]*SFP28/i,
+            /(\d+)\s*个.*25GE.*SFP/i,
         ],
-        'sfp_40g': [
+                'sfp_40g': [
             /(\d+)\s*[个口]\s*40G.*光/i,
             /(\d+)\s*个\s*QSFP\+(?!28)/i,
             /(\d+)\s*[×xX]\s*40G/i,
             /(\d+)\s*个\s*40GE?\s*QSFP\+/i,
+            // QSFP28端口兼容40G模式（在40G需求下计入）
+            /(\d+)\s*个[\dGE.\/\s]*QSFP28/i,
+            /(\d+)\s*[×xX][\dGE.\/\s]*QSFP28/i,
         ],
         'sfp_100g': [
             /(\d+)\s*[个口]\s*100G.*光/i,
@@ -7836,7 +7875,14 @@ function calcMatchScore(sw, req) {
             // 场景3a：接入层需求 + 数据中心级高容量（≥4.8Tbps） → 汇聚/数据中心设备更宽容
             if (req.tier === '接入' && sw.tier === '汇聚' && (req.switching_cap || 0) >= 4800) {
                 // 数据中心接入场景（如CE6881、S6730万兆接入）
-                crossScore = 20;
+                const reqHighSpeedPorts = (req.sfp_10g || 0) + (req.sfp_25g || 0) + (req.sfp_40g || 0) + (req.sfp_100g || 0);
+                const swHighSpeedPorts = countPorts(sw, 'sfp_10g') + countPorts(sw, 'sfp_25g') + countPorts(sw, 'sfp_40g') + countPorts(sw, 'sfp_100g');
+                // 高密度光口的汇聚层设备在数据中心接入场景中几乎不扣分
+                if (reqHighSpeedPorts >= 32 && swHighSpeedPorts >= 32) {
+                    crossScore = 24;
+                } else {
+                    crossScore = 20;
+                }
                 allHardPass = true;
             }
             // 场景3b：接入层需求 + 汇聚层设备（普通情况）
@@ -7941,12 +7987,13 @@ function calcMatchScore(sw, req) {
             totalSwPorts += count;
             if (count >= req[ptype]) {
                 const ratio = count / req[ptype];
-                // 加大富余惩罚梯度：端口越接近需求得分越高
+                // 接入层端口富余惩罚更宽容（接入层选型端口够用就行，常选标准48口款）
+                const isPortAccessTier = req.tier === '接入';
                 if (ratio <= 1.2) score += w;           // 富余≤20%，满分
-                else if (ratio <= 1.5) score += Math.round(w * 0.85);  // 富余≤50%，85分
-                else if (ratio <= 2) score += Math.round(w * 0.65);    // 富余≤100%，65分
-                else if (ratio <= 3) score += Math.round(w * 0.45);    // 富余≤200%，45分
-                else score += Math.round(w * 0.25);                     // 富余更多，25分
+                else if (ratio <= 1.5) score += Math.round(w * (isPortAccessTier ? 0.92 : 0.85));  // 富余≤50%
+                else if (ratio <= 2) score += Math.round(w * (isPortAccessTier ? 0.8 : 0.65));      // 富余≤100%
+                else if (ratio <= 3) score += Math.round(w * (isPortAccessTier ? 0.55 : 0.45));     // 富余≤200%
+                else score += Math.round(w * (isPortAccessTier ? 0.3 : 0.25));                        // 富余更多
             } else if (count > 0) {
                 score += Math.round(w * 0.3);
                 allHardPass = false;
@@ -7999,22 +8046,22 @@ function calcMatchScore(sw, req) {
     }
     
     // 6. 扩展槽位（区分框式/盒式）
-    // 框式交换机（业务槽位≥2的模块化设备）：槽位是核心硬指标，权重20%
+    // 框式交换机（业务槽位≥2的模块化设备）：槽位是核心硬指标，权重25%
     // 盒式交换机（固定端口，0-1个扩展槽）：槽位是加分项，权重5%，不作为硬指标
     if (req.expansion && req.expansion > 0) {
         const val = parseNum(sw.expansion_slots);
         const isChassis = val >= 2;  // 槽位≥2判断为框式/模块化交换机
         if (isChassis) {
             // 框式交换机：槽位是核心硬指标
-            weight += 20;
+            weight += 25;
             if (val >= req.expansion) {
                 // 槽位贴近度优先：够用的前提下，槽位数越接近需求得分越高
                 const ratio = val / req.expansion;
-                if (ratio <= 1.0) score += 20;            // 刚好满足，满分
-                else if (ratio <= 1.2) score += 16;       // 富余≤30%，75分
-                else if (ratio <= 1.5) score += 10;       // 富余≤70%，50分
-                else if (ratio <= 2.0) score += 4;        // 富余≤150%，25分
-                else score += 2;                           // 富余更多，10分
+                if (ratio <= 1.0) score += 25;            // 刚好满足，满分
+                else if (ratio <= 1.2) score += 20;       // 富余≤20%，80分
+                else if (ratio <= 1.5) score += 12;       // 富余≤50%，48分
+                else if (ratio <= 2.0) score += 5;        // 富余≤100%，20分
+                else score += 2;                           // 富余更多，8分
             } else {
                 // 框式但槽位不够，硬指标不通过
                 allHardPass = false;
@@ -8058,18 +8105,25 @@ function calcMatchScore(sw, req) {
             }
         }
         
-        // 3. 端口数量贴近度（最高0.5分）- 端口越接近需求越好
+        // 3. 端口数量贴近度（最高0.6分）- 端口越接近需求越好
         const portTypesFt = ['copper_ge', 'sfp_ge', 'sfp_10g', 'sfp_25g', 'sfp_40g', 'sfp_100g'];
         let totalReqFt = 0, totalSwFt = 0;
+        let exactPortMatch = true;
         for (const pt of portTypesFt) {
             if (req[pt]) {
                 totalReqFt += req[pt];
-                totalSwFt += Math.min(countPorts(sw, pt), req[pt] * 2);
+                const swCount = countPorts(sw, pt);
+                totalSwFt += Math.min(swCount, req[pt] * 2);
+                if (swCount !== req[pt]) exactPortMatch = false;
             }
         }
         if (totalReqFt > 0 && totalSwFt >= totalReqFt) {
             const portRatio = totalSwFt / totalReqFt;
             fineTune += 0.5 * Math.max(0, 1 - Math.min(portRatio - 1, 2) / 2);
+            // 端口数量完全匹配时额外奖励（接入层更明显，因为端口数是选型第一要素）
+            if (exactPortMatch) {
+                fineTune += req.tier === '接入' ? 0.2 : 0.1;
+            }
         }
         
         // 4. 业务槽位贴近度（核心层，最高0.1分）
