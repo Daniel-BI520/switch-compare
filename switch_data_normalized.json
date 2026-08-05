@@ -1,5 +1,5 @@
 {
-  "update_time": "2026-08-04",
+  "update_time": "2026-08-06",
   "switches": [
     {
       "vendor": "锐捷",
@@ -81,7 +81,7 @@
       "expansion_slots": "3个业务槽",
       "power_redundancy": "2个电源槽位，1+1冗余",
       "fan_redundancy": "1个风扇模块",
-      "url": "http://www.ruijie.com.cn/cp/jh-yqw-hxjh/S7808C/",
+      "url": "https://www.ruijie.com.cn/cp/jh-yqw-hxjh/S7808C/",
       "features": "VSU虚拟化、MPLS L3VPN、OpenFlow 1.3、4U高度、442×451×175mm",
       "is_hot": false,
       "is_new": false
@@ -115,7 +115,7 @@
       "expansion_slots": "6个业务槽",
       "power_redundancy": "电源N+M冗余（支持RG-PA3000I-PL）",
       "fan_redundancy": "2个风扇框",
-      "url": "http://www.ruijie.com.cn/cp/jh-yqw-hxjh/S7808C/",
+      "url": "https://www.ruijie.com.cn/cp/jh-yqw-hxjh/S7808C/",
       "features": "VSU虚拟化、高功率PoE支持、10U高度",
       "is_hot": false,
       "is_new": false
@@ -132,7 +132,7 @@
       "expansion_slots": "8个业务槽",
       "power_redundancy": "电源N+M冗余",
       "fan_redundancy": "2个风扇框",
-      "url": "http://www.ruijie.com.cn/cp/jh-yqw-hxjh/S7808C/",
+      "url": "https://www.ruijie.com.cn/cp/jh-yqw-hxjh/S7808C/",
       "features": "10U框式、CLOS架构、双主控+独立交换网板、VSU3.0",
       "is_hot": false,
       "is_new": false
@@ -183,7 +183,7 @@
       "expansion_slots": "0（固化端口）",
       "power_redundancy": "模块化双电源1+1冗余",
       "fan_redundancy": "模块化风扇冗余",
-      "url": "http://www.ruijie.com.cn/cp/jh-yqw-hjjh/RG-S6160-28VS8CQ-X/",
+      "url": "https://www.ruijie.com.cn/cp/jh-yqw-hjjh/RG-S6160-28VS8CQ-X/",
       "features": "VSU虚拟化、VXLAN、25G/100G高速上联、RTU容量授权升级",
       "is_hot": false,
       "is_new": false
@@ -200,7 +200,7 @@
       "expansion_slots": "0（固化端口）",
       "power_redundancy": "模块化双电源1+1冗余",
       "fan_redundancy": "模块化风扇冗余",
-      "url": "http://www.ruijie.com.cn/cp/jh-yqw-hjjh/RG-S6160-28VS8CQ-X/",
+      "url": "https://www.ruijie.com.cn/cp/jh-yqw-hjjh/RG-S6160-28VS8CQ-X/",
       "features": "48口25G接入+8口100G上联、VSU、EVPN VXLAN",
       "is_hot": false,
       "is_new": false
@@ -217,7 +217,7 @@
       "expansion_slots": "0（固化端口）",
       "power_redundancy": "模块化双电源1+1冗余",
       "fan_redundancy": "模块化风扇冗余",
-      "url": "http://www.ruijie.com.cn/cp/jh-yqw-hjjh/RG-S6160-28VS8CQ-X/",
+      "url": "https://www.ruijie.com.cn/cp/jh-yqw-hjjh/RG-S6160-28VS8CQ-X/",
       "features": "多速率10GE电口接入、PoE++高功率供电、VSU虚拟化",
       "is_hot": false,
       "is_new": false
@@ -608,7 +608,7 @@
       "expansion_slots": "0",
       "power_redundancy": "固化单电源",
       "fan_redundancy": "1个风扇",
-      "url": "http://www.ruijie.com.cn/cp/jh-yqw-jrjh/s500024gt4xsp/",
+      "url": "https://www.ruijie.com.cn/cp/jh-yqw-jrjh/s500024gt4xsp/",
       "features": "即插即用、简单管理、低功耗、静音设计",
       "is_hot": false,
       "is_new": false
@@ -625,7 +625,7 @@
       "expansion_slots": "0",
       "power_redundancy": "固化单电源",
       "fan_redundancy": "1个风扇",
-      "url": "http://www.ruijie.com.cn/cp/jh-yqw-jrjh/s500024gt4xsp/",
+      "url": "https://www.ruijie.com.cn/cp/jh-yqw-jrjh/s500024gt4xsp/",
       "features": "PoE供电、万兆上行、安防监控适用",
       "is_hot": false,
       "is_new": false
@@ -710,7 +710,7 @@
       "expansion_slots": "0",
       "power_redundancy": "固化单电源",
       "fan_redundancy": "支持风扇调速",
-      "url": "http://www.ruijie.com.cn/cp/jh-yqw-jrjh/s291024guph/",
+      "url": "https://www.ruijie.com.cn/cp/jh-yqw-jrjh/s291024guph/",
       "features": "小巧机型、PoE+供电、VSU虚拟化、三层路由、安全认证、已下架",
       "is_hot": false,
       "is_new": false
@@ -727,7 +727,7 @@
       "expansion_slots": "0",
       "power_redundancy": "固化单电源",
       "fan_redundancy": "支持风扇调速",
-      "url": "http://www.ruijie.com.cn/cp/jh-yqw-jrjh/s291024guph/",
+      "url": "https://www.ruijie.com.cn/cp/jh-yqw-jrjh/s291024guph/",
       "features": "24口千兆PoE+、VSU虚拟化、OSPF/BGP三层、Portal认证",
       "is_hot": false,
       "is_new": false
@@ -744,7 +744,7 @@
       "expansion_slots": "0",
       "power_redundancy": "固化单电源",
       "fan_redundancy": "支持风扇调速",
-      "url": "http://www.ruijie.com.cn/cp/jh-yqw-jrjh/s291024guph/",
+      "url": "https://www.ruijie.com.cn/cp/jh-yqw-jrjh/s291024guph/",
       "features": "万兆上行PoE交换机、VSU、三层路由、PoE满载功耗<460W",
       "is_hot": false,
       "is_new": false
@@ -761,7 +761,7 @@
       "expansion_slots": "0",
       "power_redundancy": "固化单交流电源",
       "fan_redundancy": "无风扇，自然散热",
-      "url": "http://www.ruijie.com.cn/cp/jh-yqw-jrjh/s2952gev3/",
+      "url": "https://www.ruijie.com.cn/cp/jh-yqw-jrjh/s2952gev3/",
       "features": "无风扇静音设计、VSU虚拟化（最多9台）、ERPS环网、三层路由（静态/RIP/OSPF）、EEE节能",
       "is_hot": false,
       "is_new": false
@@ -778,7 +778,7 @@
       "expansion_slots": "0",
       "power_redundancy": "固化单交流电源",
       "fan_redundancy": "轴流变速风扇，支持调速和故障告警",
-      "url": "http://www.ruijie.com.cn/cp/jh-yqw-jrjh/s2952gev3/",
+      "url": "https://www.ruijie.com.cn/cp/jh-yqw-jrjh/s2952gev3/",
       "features": "48口高密千兆接入、VSU、三层路由、智能风扇调速、16K MAC",
       "is_hot": false,
       "is_new": false
@@ -986,7 +986,7 @@
       "expansion_slots": "",
       "power_redundancy": "可插拔电源，支持冗余",
       "fan_redundancy": "智能调速风扇",
-      "url": "https://e.huawei.com/cn/products/switches/campus-switches/s5755-h",
+      "url": "https://e.huawei.com/cn/products/switches/campus-switches/s5755-h-multi-ge",
       "features": "万兆/25G高速上行、云管理、VXLAN、iStack",
       "is_hot": true,
       "is_new": false
@@ -1003,7 +1003,7 @@
       "expansion_slots": "",
       "power_redundancy": "可插拔电源，支持冗余",
       "fan_redundancy": "智能调速风扇",
-      "url": "https://e.huawei.com/cn/products/switches/campus-switches/s5755-h",
+      "url": "https://e.huawei.com/cn/products/switches/campus-switches/s5755-h-multi-ge",
       "features": "48口千兆+25G/100G上行、高密接入、云管理",
       "is_hot": true,
       "is_new": false
@@ -1815,7 +1815,7 @@
       "expansion_slots": "无",
       "power_redundancy": "固定电源",
       "fan_redundancy": "无风扇设计/静音",
-      "url": "https://e.huawei.com/cn/products/switches/campus-switches/s5736-s",
+      "url": "https://e.huawei.com/cn/products/switches/campus-switches/s5736-s-multi-ge",
       "features": "全光千兆接入+万兆上行、220mm浅机箱灵活部署、RTU端口升级许可、SVF、OSPF/ISIS/BGP三层路由、VBST/LNP/VCMP互通",
       "is_hot": true,
       "is_new": false
@@ -1832,7 +1832,7 @@
       "expansion_slots": "无",
       "power_redundancy": "固定电源",
       "fan_redundancy": "无风扇设计/静音",
-      "url": "https://e.huawei.com/cn/products/switches/campus-switches/s5736-s",
+      "url": "https://e.huawei.com/cn/products/switches/campus-switches/s5736-s-multi-ge",
       "features": "24口全光千兆接入、万兆上行、RTU端口速率升级、SVF极简运维、VRP平台、成熟IPv6特性",
       "is_hot": true,
       "is_new": false
@@ -2088,7 +2088,7 @@
       "expansion_slots": "无",
       "power_redundancy": "1+1电源备份",
       "fan_redundancy": "智能调速风扇",
-      "url": "https://e.huawei.com/cn/products/switches/campus-switches/s5735-s-i",
+      "url": "https://e.huawei.com/cn/products/switches/campus-switches/s5735i-s-v2-din",
       "features": "工业宽温交换机、户外机柜适应、专用12GE堆叠口、iStack堆叠、SEP/ERPS环网保护、OSPF/BGP/VRRP三层特性",
       "is_hot": true,
       "is_new": false
@@ -2105,7 +2105,7 @@
       "expansion_slots": "无",
       "power_redundancy": "支持冗余电源",
       "fan_redundancy": "智能调速风扇",
-      "url": "https://e.huawei.com/cn/products/switches/campus-switches/s5735-s-i",
+      "url": "https://e.huawei.com/cn/products/switches/campus-switches/s5735i-s-v2-din",
       "features": "48口千兆宽温工业交换机、万兆上行、工业级温度范围、专业户外防雷、iStack堆叠、环网保护",
       "is_hot": true,
       "is_new": false
@@ -2122,7 +2122,7 @@
       "expansion_slots": "无",
       "power_redundancy": "3电源，N+1电源备份",
       "fan_redundancy": "智能调速风扇",
-      "url": "https://e.huawei.com/cn/products/switches/campus-switches/s5735-s-i",
+      "url": "https://e.huawei.com/cn/products/switches/campus-switches/s5735i-s-v2-din",
       "features": "工业宽温PoE++交换机、每端口90W供电、N+1电源备份、室外恶劣环境适应、iStack堆叠",
       "is_hot": true,
       "is_new": false
@@ -2142,7 +2142,8 @@
       "url": "https://e.huawei.com/cn/products/switches/campus-switches/s5720i-si",
       "features": "视频监控回传一体机、PoE++ 60W/端口、室外型设计、ERPS/SmartLink环网保护、双路电源输入（AC+DC）",
       "is_hot": false,
-      "is_new": false
+      "is_new": false,
+      "status": "停产"
     },
     {
       "vendor": "华为",
@@ -2159,7 +2160,8 @@
       "url": "https://e.huawei.com/cn/products/switches/campus-switches/s5720i-si",
       "features": "8口视频回传一体机、PoE++供电、802.3af/at/bt标准、万兆上行、室外型、智能升级、云管理",
       "is_hot": false,
-      "is_new": false
+      "is_new": false,
+      "status": "停产"
     },
     {
       "vendor": "华为",
@@ -2227,7 +2229,8 @@
       "url": "https://e.huawei.com/cn/products/switches/campus-switches/s300",
       "features": "三层Web管理型、PoE+供电、智能iStack堆叠、Netconf/Yang云管理、4K VLAN、ACL/QoS、宽温工作(-5~50℃)",
       "is_hot": false,
-      "is_new": false
+      "is_new": false,
+      "status": "停产"
     },
     {
       "vendor": "华为",
@@ -2241,7 +2244,7 @@
       "expansion_slots": "无",
       "power_redundancy": "1+1电源备份",
       "fan_redundancy": "智能调速风扇",
-      "url": "https://e.huawei.com/cn/products/switches/campus-switches/s5735-s-i",
+      "url": "https://e.huawei.com/cn/products/switches/campus-switches/s5735i-s-v2-din",
       "features": "宽温工业交换机、万兆上行、SEP/ERPS环网保护、OSPF/ISIS/BGP三层特性、云管理、OPS开放可编程",
       "is_hot": true,
       "is_new": false
@@ -2258,7 +2261,7 @@
       "expansion_slots": "无",
       "power_redundancy": "内置交流电源+光伏转换电路",
       "fan_redundancy": "无风扇（IP55防护）",
-      "url": "https://e.huawei.com/cn/products/switches/campus-switches/s5735-s-i",
+      "url": "https://e.huawei.com/cn/products/switches/campus-switches/s5735i-s-v2-din",
       "features": "室外智能回传一体机、IP55防护等级、防盐雾、集成宽温交换机+防雷器+熔纤盒+电源、平安城市/公路/园区场景",
       "is_hot": true,
       "is_new": false
@@ -3044,7 +3047,8 @@
       "url": "https://e.huawei.com/cn/products/switches/campus-switches/s300",
       "features": "48口全管理千兆接入、支持三层路由、IP/MAC/VLAN组合绑定、端口隔离安全、小微站点核心/中小型园区接入",
       "is_hot": false,
-      "is_new": false
+      "is_new": false,
+      "status": "停产"
     },
     {
       "vendor": "华为",
@@ -3641,7 +3645,7 @@
       "expansion_slots": "--",
       "power_redundancy": "可插拔双电源，1+1冗余备份",
       "fan_redundancy": "--",
-      "url": "https://e.huawei.com/cn/products/switches/campus-switches/s5735-s",
+      "url": "https://e.huawei.com/cn/products/switches/campus-switches/s5735-s-v2",
       "features": "高性能全千兆交换机，支持三层路由，零配置部署",
       "is_hot": true,
       "is_new": false
@@ -3658,7 +3662,7 @@
       "expansion_slots": "--",
       "power_redundancy": "可插拔双电源，1+1冗余备份",
       "fan_redundancy": "--",
-      "url": "https://e.huawei.com/cn/products/switches/campus-switches/s5735-s",
+      "url": "https://e.huawei.com/cn/products/switches/campus-switches/s5735-s-v2",
       "features": "高性能全千兆交换机，PoE++供电，三层路由",
       "is_hot": true,
       "is_new": false
@@ -3675,7 +3679,7 @@
       "expansion_slots": "--",
       "power_redundancy": "可插拔双电源，1+1冗余备份",
       "fan_redundancy": "--",
-      "url": "https://e.huawei.com/cn/products/switches/campus-switches/s5735-s",
+      "url": "https://e.huawei.com/cn/products/switches/campus-switches/s5735-s-v2",
       "features": "高密千兆交换机，支持三层路由，零配置部署",
       "is_hot": true,
       "is_new": false
@@ -3692,7 +3696,7 @@
       "expansion_slots": "--",
       "power_redundancy": "可插拔双电源，1+1冗余备份",
       "fan_redundancy": "--",
-      "url": "https://e.huawei.com/cn/products/switches/campus-switches/s5735-s",
+      "url": "https://e.huawei.com/cn/products/switches/campus-switches/s5735-s-v2",
       "features": "高密千兆交换机，PoE++供电，三层路由",
       "is_hot": true,
       "is_new": false
@@ -3712,7 +3716,8 @@
       "url": "https://e.huawei.com/cn/products/switches/campus-switches/s5720-li",
       "features": "下一代精简型千兆以太网交换机，智能iStack堆叠",
       "is_hot": false,
-      "is_new": false
+      "is_new": false,
+      "status": "停产"
     },
     {
       "vendor": "华为",
@@ -3729,7 +3734,8 @@
       "url": "https://e.huawei.com/cn/products/switches/campus-switches/s5720-li",
       "features": "下一代精简型千兆交换机，PoE+供电",
       "is_hot": false,
-      "is_new": false
+      "is_new": false,
+      "status": "停产"
     },
     {
       "vendor": "华为",
@@ -3746,7 +3752,8 @@
       "url": "https://e.huawei.com/cn/products/switches/campus-switches/s5720-li",
       "features": "高密精简型千兆交换机，智能iStack堆叠",
       "is_hot": false,
-      "is_new": false
+      "is_new": false,
+      "status": "停产"
     },
     {
       "vendor": "华为",
@@ -3763,7 +3770,8 @@
       "url": "https://e.huawei.com/cn/products/switches/campus-switches/s5720-li",
       "features": "光口接入交换机，万兆上行，支持RPS冗余",
       "is_hot": false,
-      "is_new": false
+      "is_new": false,
+      "status": "停产"
     },
     {
       "vendor": "H3C",
@@ -4134,7 +4142,7 @@
       "expansion_slots": "0（固化端口）",
       "power_redundancy": "电源内置/DC可选",
       "fan_redundancy": "无风扇静音",
-      "url": "http://www.ruijie.com.cn/cp/jh-yqw-jgjh/if2920/",
+      "url": "https://www.ruijie.com.cn/cp/jh-yqw-jgjh/if2920/",
       "features": "全光网络入室交换机、12口千兆电+1口万兆上行、精巧设计、适用于光纤入室场景、VSU、VLAN、安全防护",
       "is_hot": false,
       "is_new": false
@@ -4709,7 +4717,8 @@
       "url": "https://e.huawei.com/cn/products/switches/campus-switches/s6750-h",
       "features": "100GE高密接入、VXLAN、MACsec、随板AC、Telemetry、云管理",
       "is_new": true,
-      "is_hot": false
+      "is_hot": false,
+      "status": "停产"
     },
     {
       "vendor": "华为",
@@ -4726,7 +4735,8 @@
       "url": "https://e.huawei.com/cn/products/switches/campus-switches/s6750-h",
       "features": "25GE高密接入、100GE上行、VXLAN、MACsec、随板AC、Telemetry、云管理",
       "is_new": true,
-      "is_hot": false
+      "is_hot": false,
+      "status": "停产"
     },
     {
       "vendor": "锐捷",
@@ -5080,7 +5090,7 @@
       "expansion_slots": "6个标准插槽 + 2个高速插槽",
       "power_redundancy": "自带2个RG-PA550I II-F电源，1+1冗余均流",
       "fan_redundancy": "内置三块风扇",
-      "url": "http://www.ruijie.com.cn/cp/jh-zxwljj/rg-sg7008l-v2",
+      "url": "https://www.ruijie.com.cn/cp/jh-zxwljj/rg-sg7008l-v2",
       "features": "一机一网多业务融合一体机、CLOS正交架构、VSU虚拟化、云地一体化管理（WIS+EMB）、支持无线AC插卡/路由插卡、内置一机一网管理软件",
       "is_hot": false,
       "is_new": false,
@@ -5098,7 +5108,7 @@
       "expansion_slots": "3个业务槽位",
       "power_redundancy": "2个电源槽位（RG-PA460I-F/RG-PA1000I-F）",
       "fan_redundancy": "前后风道散热",
-      "url": "http://www.ruijie.com.cn/cp/jh-zxwljj/rg-sg7512l/",
+      "url": "https://www.ruijie.com.cn/cp/jh-zxwljj/rg-sg7512l/",
       "features": "一机一网主机、4U紧凑型机框、内置SDN控制器(INC-EMB)、VSU虚拟化、零配置上线、即换即通、全网可视化管控、MTBF>20万小时",
       "is_hot": false,
       "is_new": false
@@ -5352,7 +5362,7 @@
       "poe_support": "不支持",
       "expansion_slots": "0",
       "power_redundancy": "1+1",
-      "url": "https://e.huawei.com/cn/products/switches/campus-switches/cloudengine-6800-series-data-center-switches",
+      "url": "https://e.huawei.com/cn/products/switches/data-center-switches/ce6800",
       "is_hot": false
     },
     {
@@ -5367,7 +5377,8 @@
       "expansion_slots": "1个扩展插槽",
       "power_redundancy": "1+1",
       "url": "https://e.huawei.com/cn/products/switches/campus-switches/cloudengine-5730-series-campus-switches",
-      "is_hot": true
+      "is_hot": true,
+      "status": "停产"
     },
     {
       "vendor": "华为",
@@ -5381,7 +5392,8 @@
       "expansion_slots": "1个扩展插槽",
       "power_redundancy": "1+1",
       "url": "https://e.huawei.com/cn/products/switches/campus-switches/cloudengine-5730-series-campus-switches",
-      "is_hot": true
+      "is_hot": true,
+      "status": "停产"
     },
     {
       "vendor": "H3C",
@@ -5451,7 +5463,8 @@
       "expansion_slots": "0",
       "power_redundancy": "1+1",
       "url": "https://e.huawei.com/cn/products/switches/campus-switches/cloudengine-6730-series-campus-switches",
-      "is_hot": true
+      "is_hot": true,
+      "status": "停产"
     },
     {
       "vendor": "锐捷",
@@ -5480,7 +5493,8 @@
       "expansion_slots": "0",
       "power_redundancy": "无",
       "url": "https://e.huawei.com/cn/products/switches/campus-switches/cloudengine-5730-series-campus-switches",
-      "is_hot": true
+      "is_hot": true,
+      "status": "停产"
     },
     {
       "vendor": "华为",
@@ -5494,7 +5508,8 @@
       "expansion_slots": "0",
       "power_redundancy": "无",
       "url": "https://e.huawei.com/cn/products/switches/campus-switches/cloudengine-5730-series-campus-switches",
-      "is_hot": true
+      "is_hot": true,
+      "status": "停产"
     },
     {
       "vendor": "锐捷",
@@ -5523,7 +5538,8 @@
       "expansion_slots": "0",
       "power_redundancy": "无",
       "url": "https://e.huawei.com/cn/products/switches/campus-switches/cloudengine-5730-series-campus-switches",
-      "is_hot": true
+      "is_hot": true,
+      "status": "停产"
     },
     {
       "vendor": "H3C",
