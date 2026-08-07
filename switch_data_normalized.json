@@ -1,5 +1,5 @@
 {
-  "update_time": "2026-08-06",
+  "update_time": "2026-08-08",
   "switches": [
     {
       "vendor": "锐捷",
@@ -319,7 +319,7 @@
       "expansion_slots": "0",
       "power_redundancy": "模块化双电源1+1冗余",
       "fan_redundancy": "模块化风扇冗余",
-      "url": "https://www.ruijie.com.cn/fw/wd-cp-s6100series/",
+      "url": "https://www.ruijie.com.cn/cp/jh-yqw-hjjh/s611024mg4vsup/",
       "features": "多速率5G电口接入、25G上联、VSU虚拟化、INC云管理",
       "is_hot": false,
       "is_new": false
@@ -336,7 +336,7 @@
       "expansion_slots": "0",
       "power_redundancy": "模块化双电源1+1冗余",
       "fan_redundancy": "模块化风扇冗余",
-      "url": "https://www.ruijie.com.cn/fw/wd-cp-s6100series/",
+      "url": "https://www.ruijie.com.cn/cp/jh-yqw-hjjh/s611048mg4vs2qxsup/",
       "features": "48口多速率5G接入、40G上联、PoE++高功率、VSU",
       "is_hot": false,
       "is_new": false
@@ -353,7 +353,7 @@
       "expansion_slots": "0",
       "power_redundancy": "模块化双电源1+1冗余",
       "fan_redundancy": "模块化风扇冗余",
-      "url": "https://www.ruijie.com.cn/fw/wd-cp-s6100series/",
+      "url": "https://www.ruijie.com.cn/cp/jh-yqw-hjjh/s612048xmg4vs2qxsuph/",
       "features": "10G多速率电口、硬件级多重保护、VSU、CPP/NFPP安全",
       "is_hot": false,
       "is_new": false
@@ -797,7 +797,7 @@
       "fan_redundancy": "风扇冗余",
       "url": "https://e.huawei.com/cn/products/switches/campus-switches/s16700",
       "features": "CLOS正交架构、SVF超级虚拟交换、VXLAN、SRv6、iMaster NCE管理",
-      "is_hot": false,
+      "is_hot": true,
       "is_new": false
     },
     {
@@ -814,7 +814,7 @@
       "fan_redundancy": "风扇冗余",
       "url": "https://e.huawei.com/cn/products/switches/campus-switches/s16700",
       "features": "高密100G/400G端口、SVF2.0、VXLAN EVPN、Telemetry智能运维",
-      "is_hot": false,
+      "is_hot": true,
       "is_new": false
     },
     {
@@ -831,7 +831,7 @@
       "fan_redundancy": "风扇冗余",
       "url": "https://e.huawei.com/cn/products/switches/campus-switches/s12700h",
       "features": "SVF虚拟化、VXLAN、iPCA质量感知、CSS集群、有线无线深度融合",
-      "is_hot": false,
+      "is_hot": true,
       "is_new": false
     },
     {
@@ -848,7 +848,7 @@
       "fan_redundancy": "风扇冗余",
       "url": "https://e.huawei.com/cn/products/switches/campus-switches/s12700h",
       "features": "8槽位高端核心、SVF2.0、VXLAN EVPN、业务随行",
-      "is_hot": false,
+      "is_hot": true,
       "is_new": false
     },
     {
@@ -866,7 +866,7 @@
       "url": "https://e.huawei.com/cn/products/switches/campus-switches/s8700",
       "features": "智能多层交换、VPN、应用识别、QoS、可控组播",
       "source_url": "https://e.huawei.com/cn/products/switches/campus-switches/s8700",
-      "is_hot": false,
+      "is_hot": true,
       "is_new": false
     },
     {
@@ -986,7 +986,7 @@
       "expansion_slots": "",
       "power_redundancy": "可插拔电源，支持冗余",
       "fan_redundancy": "智能调速风扇",
-      "url": "https://e.huawei.com/cn/products/switches/campus-switches/s5755-h-multi-ge",
+      "url": "https://e.huawei.com/cn/products/switches/campus-switches/s5755-h-gigabit",
       "features": "万兆/25G高速上行、云管理、VXLAN、iStack",
       "is_hot": true,
       "is_new": false
@@ -1003,7 +1003,7 @@
       "expansion_slots": "",
       "power_redundancy": "可插拔电源，支持冗余",
       "fan_redundancy": "智能调速风扇",
-      "url": "https://e.huawei.com/cn/products/switches/campus-switches/s5755-h-multi-ge",
+      "url": "https://e.huawei.com/cn/products/switches/campus-switches/s5755-h-gigabit",
       "features": "48口千兆+25G/100G上行、高密接入、云管理",
       "is_hot": true,
       "is_new": false
@@ -1246,7 +1246,7 @@
       "url": "https://www.h3c.com/cn/Products_And_Solution/InterConnect/Products/Switches/Products/Park_Switches/Aggregation_Switch/S7500E/S7000E/",
       "features": "IRF2堆叠、MPLS VPN、VXLAN、26-53W低功耗",
       "source_url": "https://www.h3c.com/cn/d_202509/2652595_30005_0.htm",
-      "is_hot": false,
+      "is_hot": true,
       "is_new": false
     },
     {
@@ -1264,7 +1264,7 @@
       "url": "https://www.h3c.com/cn/Products_And_Solution/InterConnect/Products/Switches/Products/Park_Switches/Aggregation_Switch/S7500E/S7500E/",
       "features": "IRF2虚拟化、MPLS、VXLAN、有线无线一体化、OAA开放架构",
       "source_url": "https://www.h3c.com/cn/Products_And_Solution/InterConnect/Products/Switches/Products/Park_Switches/Aggregation_Switch/S7500E/S7500E/",
-      "is_hot": false,
+      "is_hot": true,
       "is_new": false
     },
     {
@@ -1282,7 +1282,7 @@
       "url": "https://www.h3c.com/cn/Products_And_Solution/InterConnect/Products/Switches/Products/Park_Switches/Aggregation_Switch/S7500E/S7500E/",
       "features": "6槽位核心/汇聚、IRF2、MDC、服务质量保障",
       "source_url": "https://www.h3c.com/cn/Products_And_Solution/InterConnect/Products/Switches/Products/Park_Switches/Aggregation_Switch/S7500E/S7500E/",
-      "is_hot": false,
+      "is_hot": true,
       "is_new": false
     },
     {
@@ -1300,7 +1300,7 @@
       "url": "https://www.h3c.com/cn/Products_And_Solution/InterConnect/Products/Switches/Products/Park_Switches/Aggregation_Switch/S7500E/S7500E/",
       "features": "10槽位高端核心、CLOS架构、高可靠性设计",
       "source_url": "https://www.h3c.com/cn/Products_And_Solution/InterConnect/Products/Switches/Products/Park_Switches/Aggregation_Switch/S7500E/S7500E/",
-      "is_hot": false,
+      "is_hot": true,
       "is_new": false
     },
     {
@@ -1317,7 +1317,7 @@
       "fan_redundancy": "风扇冗余",
       "url": "https://www.h3c.com/cn/Products_And_Solution/InterConnect/Products/Switches/Products/Park_Switches/Aggregation_Switch/S7500E/S7500E/",
       "features": "480Gbps/slot带宽、IRF2虚拟化（最多4台）、MDC一虚多、VXLAN EVPN、MACsec",
-      "is_hot": false,
+      "is_hot": true,
       "is_new": false
     },
     {
@@ -1334,7 +1334,7 @@
       "fan_redundancy": "风扇冗余",
       "url": "https://www.h3c.com/cn/Products_And_Solution/InterConnect/Products/Switches/Products/Park_Switches/Aggregation_Switch/S7500E/S7500E/",
       "features": "PoE+大功率供电、每槽480Gbps、IRF2、EVI、MPLS/VPLS",
-      "is_hot": false,
+      "is_hot": true,
       "is_new": false
     },
     {
@@ -1351,7 +1351,7 @@
       "fan_redundancy": "风扇冗余",
       "url": "https://www.h3c.com/cn/Products_And_Solution/InterConnect/Products/Switches/Products/Park_Switches/Aggregation_Switch/S7500E/S7500E/",
       "features": "10槽位高端汇聚、40G/100G线卡、VXLAN、eMDI视频质量监测",
-      "is_hot": false,
+      "is_hot": true,
       "is_new": false
     },
     {
@@ -1437,7 +1437,7 @@
       "url": "https://www.h3c.com/cn/Products_And_Solution/InterConnect/Products/Switches/Products/Park_Switches/Aggregation_Switch/S6500/S6520-SI/",
       "features": "VXLAN、ISSU不中断业务升级、AAA认证、RADIUS、IRF智能弹性架构、SDN/OpenFlow",
       "source_url": "https://www.h3c.com/cn/Products_And_Solution/InterConnect/Products/Switches/Products/Park_Switches/Aggregation_Switch/S6500/S6520-SI/",
-      "is_hot": false,
+      "is_hot": true,
       "is_new": false
     },
     {
@@ -1559,7 +1559,7 @@
       "url": "https://www.h3c.com/cn/Products_And_Solution/InterConnect/Products/Switches/Products/Park_Switches/Access_Switch/S5120/S5120V3_EI/",
       "features": "IRF2堆叠（最多9台）、三层路由、Web管理、节能设计",
       "source_url": "https://www.h3c.com/cn/Products_And_Solution/InterConnect/Products/Switches/Products/Park_Switches/Access_Switch/S5120V3-EI/",
-      "is_hot": false,
+      "is_hot": true,
       "is_new": false
     },
     {
@@ -1577,7 +1577,7 @@
       "url": "https://www.h3c.com/cn/Products_And_Solution/InterConnect/Products/Switches/Products/Park_Switches/Access_Switch/S5130/S5130S-EI/",
       "features": "LI精简版、IRF2堆叠、VLAN、QoS、基础三层",
       "source_url": "https://www.h3c.com/en/Products_and_Solutions/InterConnect/Switches/Products/Campus_Network/Access/S5120V3-LI/",
-      "is_hot": false,
+      "is_hot": true,
       "is_new": false
     },
     {
@@ -1594,7 +1594,7 @@
       "fan_redundancy": "无风扇",
       "url": "https://www.h3c.com/cn/Products_And_Solution/InterConnect/Products/Switches/Products/Park_Switches/Access_Switch/S5110/S5110V2/",
       "features": "绿色节能（auto-power-down/EEE）、Web网管、SNMP、VLAN、≤2.5kg",
-      "is_hot": false,
+      "is_hot": true,
       "is_new": false
     },
     {
@@ -1611,7 +1611,7 @@
       "fan_redundancy": "有风扇",
       "url": "https://www.h3c.com/cn/Products_And_Solution/InterConnect/Products/Switches/Products/Park_Switches/Access_Switch/S5110/S5110V2/",
       "features": "PoE+大功率、端口最大30W、节能设计、SmartLink",
-      "is_hot": false,
+      "is_hot": true,
       "is_new": false
     },
     {
@@ -1628,7 +1628,7 @@
       "fan_redundancy": "无风扇",
       "url": "https://www.h3c.com/cn/Products_And_Solution/InterConnect/Products/Switches/Products/Park_Switches/Access_Switch/S5110/S5110V2/",
       "features": "48口高密千兆、绿色节能、SNMP、CFD连通错误检测",
-      "is_hot": false,
+      "is_hot": true,
       "is_new": false
     },
     {
@@ -1645,7 +1645,7 @@
       "fan_redundancy": "无风扇",
       "url": "https://www.h3c.com/cn/Products_And_Solution/InterConnect/Products/Switches/Products/Park_Switches/Access_Switch/S5110/S5110V2/",
       "features": "48口PoE+接入、最大385W、智能供电管理",
-      "is_hot": false,
+      "is_hot": true,
       "is_new": false
     },
     {
@@ -1800,7 +1800,7 @@
       "fan_redundancy": "智能调速风扇",
       "url": "https://e.huawei.com/cn/products/switches/campus-switches/s5736-s-multi-ge",
       "features": "Wi-Fi 6时代多速率接入、PoE++(90W)、RTU端口速率平滑升级、Telemetry智能运维、随板AC、iStack堆叠",
-      "is_hot": true,
+      "is_hot": false,
       "is_new": false
     },
     {
@@ -1815,9 +1815,9 @@
       "expansion_slots": "无",
       "power_redundancy": "固定电源",
       "fan_redundancy": "无风扇设计/静音",
-      "url": "https://e.huawei.com/cn/products/switches/campus-switches/s5736-s-multi-ge",
+      "url": "https://e.huawei.com/cn/products/switches/campus-switches/cloudengine-s5736-s",
       "features": "全光千兆接入+万兆上行、220mm浅机箱灵活部署、RTU端口升级许可、SVF、OSPF/ISIS/BGP三层路由、VBST/LNP/VCMP互通",
-      "is_hot": true,
+      "is_hot": false,
       "is_new": false
     },
     {
@@ -1832,9 +1832,9 @@
       "expansion_slots": "无",
       "power_redundancy": "固定电源",
       "fan_redundancy": "无风扇设计/静音",
-      "url": "https://e.huawei.com/cn/products/switches/campus-switches/s5736-s-multi-ge",
+      "url": "https://e.huawei.com/cn/products/switches/campus-switches/cloudengine-s5736-s",
       "features": "24口全光千兆接入、万兆上行、RTU端口速率升级、SVF极简运维、VRP平台、成熟IPv6特性",
-      "is_hot": true,
+      "is_hot": false,
       "is_new": false
     },
     {
@@ -2088,10 +2088,11 @@
       "expansion_slots": "无",
       "power_redundancy": "1+1电源备份",
       "fan_redundancy": "智能调速风扇",
-      "url": "https://e.huawei.com/cn/products/switches/campus-switches/s5735i-s-v2-din",
+      "url": "https://e.huawei.com/cn/products/switches/campus-switches/s5735-s-i",
       "features": "工业宽温交换机、户外机柜适应、专用12GE堆叠口、iStack堆叠、SEP/ERPS环网保护、OSPF/BGP/VRRP三层特性",
-      "is_hot": true,
-      "is_new": false
+      "is_hot": false,
+      "is_new": false,
+      "status": "已停产"
     },
     {
       "vendor": "华为",
@@ -2105,10 +2106,11 @@
       "expansion_slots": "无",
       "power_redundancy": "支持冗余电源",
       "fan_redundancy": "智能调速风扇",
-      "url": "https://e.huawei.com/cn/products/switches/campus-switches/s5735i-s-v2-din",
+      "url": "https://e.huawei.com/cn/products/switches/campus-switches/s5735-s-i",
       "features": "48口千兆宽温工业交换机、万兆上行、工业级温度范围、专业户外防雷、iStack堆叠、环网保护",
-      "is_hot": true,
-      "is_new": false
+      "is_hot": false,
+      "is_new": false,
+      "status": "已停产"
     },
     {
       "vendor": "华为",
@@ -2122,10 +2124,11 @@
       "expansion_slots": "无",
       "power_redundancy": "3电源，N+1电源备份",
       "fan_redundancy": "智能调速风扇",
-      "url": "https://e.huawei.com/cn/products/switches/campus-switches/s5735i-s-v2-din",
+      "url": "https://e.huawei.com/cn/products/switches/campus-switches/s5735-s-i",
       "features": "工业宽温PoE++交换机、每端口90W供电、N+1电源备份、室外恶劣环境适应、iStack堆叠",
-      "is_hot": true,
-      "is_new": false
+      "is_hot": false,
+      "is_new": false,
+      "status": "已停产"
     },
     {
       "vendor": "华为",
@@ -2143,7 +2146,7 @@
       "features": "视频监控回传一体机、PoE++ 60W/端口、室外型设计、ERPS/SmartLink环网保护、双路电源输入（AC+DC）",
       "is_hot": false,
       "is_new": false,
-      "status": "停产"
+      "status": "已停产"
     },
     {
       "vendor": "华为",
@@ -2161,7 +2164,7 @@
       "features": "8口视频回传一体机、PoE++供电、802.3af/at/bt标准、万兆上行、室外型、智能升级、云管理",
       "is_hot": false,
       "is_new": false,
-      "status": "停产"
+      "status": "已停产"
     },
     {
       "vendor": "华为",
@@ -2230,7 +2233,7 @@
       "features": "三层Web管理型、PoE+供电、智能iStack堆叠、Netconf/Yang云管理、4K VLAN、ACL/QoS、宽温工作(-5~50℃)",
       "is_hot": false,
       "is_new": false,
-      "status": "停产"
+      "status": "已停产"
     },
     {
       "vendor": "华为",
@@ -2244,10 +2247,11 @@
       "expansion_slots": "无",
       "power_redundancy": "1+1电源备份",
       "fan_redundancy": "智能调速风扇",
-      "url": "https://e.huawei.com/cn/products/switches/campus-switches/s5735i-s-v2-din",
+      "url": "https://e.huawei.com/cn/products/switches/campus-switches/s5735-s-i",
       "features": "宽温工业交换机、万兆上行、SEP/ERPS环网保护、OSPF/ISIS/BGP三层特性、云管理、OPS开放可编程",
-      "is_hot": true,
-      "is_new": false
+      "is_hot": false,
+      "is_new": false,
+      "status": "已停产"
     },
     {
       "vendor": "华为",
@@ -2261,10 +2265,11 @@
       "expansion_slots": "无",
       "power_redundancy": "内置交流电源+光伏转换电路",
       "fan_redundancy": "无风扇（IP55防护）",
-      "url": "https://e.huawei.com/cn/products/switches/campus-switches/s5735i-s-v2-din",
+      "url": "https://e.huawei.com/cn/products/switches/campus-switches/s5735-s-i",
       "features": "室外智能回传一体机、IP55防护等级、防盐雾、集成宽温交换机+防雷器+熔纤盒+电源、平安城市/公路/园区场景",
-      "is_hot": true,
-      "is_new": false
+      "is_hot": false,
+      "is_new": false,
+      "status": "已停产"
     },
     {
       "vendor": "H3C",
@@ -2280,8 +2285,8 @@
       "fan_redundancy": "5个风扇模块槽位，N+1冗余",
       "url": "https://www.h3c.com/cn/Products_And_Solution/InterConnect/Products/Switches/Products/Park_Switches/Aggregation_Switch/S6500/S6525XE-HI/",
       "features": "10G/100G高密三层交换机、VXLAN二三层交换+EVPN、IRF2智能弹性架构、MPLS、OpenFlow 1.3、IPv4/IPv6双栈、Telemetry",
-      "is_hot": false,
-      "is_new": false
+      "is_hot": true,
+      "is_new": true
     },
     {
       "vendor": "H3C",
@@ -2401,7 +2406,7 @@
       "features": "千兆电口+高密度万兆上行、1扩展槽、IRF2、VXLAN、MPLS、OSPF/BGP/ISIS、融合AC、Telemetry",
       "source_url": "H3C官方产品页",
       "is_hot": true,
-      "is_new": false
+      "is_new": true
     },
     {
       "vendor": "H3C",
@@ -2418,7 +2423,7 @@
       "url": "https://www.h3c.com/cn/Products_And_Solution/InterConnect/Products/Switches/Products/Park_Switches/Aggregation_Switch/S5500/S5590_EI/",
       "features": "48口千兆+万兆上行、1扩展槽、IRF2堆叠、VXLAN、MPLS MCE、融合AC、硬件BFD、丰富三层协议",
       "is_hot": true,
-      "is_new": false
+      "is_new": true
     },
     {
       "vendor": "H3C",
@@ -2435,7 +2440,7 @@
       "url": "https://www.h3c.com/cn/Products_And_Solution/InterConnect/Products/Switches/Products/Park_Switches/Aggregation_Switch/S5500/S5590_EI/",
       "features": "28口千兆PoE+8万兆上行、PoE+ 30W/端口、1扩展槽、IRF2、VXLAN、MPLS、三层路由",
       "is_hot": true,
-      "is_new": false
+      "is_new": true
     },
     {
       "vendor": "H3C",
@@ -2452,7 +2457,7 @@
       "url": "https://www.h3c.com/cn/Products_And_Solution/InterConnect/Products/Switches/Products/Park_Switches/Aggregation_Switch/S5500/S5590_EI/",
       "features": "全光千兆接入+万兆上行、1扩展槽、IRF2、VXLAN、MPLS、Conware V7、IPv4/IPv6双栈",
       "is_hot": true,
-      "is_new": false
+      "is_new": true
     },
     {
       "vendor": "H3C",
@@ -2469,7 +2474,7 @@
       "url": "https://www.h3c.com/cn/Products_And_Solution/InterConnect/Products/Switches/Products/Park_Switches/Aggregation_Switch/S5500/S5590_EI/",
       "features": "24口万兆接入+25GE上行、高带宽、IRF2、VXLAN EVPN、MPLS、适用于高带宽汇聚场景",
       "is_hot": true,
-      "is_new": false
+      "is_new": true
     },
     {
       "vendor": "H3C",
@@ -2536,7 +2541,7 @@
       "fan_redundancy": "模块化风扇",
       "url": "https://www.h3c.com/cn/Products_And_Solution/InterConnect/Products/Switches/Products/Park_Switches/Aggregation_Switch/S5500/S5570S-EI/",
       "features": "千兆接入万兆上行、IRF2（最大9台堆叠）、MPLS MCE、VXLAN、丰富三层路由、IPv4/IPv6双栈",
-      "is_hot": false,
+      "is_hot": true,
       "is_new": false
     },
     {
@@ -2553,7 +2558,7 @@
       "fan_redundancy": "模块化风扇",
       "url": "https://www.h3c.com/cn/Products_And_Solution/InterConnect/Products/Switches/Products/Park_Switches/Aggregation_Switch/S5500/S5570S-EI/",
       "features": "48口千兆+6万兆上行、IRF2堆叠、MPLS MCE、VXLAN、ACL/QoS、Telemetry、NETCONF",
-      "is_hot": false,
+      "is_hot": true,
       "is_new": false
     },
     {
@@ -2570,7 +2575,7 @@
       "fan_redundancy": "模块化风扇",
       "url": "https://www.h3c.com/cn/Products_And_Solution/InterConnect/Products/Switches/Products/Park_Switches/Aggregation_Switch/S5500/S5570S-EI/",
       "features": "24口PoE+千兆万兆上行、IRF2、VXLAN、MPLS MCE、802.1X/Portal认证、EAD安全准入",
-      "is_hot": false,
+      "is_hot": true,
       "is_new": false
     },
     {
@@ -2587,7 +2592,7 @@
       "fan_redundancy": "模块化风扇",
       "url": "https://www.h3c.com/cn/Products_And_Solution/InterConnect/Products/Switches/Products/Park_Switches/Aggregation_Switch/S5500/S5570S-EI/",
       "features": "48口PoE+千兆6万兆上行、高密度PoE供电、IRF2、VXLAN、MPLS、三层路由、高可靠性",
-      "is_hot": false,
+      "is_hot": true,
       "is_new": false
     },
     {
@@ -2723,7 +2728,7 @@
       "fan_redundancy": "智能调速风扇",
       "url": "https://www.h3c.com/cn/Products_And_Solution/InterConnect/Products/Switches/Products/Park_Switches/Access_Switch/S5120/S5120V3_EI/",
       "features": "48口千兆+万兆上行、VLAN/QoS/ACL、静态路由/RIP/OSPF、802.1X认证、IRF堆叠、绿色节能",
-      "is_hot": false,
+      "is_hot": true,
       "is_new": false
     },
     {
@@ -2740,7 +2745,7 @@
       "fan_redundancy": "智能调速风扇",
       "url": "https://www.h3c.com/cn/Products_And_Solution/InterConnect/Products/Switches/Products/Park_Switches/Access_Switch/S5120/S5120V3_EI/",
       "features": "24口千兆+万兆上行、IRF2堆叠、4K VLAN、Voice VLAN、ACL/QoS、静态路由/RIP/OSPF、IPv6",
-      "is_hot": false,
+      "is_hot": true,
       "is_new": false
     },
     {
@@ -2757,7 +2762,7 @@
       "fan_redundancy": "智能调速风扇",
       "url": "https://www.h3c.com/cn/Products_And_Solution/InterConnect/Products/Switches/Products/Park_Switches/Access_Switch/S5120/S5120V3_EI/",
       "features": "24口PoE+千兆万兆上行、高功率PoE、IRF2、VLAN/QoS/ACL、三层路由、802.1X认证",
-      "is_hot": false,
+      "is_hot": true,
       "is_new": false
     },
     {
@@ -2774,7 +2779,7 @@
       "fan_redundancy": "无风扇静音",
       "url": "https://www.h3c.com/cn/Products_And_Solution/InterConnect/Products/Switches/Products/Park_Switches/Access_Switch/S5130/S5130S-EI/",
       "features": "精简型千兆接入、千兆上行、4K VLAN、STP/RSTP/MSTP、静态路由、VLAN、QoS、Web/CLI管理、节能环保",
-      "is_hot": false,
+      "is_hot": true,
       "is_new": false
     },
     {
@@ -2791,7 +2796,7 @@
       "fan_redundancy": "智能调速风扇",
       "url": "https://www.h3c.com/cn/Products_And_Solution/InterConnect/Products/Switches/Products/Park_Switches/Access_Switch/S5130/S5130S-EI/",
       "features": "精简型千兆万兆上行、4K VLAN、Voice VLAN、QoS、静态路由、IRF堆叠、Web/CLI管理",
-      "is_hot": false,
+      "is_hot": true,
       "is_new": false
     },
     {
@@ -2808,7 +2813,7 @@
       "fan_redundancy": "智能调速风扇",
       "url": "https://www.h3c.com/cn/Products_And_Solution/InterConnect/Products/Switches/Products/Park_Switches/Access_Switch/S5130/S5130S-EI/",
       "features": "48口千兆万兆上行精简型、IRF2、VLAN/QoS/ACL、静态路由/RIP、IPv6、SNMP网管",
-      "is_hot": false,
+      "is_hot": true,
       "is_new": false
     },
     {
@@ -2825,7 +2830,7 @@
       "fan_redundancy": "无风扇静音",
       "url": "https://www.h3c.com/cn/Products_And_Solution/InterConnect/Products/Switches/Products/Park_Switches/Access_Switch/S5130/S5130S-EI/",
       "features": "8口超紧凑千兆、桌面型、VLAN/QoS、静态路由、Web网管、无风扇静音、小型办公适用",
-      "is_hot": false,
+      "is_hot": true,
       "is_new": false
     },
     {
@@ -2910,7 +2915,7 @@
       "fan_redundancy": "无风扇/固定风扇",
       "url": "https://www.h3c.com/cn/Products_And_Solution/InterConnect/Products/Switches/Products/Park_Switches/Access_Switch/S3600/S3600V3/",
       "features": "三层千兆交换机、VLAN/QoS/ACL、静态路由/RIP/OSPF、IRF2堆叠、802.1X认证、Web/CLI管理",
-      "is_hot": false,
+      "is_hot": true,
       "is_new": false
     },
     {
@@ -2927,7 +2932,7 @@
       "fan_redundancy": "智能调速风扇",
       "url": "https://www.h3c.com/cn/Products_And_Solution/InterConnect/Products/Switches/Products/Park_Switches/Access_Switch/S3600/S3600V3/",
       "features": "48口千兆+万兆上行、三层路由、IRF2堆叠、VLAN/QoS/ACL、802.1X/MAC/Portal认证、IPv6",
-      "is_hot": false,
+      "is_hot": true,
       "is_new": false
     },
     {
@@ -2944,7 +2949,7 @@
       "fan_redundancy": "智能调速风扇",
       "url": "https://www.h3c.com/cn/Products_And_Solution/InterConnect/Products/Switches/Products/Park_Switches/Access_Switch/S3600/S3600V3/",
       "features": "全光千兆接入+万兆上行、24光口+8电口+4万兆、三层功能、IRF2、VLAN/QoS、适合光纤到桌面场景",
-      "is_hot": false,
+      "is_hot": true,
       "is_new": false
     },
     {
@@ -2961,7 +2966,7 @@
       "fan_redundancy": "无风扇静音",
       "url": "https://www.h3c.com/cn/Products_And_Solution/InterConnect/Products/Switches/Products/Park_Switches/Access_Switch/S3100V3/S3100V3_EI/",
       "features": "8口千兆二层交换机、千兆上行、VLAN/QoS、静态路由、Web/CLI管理、桌面型、无风扇、中小企业适用",
-      "is_hot": false,
+      "is_hot": true,
       "is_new": false
     },
     {
@@ -2978,7 +2983,7 @@
       "fan_redundancy": "无风扇/固定风扇",
       "url": "https://www.h3c.com/cn/Products_And_Solution/InterConnect/Products/Switches/Products/Park_Switches/Access_Switch/S3100V3/S3100V3_EI/",
       "features": "24口千兆二层交换机、4千兆上行、IRF2、4K VLAN、Voice VLAN、QoS、静态路由、802.1X认证",
-      "is_hot": false,
+      "is_hot": true,
       "is_new": false
     },
     {
@@ -2995,7 +3000,7 @@
       "fan_redundancy": "智能调速风扇",
       "url": "https://www.h3c.com/cn/Products_And_Solution/InterConnect/Products/Switches/Products/Park_Switches/Access_Switch/S3100V3/S3100V3_EI/",
       "features": "48口千兆二层交换机、4千兆上行、IRF2堆叠、VLAN/QoS/ACL、静态路由、SNMP/Web网管",
-      "is_hot": false,
+      "is_hot": true,
       "is_new": false
     },
     {
@@ -3012,7 +3017,7 @@
       "fan_redundancy": "智能调速风扇",
       "url": "https://www.h3c.com/cn/Products_And_Solution/InterConnect/Products/Switches/Products/Park_Switches/Access_Switch/S3100V3/S3100V3_EI/",
       "features": "24口PoE+千兆交换机、4千兆上行、IRF2、VLAN/QoS、静态路由、802.1X认证、监控/AP供电场景",
-      "is_hot": false,
+      "is_hot": true,
       "is_new": false
     },
     {
@@ -3048,7 +3053,7 @@
       "features": "48口全管理千兆接入、支持三层路由、IP/MAC/VLAN组合绑定、端口隔离安全、小微站点核心/中小型园区接入",
       "is_hot": false,
       "is_new": false,
-      "status": "停产"
+      "status": "已停产"
     },
     {
       "vendor": "华为",
@@ -3154,8 +3159,8 @@
       "url": "https://www.h3c.com/cn/Products_And_Solution/InterConnect/Products/Switches/Products/EPON/All-Optical/Aggregation/S6550X_HI/",
       "source_url": "https://www.h3c.com/cn/Products_And_Solution/InterConnect/Products/Switches/Products/EPON/All-Optical/Aggregation/S6550X_HI/",
       "features": "多通道以太光方案、超大交换容量、高密40G/100G互联、丰富三层特性、IRF2虚拟化",
-      "is_hot": false,
-      "is_new": true
+      "is_hot": true,
+      "is_new": false
     },
     {
       "vendor": "锐捷",
@@ -3239,7 +3244,7 @@
       "fan_redundancy": "--",
       "url": "https://e.huawei.com/cn/products/switches/campus-switches/s5735-l",
       "features": "精简型千兆接入交换机，支持SVF，绿色节能",
-      "is_hot": true,
+      "is_hot": false,
       "is_new": false
     },
     {
@@ -3256,7 +3261,7 @@
       "fan_redundancy": "--",
       "url": "https://e.huawei.com/cn/products/switches/campus-switches/s5735-l",
       "features": "精简型千兆接入交换机，PoE+供电，支持SVF",
-      "is_hot": true,
+      "is_hot": false,
       "is_new": false
     },
     {
@@ -3273,7 +3278,7 @@
       "fan_redundancy": "--",
       "url": "https://e.huawei.com/cn/products/switches/campus-switches/s5735-l",
       "features": "精简型千兆接入交换机，支持SVF，绿色节能",
-      "is_hot": true,
+      "is_hot": false,
       "is_new": false
     },
     {
@@ -3290,7 +3295,7 @@
       "fan_redundancy": "--",
       "url": "https://e.huawei.com/cn/products/switches/campus-switches/s5735-l",
       "features": "精简型千兆接入交换机，PoE+供电，支持SVF",
-      "is_hot": true,
+      "is_hot": false,
       "is_new": false
     },
     {
@@ -3307,7 +3312,7 @@
       "fan_redundancy": "--",
       "url": "https://e.huawei.com/cn/products/switches/campus-switches/s5735-l",
       "features": "精简型千兆接入交换机，万兆上行，支持SVF",
-      "is_hot": true,
+      "is_hot": false,
       "is_new": false
     },
     {
@@ -3324,7 +3329,7 @@
       "fan_redundancy": "--",
       "url": "https://e.huawei.com/cn/products/switches/campus-switches/s5735-l",
       "features": "精简型千兆接入交换机，PoE+供电，万兆上行",
-      "is_hot": true,
+      "is_hot": false,
       "is_new": false
     },
     {
@@ -3341,7 +3346,7 @@
       "fan_redundancy": "--",
       "url": "https://e.huawei.com/cn/products/switches/campus-switches/s5735-l",
       "features": "光口混合接入交换机，万兆上行",
-      "is_hot": true,
+      "is_hot": false,
       "is_new": false
     },
     {
@@ -3358,7 +3363,7 @@
       "fan_redundancy": "--",
       "url": "https://e.huawei.com/cn/products/switches/campus-switches/s5735-l",
       "features": "高密千兆接入交换机，支持SVF",
-      "is_hot": true,
+      "is_hot": false,
       "is_new": false
     },
     {
@@ -3375,7 +3380,7 @@
       "fan_redundancy": "--",
       "url": "https://e.huawei.com/cn/products/switches/campus-switches/s5735-l",
       "features": "高密千兆接入交换机，PoE+供电",
-      "is_hot": true,
+      "is_hot": false,
       "is_new": false
     },
     {
@@ -3392,7 +3397,7 @@
       "fan_redundancy": "--",
       "url": "https://e.huawei.com/cn/products/switches/campus-switches/s5735-l",
       "features": "高密千兆接入交换机，万兆上行",
-      "is_hot": true,
+      "is_hot": false,
       "is_new": false
     },
     {
@@ -3409,7 +3414,7 @@
       "fan_redundancy": "--",
       "url": "https://e.huawei.com/cn/products/switches/campus-switches/s5735-l",
       "features": "高密千兆接入交换机，PoE+供电，万兆上行",
-      "is_hot": true,
+      "is_hot": false,
       "is_new": false
     },
     {
@@ -3645,10 +3650,11 @@
       "expansion_slots": "--",
       "power_redundancy": "可插拔双电源，1+1冗余备份",
       "fan_redundancy": "--",
-      "url": "https://e.huawei.com/cn/products/switches/campus-switches/s5735-s-v2",
+      "url": "https://e.huawei.com/cn/products/switches/campus-switches/s5735-s",
       "features": "高性能全千兆交换机，支持三层路由，零配置部署",
-      "is_hot": true,
-      "is_new": false
+      "is_hot": false,
+      "is_new": false,
+      "status": "已停产"
     },
     {
       "vendor": "华为",
@@ -3662,10 +3668,11 @@
       "expansion_slots": "--",
       "power_redundancy": "可插拔双电源，1+1冗余备份",
       "fan_redundancy": "--",
-      "url": "https://e.huawei.com/cn/products/switches/campus-switches/s5735-s-v2",
+      "url": "https://e.huawei.com/cn/products/switches/campus-switches/s5735-s",
       "features": "高性能全千兆交换机，PoE++供电，三层路由",
-      "is_hot": true,
-      "is_new": false
+      "is_hot": false,
+      "is_new": false,
+      "status": "已停产"
     },
     {
       "vendor": "华为",
@@ -3679,10 +3686,11 @@
       "expansion_slots": "--",
       "power_redundancy": "可插拔双电源，1+1冗余备份",
       "fan_redundancy": "--",
-      "url": "https://e.huawei.com/cn/products/switches/campus-switches/s5735-s-v2",
+      "url": "https://e.huawei.com/cn/products/switches/campus-switches/s5735-s",
       "features": "高密千兆交换机，支持三层路由，零配置部署",
-      "is_hot": true,
-      "is_new": false
+      "is_hot": false,
+      "is_new": false,
+      "status": "已停产"
     },
     {
       "vendor": "华为",
@@ -3696,10 +3704,11 @@
       "expansion_slots": "--",
       "power_redundancy": "可插拔双电源，1+1冗余备份",
       "fan_redundancy": "--",
-      "url": "https://e.huawei.com/cn/products/switches/campus-switches/s5735-s-v2",
+      "url": "https://e.huawei.com/cn/products/switches/campus-switches/s5735-s",
       "features": "高密千兆交换机，PoE++供电，三层路由",
-      "is_hot": true,
-      "is_new": false
+      "is_hot": false,
+      "is_new": false,
+      "status": "已停产"
     },
     {
       "vendor": "华为",
@@ -3717,7 +3726,7 @@
       "features": "下一代精简型千兆以太网交换机，智能iStack堆叠",
       "is_hot": false,
       "is_new": false,
-      "status": "停产"
+      "status": "已停产"
     },
     {
       "vendor": "华为",
@@ -3735,7 +3744,7 @@
       "features": "下一代精简型千兆交换机，PoE+供电",
       "is_hot": false,
       "is_new": false,
-      "status": "停产"
+      "status": "已停产"
     },
     {
       "vendor": "华为",
@@ -3753,7 +3762,7 @@
       "features": "高密精简型千兆交换机，智能iStack堆叠",
       "is_hot": false,
       "is_new": false,
-      "status": "停产"
+      "status": "已停产"
     },
     {
       "vendor": "华为",
@@ -3771,7 +3780,7 @@
       "features": "光口接入交换机，万兆上行，支持RPS冗余",
       "is_hot": false,
       "is_new": false,
-      "status": "停产"
+      "status": "已停产"
     },
     {
       "vendor": "H3C",
@@ -4026,7 +4035,7 @@
       "url": "https://e.huawei.com/cn/products/switches/campus-switches/s5735r-l-v2",
       "features": "精简型千兆接入交换机、全千兆下行+万兆上行、支持iStack堆叠、安全管控、易运维管理",
       "is_hot": true,
-      "is_new": false
+      "is_new": true
     },
     {
       "vendor": "华为",
@@ -4043,7 +4052,7 @@
       "url": "https://e.huawei.com/cn/products/switches/campus-switches/s5735r-l-v2",
       "features": "精简型千兆接入交换机、16口千兆电+4口万兆上行、支持iStack堆叠、安全认证、易运维管理",
       "is_hot": true,
-      "is_new": false
+      "is_new": true
     },
     {
       "vendor": "华为",
@@ -4077,7 +4086,7 @@
       "url": "https://e.huawei.com/cn/products/switches/campus-switches/s5735r-l-v2",
       "features": "精简型千兆PoE接入交换机、16口PoE+千兆电+4口万兆上行、支持iStack堆叠、安全认证",
       "is_hot": true,
-      "is_new": false
+      "is_new": true
     },
     {
       "vendor": "H3C",
@@ -4413,7 +4422,7 @@
       "features": "IRF2智能弹性架构、VLAN、静态路由/RIP/OSPF、ACL、QoS、SSH、SNMP、防雷10KV",
       "status": "active",
       "is_hot": false,
-      "is_new": true
+      "is_new": false
     },
     {
       "vendor": "H3C",
@@ -4431,7 +4440,7 @@
       "features": "IRF2智能弹性架构、VLAN、静态路由/RIP/OSPF、ACL、QoS、SSH、SNMP、防雷10KV",
       "status": "active",
       "is_hot": false,
-      "is_new": true
+      "is_new": false
     },
     {
       "vendor": "H3C",
@@ -4449,7 +4458,7 @@
       "features": "IRF2智能弹性架构、VLAN、静态路由/RIP/OSPF、ACL、QoS、SSH、SNMP、防雷10KV",
       "status": "active",
       "is_hot": false,
-      "is_new": true
+      "is_new": false
     },
     {
       "vendor": "H3C",
@@ -4467,7 +4476,7 @@
       "features": "IRF2智能弹性架构、VLAN、静态路由/RIP/OSPF、ACL、QoS、SSH、SNMP、防雷10KV",
       "status": "active",
       "is_hot": false,
-      "is_new": true
+      "is_new": false
     },
     {
       "vendor": "H3C",
@@ -4485,7 +4494,7 @@
       "features": "IRF2智能弹性架构、VLAN、静态路由/RIP/OSPF、ACL、QoS、SSH、SNMP、防雷10KV",
       "status": "active",
       "is_hot": false,
-      "is_new": true
+      "is_new": false
     },
     {
       "vendor": "H3C",
@@ -4503,7 +4512,7 @@
       "features": "IRF2智能弹性架构、VLAN、静态路由/RIP/OSPF、ACL、QoS、SSH、SNMP、防雷10KV",
       "status": "active",
       "is_hot": false,
-      "is_new": true
+      "is_new": false
     },
     {
       "vendor": "H3C",
@@ -4521,7 +4530,7 @@
       "features": "IRF2智能弹性架构、VLAN、静态路由/RIP/OSPF、ACL、QoS、SSH、SNMP、防雷10KV",
       "status": "active",
       "is_hot": false,
-      "is_new": true
+      "is_new": false
     },
     {
       "vendor": "H3C",
@@ -4539,7 +4548,7 @@
       "features": "IRF2智能弹性架构、VLAN、静态路由/RIP/OSPF、ACL、QoS、SSH、SNMP、防雷10KV",
       "status": "active",
       "is_hot": false,
-      "is_new": true
+      "is_new": false
     },
     {
       "vendor": "H3C",
@@ -4557,7 +4566,7 @@
       "features": "IRF2智能弹性架构、VLAN、静态路由/RIP/OSPF、ACL、QoS、SSH、SNMP、防雷10KV",
       "status": "active",
       "is_hot": false,
-      "is_new": true
+      "is_new": false
     },
     {
       "vendor": "H3C",
@@ -4575,7 +4584,7 @@
       "features": "IRF2智能弹性架构、VLAN、静态路由/RIP/OSPF、ACL、QoS、SSH、SNMP、防雷10KV",
       "status": "active",
       "is_hot": false,
-      "is_new": true
+      "is_new": false
     },
     {
       "vendor": "H3C",
@@ -4593,7 +4602,7 @@
       "features": "IRF2智能弹性架构、VLAN、静态路由/RIP/OSPF、ACL、QoS、SSH、SNMP、防雷10KV",
       "status": "active",
       "is_hot": false,
-      "is_new": true
+      "is_new": false
     },
     {
       "vendor": "H3C",
@@ -4611,7 +4620,7 @@
       "features": "IRF2智能弹性架构、VLAN、静态路由/RIP/OSPF、ACL、QoS、SSH、SNMP、防雷10KV",
       "status": "active",
       "is_hot": false,
-      "is_new": true
+      "is_new": false
     },
     {
       "vendor": "H3C",
@@ -4629,7 +4638,7 @@
       "features": "IRF2智能弹性架构、VLAN、静态路由/RIP/OSPF、ACL、QoS、SSH、SNMP、防雷10KV",
       "status": "active",
       "is_hot": false,
-      "is_new": true
+      "is_new": false
     },
     {
       "vendor": "H3C",
@@ -4647,7 +4656,7 @@
       "features": "IRF2智能弹性架构、VLAN、静态路由/RIP/OSPF、ACL、QoS、SSH、SNMP、防雷10KV",
       "status": "active",
       "is_hot": false,
-      "is_new": true
+      "is_new": false
     },
     {
       "vendor": "H3C",
@@ -4665,7 +4674,7 @@
       "features": "IRF2智能弹性架构、VLAN、静态路由/RIP/OSPF、ACL、QoS、SSH、SNMP、防雷10KV",
       "status": "active",
       "is_hot": false,
-      "is_new": true
+      "is_new": false
     },
     {
       "vendor": "锐捷",
@@ -4699,8 +4708,8 @@
       "fan_redundancy": "支持",
       "url": "https://e.huawei.com/cn/products/switches/campus-switches/s6780-h",
       "features": "灵活插卡、高密100GE/400GE、VXLAN、SRv6、网络切片、MACsec、iPCA质量感知、M-LAG",
-      "is_new": true,
-      "is_hot": false
+      "is_new": false,
+      "is_hot": true
     },
     {
       "vendor": "华为",
@@ -4714,11 +4723,10 @@
       "expansion_slots": "无",
       "power_redundancy": "1+1电源备份",
       "fan_redundancy": "支持",
-      "url": "https://e.huawei.com/cn/products/switches/campus-switches/s6750-h",
+      "url": "https://e.huawei.com/cn/products/switches/campus-switches/s6750-h-100ge",
       "features": "100GE高密接入、VXLAN、MACsec、随板AC、Telemetry、云管理",
-      "is_new": true,
-      "is_hot": false,
-      "status": "停产"
+      "is_new": false,
+      "is_hot": true
     },
     {
       "vendor": "华为",
@@ -4732,11 +4740,10 @@
       "expansion_slots": "无",
       "power_redundancy": "1+1电源备份",
       "fan_redundancy": "支持",
-      "url": "https://e.huawei.com/cn/products/switches/campus-switches/s6750-h",
+      "url": "https://e.huawei.com/cn/products/switches/campus-switches/s6750-h-25ge",
       "features": "25GE高密接入、100GE上行、VXLAN、MACsec、随板AC、Telemetry、云管理",
-      "is_new": true,
-      "is_hot": false,
-      "status": "停产"
+      "is_new": false,
+      "is_hot": true
     },
     {
       "vendor": "锐捷",
@@ -4854,8 +4861,8 @@
       "fan_redundancy": "4个风扇插槽，前后/后前风道可调",
       "url": "https://www.h3c.com/cn/Products_And_Solution/InterConnect/Products/Switches/Products/EPON/All-Optical/Aggregation/S6550X_HI/",
       "features": "100GE高密、IRF2、VXLAN、Telemetry、OpenFlow、ERSPAN/GRPC可视化",
-      "is_new": true,
-      "is_hot": false
+      "is_new": false,
+      "is_hot": true
     },
     {
       "vendor": "H3C",
@@ -4871,8 +4878,8 @@
       "fan_redundancy": "4个风扇插槽，前后/后前风道可调",
       "url": "https://www.h3c.com/cn/Products_And_Solution/InterConnect/Products/Switches/Products/EPON/All-Optical/Aggregation/S6550X_HI/",
       "features": "25GE高密接入、100GE上行、IRF2、VXLAN、Telemetry、OpenFlow",
-      "is_new": true,
-      "is_hot": false
+      "is_new": false,
+      "is_hot": true
     },
     {
       "vendor": "H3C",
@@ -4889,7 +4896,7 @@
       "url": "https://www.h3c.com/cn/Products_And_Solution/InterConnect/Products/Switches/Products/Park_Switches/Aggregation_Switch/S6500/S6526XE_EI/",
       "features": "IRF2堆叠、融合AC（最大2K AP）、VXLAN、BGP EVPN、SDN/OpenFlow1.3、M-LAG、ISSU不中断升级、丢包测量",
       "is_hot": false,
-      "is_new": false
+      "is_new": true
     },
     {
       "vendor": "H3C",
@@ -4906,7 +4913,7 @@
       "url": "https://www.h3c.com/cn/Products_And_Solution/InterConnect/Products/Switches/Products/Park_Switches/Aggregation_Switch/S6500/S6526XE_EI/",
       "features": "IRF2堆叠、融合AC（最大2K AP）、VXLAN、BGP EVPN、SDN/OpenFlow1.3、M-LAG、ISSU不中断升级、丢包测量",
       "is_hot": false,
-      "is_new": false
+      "is_new": true
     },
     {
       "vendor": "H3C",
@@ -4956,8 +4963,8 @@
       "fan_redundancy": "5个风扇插槽",
       "url": "https://www.h3c.com/cn/Products_And_Solution/InterConnect/Products/Switches/Products/Park_Switches/Aggregation_Switch/S6500/S6530X/",
       "features": "高密10GE+100GE上行、IRF2堆叠、融合AC（最大2K AP）、VXLAN、BGP EVPN、SDN/OpenFlow1.3、M-LAG、ISSU、SmartMC智能管理中心",
-      "is_hot": true,
-      "is_new": true
+      "is_hot": false,
+      "is_new": false
     },
     {
       "vendor": "H3C",
@@ -4973,8 +4980,8 @@
       "fan_redundancy": "5个风扇插槽",
       "url": "https://www.h3c.com/cn/Products_And_Solution/InterConnect/Products/Switches/Products/Park_Switches/Aggregation_Switch/S6500/S6530X/",
       "features": "高密10GE+100GE上行、IRF2堆叠、融合AC（最大2K AP）、VXLAN、BGP EVPN、SDN/OpenFlow1.3、M-LAG、ISSU、SmartMC智能管理中心",
-      "is_hot": true,
-      "is_new": true
+      "is_hot": false,
+      "is_new": false
     },
     {
       "vendor": "H3C",
@@ -4990,8 +4997,8 @@
       "fan_redundancy": "5个风扇插槽",
       "url": "https://www.h3c.com/cn/Products_And_Solution/InterConnect/Products/Switches/Products/Park_Switches/Aggregation_Switch/S6500/S6530X/",
       "features": "25G高密接入+100GE上行、IRF2堆叠、融合AC（最大2K AP）、VXLAN、BGP EVPN、SDN/OpenFlow1.3、M-LAG、ISSU、PTP 1588v2高精度时间同步",
-      "is_hot": true,
-      "is_new": true
+      "is_hot": false,
+      "is_new": false
     },
     {
       "vendor": "H3C",
@@ -5007,8 +5014,8 @@
       "fan_redundancy": "5个风扇插槽",
       "url": "https://www.h3c.com/cn/Products_And_Solution/InterConnect/Products/Switches/Products/Park_Switches/Aggregation_Switch/S6500/S6530X/",
       "features": "25G高密接入+100GE上行、IRF2堆叠、融合AC（最大2K AP）、VXLAN、BGP EVPN、SDN/OpenFlow1.3、M-LAG、ISSU、PTP 1588v2高精度时间同步",
-      "is_hot": true,
-      "is_new": true
+      "is_hot": false,
+      "is_new": false
     },
     {
       "vendor": "H3C",
@@ -5024,8 +5031,8 @@
       "fan_redundancy": "5个风扇插槽",
       "url": "https://www.h3c.com/cn/Products_And_Solution/InterConnect/Products/Switches/Products/Park_Switches/Aggregation_Switch/S6500/S6530X/",
       "features": "高密10GE+100GE上行（国密版）、IRF2堆叠、融合AC（最大2K AP）、VXLAN、BGP EVPN、SDN/OpenFlow1.3、M-LAG、ISSU、国密算法",
-      "is_hot": true,
-      "is_new": true
+      "is_hot": false,
+      "is_new": false
     },
     {
       "vendor": "H3C",
@@ -5041,8 +5048,8 @@
       "fan_redundancy": "5个风扇插槽",
       "url": "https://www.h3c.com/cn/Products_And_Solution/InterConnect/Products/Switches/Products/Park_Switches/Aggregation_Switch/S6500/S6530X/",
       "features": "高密10GE+100GE上行（国密版）、IRF2堆叠、融合AC（最大2K AP）、VXLAN、BGP EVPN、SDN/OpenFlow1.3、M-LAG、ISSU、国密算法",
-      "is_hot": true,
-      "is_new": true
+      "is_hot": false,
+      "is_new": false
     },
     {
       "vendor": "H3C",
@@ -5058,8 +5065,8 @@
       "fan_redundancy": "5个风扇插槽",
       "url": "https://www.h3c.com/cn/Products_And_Solution/InterConnect/Products/Switches/Products/Park_Switches/Aggregation_Switch/S6500/S6530X/",
       "features": "25G高密接入+100GE上行（国密版）、IRF2堆叠、融合AC（最大2K AP）、VXLAN、BGP EVPN、SDN/OpenFlow1.3、M-LAG、ISSU、国密算法",
-      "is_hot": true,
-      "is_new": true
+      "is_hot": false,
+      "is_new": false
     },
     {
       "vendor": "H3C",
@@ -5075,8 +5082,8 @@
       "fan_redundancy": "5个风扇插槽",
       "url": "https://www.h3c.com/cn/Products_And_Solution/InterConnect/Products/Switches/Products/Park_Switches/Aggregation_Switch/S6500/S6530X/",
       "features": "25G高密接入+100GE上行（国密版）、IRF2堆叠、融合AC（最大2K AP）、VXLAN、BGP EVPN、SDN/OpenFlow1.3、M-LAG、ISSU、国密算法",
-      "is_hot": true,
-      "is_new": true
+      "is_hot": false,
+      "is_new": false
     },
     {
       "vendor": "锐捷",
@@ -5127,7 +5134,7 @@
       "fan_redundancy": "冗余",
       "url": "https://e.huawei.com/cn/products/switches/data-center-switches/ce6800",
       "features": "VXLAN、BGP-EVPN、M-LAG、Telemetry、DCBX/PFC/ETS、16台堆叠",
-      "is_hot": false,
+      "is_hot": true,
       "is_new": false
     },
     {
@@ -5144,7 +5151,7 @@
       "fan_redundancy": "冗余",
       "url": "https://e.huawei.com/cn/products/switches/data-center-switches/ce6800",
       "features": "VXLAN、BGP-EVPN、M-LAG、Telemetry、DCBX/PFC/ETS",
-      "is_hot": false,
+      "is_hot": true,
       "is_new": false
     },
     {
@@ -5161,8 +5168,8 @@
       "fan_redundancy": "冗余",
       "url": "https://e.huawei.com/cn/products/switches/data-center-switches/ce9800",
       "features": "CLOS交换、RoCE V1/V2、BGP-EVPN、PFC/AI ECN、Telemetry、MACsec",
-      "is_hot": false,
-      "is_new": true
+      "is_hot": true,
+      "is_new": false
     },
     {
       "vendor": "华为",
@@ -5178,7 +5185,7 @@
       "fan_redundancy": "冗余",
       "url": "https://e.huawei.com/cn/products/switches/data-center-switches/ce16800",
       "features": "CLOS交换/信元交换/VoQ、RoCE V1/V2、BGP-EVPN、PFC/AI ECN、Telemetry、MACsec、400GE平滑演进",
-      "is_hot": false,
+      "is_hot": true,
       "is_new": false
     },
     {
@@ -5195,7 +5202,7 @@
       "fan_redundancy": "冗余",
       "url": "https://www.h3c.com/cn/Products_And_Solution/InterConnect/Products/Switches/Products/Data_Center_Switch/Access_Switch/S6800/S6800/",
       "features": "VXLAN、FCoE、DCBX/PFC/ECN、M-LAG、IRF2、OpenFlow、Telemetry、可编程",
-      "is_hot": true,
+      "is_hot": false,
       "is_new": false
     },
     {
@@ -5212,7 +5219,7 @@
       "fan_redundancy": "冗余",
       "url": "https://www.h3c.com/cn/Products_And_Solution/InterConnect/Products/Switches/Products/Data_Center_Switch/Access_Switch/S6800/S6800/",
       "features": "VXLAN、FCoE、DCBX/PFC/ECN、M-LAG、IRF2、OpenFlow、Telemetry、可编程",
-      "is_hot": true,
+      "is_hot": false,
       "is_new": false
     },
     {
@@ -5229,7 +5236,7 @@
       "fan_redundancy": "冗余",
       "url": "https://www.h3c.com/cn/Products_And_Solution/InterConnect/Products/Switches/Products/Data_Center_Switch/Access_Switch/S6800/S6850/",
       "features": "VXLAN、RoCE v2、DCBX/PFC/ECN、M-LAG、IRF2、Telemetry、可编程、25GE高密接入",
-      "is_hot": false,
+      "is_hot": true,
       "is_new": false
     },
     {
@@ -5246,7 +5253,7 @@
       "fan_redundancy": "冗余",
       "url": "https://www.h3c.com/cn/Products_And_Solution/InterConnect/Products/Switches/Products/Park_Switches/Aggregation_Switch/S7500E/S7500E/",
       "features": "VXLAN、MPLS/VPLS、IRF2、MDC、OpenFlow、MACsec、Telemetry、M-LAG",
-      "is_hot": false,
+      "is_hot": true,
       "is_new": false
     },
     {
@@ -5263,7 +5270,7 @@
       "fan_redundancy": "5个风扇模块",
       "url": "https://www.h3c.com/cn/Products_And_Solution/InterConnect/Products/Switches/Products/Data_Center_Switch/Aggregation_Switch/S9800/S9820/",
       "features": "RoCE v1/v2、FCoE、DCBX/PFC/ECN、M-LAG、BGP-EVPN、VXLAN、OpenFlow、Telemetry、可编程",
-      "is_hot": false,
+      "is_hot": true,
       "is_new": false
     },
     {
@@ -5280,8 +5287,8 @@
       "fan_redundancy": "5个风扇模块",
       "url": "https://www.h3c.com/cn/Products_And_Solution/InterConnect/Products/Switches/Products/Data_Center_Switch/Aggregation_Switch/S9800/S9820/",
       "features": "RoCE v2、DCBX/PFC/ECN、M-LAG、BGP-EVPN、VXLAN、OpenFlow、Telemetry、INT可视化、800GE演进",
-      "is_hot": false,
-      "is_new": true
+      "is_hot": true,
+      "is_new": false
     },
     {
       "vendor": "H3C",
@@ -5297,7 +5304,7 @@
       "fan_redundancy": "3个风扇模块",
       "url": "https://www.h3c.com/cn/Products_And_Solution/InterConnect/Products/Switches/Products/Data_Center_Switch/Aggregation_Switch/S9800/S9820/",
       "features": "RoCE v1/v2、FCoE、DCBX/PFC/ECN、M-LAG、IRF2、BGP-EVPN、VXLAN、OpenFlow、Telemetry",
-      "is_hot": false,
+      "is_hot": true,
       "is_new": false
     },
     {
@@ -5314,7 +5321,7 @@
       "fan_redundancy": "冗余",
       "url": "https://www.h3c.com/cn/Products_And_Solution/InterConnect/Products/Switches/Products/Park_Switches/Aggregation_Switch/S6500/S6510/",
       "features": "三层路由、VXLAN、M-LAG、IRF、Telemetry、VSU",
-      "is_hot": false,
+      "is_hot": true,
       "is_new": false
     },
     {
@@ -5331,7 +5338,7 @@
       "fan_redundancy": "冗余",
       "url": "https://www.h3c.com/cn/Products_And_Solution/InterConnect/Products/Switches/Products/Park_Switches/Aggregation_Switch/S6500/S6510/",
       "features": "三层路由、VXLAN、M-LAG、IRF、Telemetry",
-      "is_hot": false,
+      "is_hot": true,
       "is_new": false
     },
     {
@@ -5348,7 +5355,7 @@
       "fan_redundancy": "冗余",
       "url": "https://www.h3c.com/cn/Products_And_Solution/InterConnect/Products/Switches/Products/Park_Switches/Aggregation_Switch/S6500/S6510/",
       "features": "三层路由、VXLAN、M-LAG、IRF、Telemetry、100GE上行",
-      "is_hot": false,
+      "is_hot": true,
       "is_new": false
     },
     {
@@ -5362,8 +5369,10 @@
       "poe_support": "不支持",
       "expansion_slots": "0",
       "power_redundancy": "1+1",
-      "url": "https://e.huawei.com/cn/products/switches/data-center-switches/ce6800",
-      "is_hot": false
+      "url": "https://e.huawei.com/cn/products/switches/campus-switches/cloudengine-6800-series-data-center-switches",
+      "is_hot": false,
+      "status": "已停产",
+      "is_new": false
     },
     {
       "vendor": "华为",
@@ -5376,9 +5385,9 @@
       "poe_support": "不支持",
       "expansion_slots": "1个扩展插槽",
       "power_redundancy": "1+1",
-      "url": "https://e.huawei.com/cn/products/switches/campus-switches/cloudengine-5730-series-campus-switches",
-      "is_hot": true,
-      "status": "停产"
+      "url": "https://e.huawei.com/cn/products/switches/campus-switches/cloudengine-s5736-s",
+      "is_hot": false,
+      "is_new": false
     },
     {
       "vendor": "华为",
@@ -5391,9 +5400,9 @@
       "poe_support": "不支持",
       "expansion_slots": "1个扩展插槽",
       "power_redundancy": "1+1",
-      "url": "https://e.huawei.com/cn/products/switches/campus-switches/cloudengine-5730-series-campus-switches",
-      "is_hot": true,
-      "status": "停产"
+      "url": "https://e.huawei.com/cn/products/switches/campus-switches/cloudengine-s5736-s",
+      "is_hot": false,
+      "is_new": false
     },
     {
       "vendor": "H3C",
@@ -5407,7 +5416,8 @@
       "expansion_slots": "0",
       "power_redundancy": "1+1",
       "url": "https://www.h3c.com/cn/Products_And_Solution/InterConnect/Products/Switches/Products/Data_Center_Switch/Access_Switch/S6800/S6800/",
-      "is_hot": true
+      "is_hot": false,
+      "is_new": false
     },
     {
       "vendor": "H3C",
@@ -5421,7 +5431,8 @@
       "expansion_slots": "0",
       "power_redundancy": "1+1",
       "url": "https://www.h3c.com/cn/Products_And_Solution/InterConnect/Products/Switches/Products/Park_Switches/Aggregation_Switch/S6500/S6510/",
-      "is_hot": false
+      "is_hot": true,
+      "is_new": false
     },
     {
       "vendor": "H3C",
@@ -5435,7 +5446,8 @@
       "expansion_slots": "0",
       "power_redundancy": "1+1",
       "url": "https://www.h3c.com/cn/Products_And_Solution/InterConnect/Products/Switches/Products/Data_Center_Switch/Access_Switch/S6800/S6800/",
-      "is_hot": true
+      "is_hot": false,
+      "is_new": false
     },
     {
       "vendor": "H3C",
@@ -5449,7 +5461,8 @@
       "expansion_slots": "0",
       "power_redundancy": "1+1",
       "url": "https://www.h3c.com/cn/Products_And_Solution/InterConnect/Products/Switches/Products/Park_Switches/Aggregation_Switch/S6500/S6530X/",
-      "is_hot": true
+      "is_hot": false,
+      "is_new": false
     },
     {
       "vendor": "华为",
@@ -5462,9 +5475,9 @@
       "poe_support": "不支持",
       "expansion_slots": "0",
       "power_redundancy": "1+1",
-      "url": "https://e.huawei.com/cn/products/switches/campus-switches/cloudengine-6730-series-campus-switches",
+      "url": "https://e.huawei.com/cn/products/switches/campus-switches/s6730-s",
       "is_hot": true,
-      "status": "停产"
+      "is_new": false
     },
     {
       "vendor": "锐捷",
@@ -5492,9 +5505,9 @@
       "poe_support": "不支持",
       "expansion_slots": "0",
       "power_redundancy": "无",
-      "url": "https://e.huawei.com/cn/products/switches/campus-switches/cloudengine-5730-series-campus-switches",
+      "url": "https://e.huawei.com/cn/products/switches/campus-switches/s5735-l",
       "is_hot": true,
-      "status": "停产"
+      "is_new": false
     },
     {
       "vendor": "华为",
@@ -5507,9 +5520,9 @@
       "poe_support": "不支持",
       "expansion_slots": "0",
       "power_redundancy": "无",
-      "url": "https://e.huawei.com/cn/products/switches/campus-switches/cloudengine-5730-series-campus-switches",
+      "url": "https://e.huawei.com/cn/products/switches/campus-switches/s5735r-l-v2",
       "is_hot": true,
-      "status": "停产"
+      "is_new": true
     },
     {
       "vendor": "锐捷",
@@ -5537,9 +5550,9 @@
       "poe_support": "支持PoE++（30W/端口）",
       "expansion_slots": "0",
       "power_redundancy": "无",
-      "url": "https://e.huawei.com/cn/products/switches/campus-switches/cloudengine-5730-series-campus-switches",
+      "url": "https://e.huawei.com/cn/products/switches/campus-switches/s5735-s-v2",
       "is_hot": true,
-      "status": "停产"
+      "is_new": false
     },
     {
       "vendor": "H3C",
@@ -5553,7 +5566,8 @@
       "expansion_slots": "0",
       "power_redundancy": "1+1",
       "url": "https://www.h3c.com/cn/Products_And_Solution/InterConnect/Products/Switches/Products/EPON/All-Optical/Aggregation/S6550X_HI/",
-      "is_hot": false
+      "is_hot": true,
+      "is_new": false
     },
     {
       "vendor": "H3C",
@@ -5570,8 +5584,8 @@
       "url": "https://www.h3c.com/cn/Products_And_Solution/InterConnect/Products/Switches/Products/Data_Center_Switch/Access_Switch/S6800/S6800/",
       "features": "多速率电口(10G/5G/2.5G/1G)、数据中心接入、IRF智能弹性架构、VXLAN",
       "product_url": "https://www.h3c.com/cn/Products_And_Solution/Enterprise_Networking_Products/Switches/Data_Center_Switches/S6800_G/",
-      "is_hot": true,
-      "is_new": true,
+      "is_hot": false,
+      "is_new": false,
       "status": "在售"
     },
     {
@@ -5590,7 +5604,7 @@
       "features": "多速率电口(10G/5G/2.5G/1G)、PoE++ 90W、IRF智能弹性架构、VXLAN",
       "product_url": "https://www.h3c.com/cn/Products_And_Solution/Enterprise_Networking_Products/Switches/Campus_Switches/Smart_Managed_Switches/S6520X/",
       "is_hot": true,
-      "is_new": true,
+      "is_new": false,
       "status": "在售"
     },
     {
@@ -5609,7 +5623,7 @@
       "features": "多速率电口(10G/5G/2.5G/1G)、PoE++ 90W、IRF智能弹性架构、VXLAN",
       "product_url": "https://www.h3c.com/cn/Products_And_Solution/Enterprise_Networking_Products/Switches/Campus_Switches/Smart_Managed_Switches/S6520X/",
       "is_hot": true,
-      "is_new": true,
+      "is_new": false,
       "status": "在售"
     },
     {
@@ -5628,7 +5642,7 @@
       "features": "多速率电口(10G/5G/2.5G/1G)、IRF智能弹性架构、VXLAN",
       "product_url": "https://www.h3c.com/cn/Products_And_Solution/Enterprise_Networking_Products/Switches/Campus_Switches/Smart_Managed_Switches/S6520X/",
       "is_hot": true,
-      "is_new": true,
+      "is_new": false,
       "status": "在售"
     },
     {
@@ -5647,7 +5661,7 @@
       "features": "多速率电口(10G/5G/2.5G/1G)、IRF智能弹性架构、VXLAN",
       "product_url": "https://www.h3c.com/cn/Products_And_Solution/Enterprise_Networking_Products/Switches/Campus_Switches/Smart_Managed_Switches/S6520X/",
       "is_hot": true,
-      "is_new": true,
+      "is_new": false,
       "status": "在售"
     },
     {
@@ -5666,7 +5680,7 @@
       "features": "多速率电口(5G/2.5G/1G)、IRF智能弹性架构、VXLAN",
       "product_url": "https://www.h3c.com/cn/Products_And_Solution/Enterprise_Networking_Products/Switches/Campus_Switches/Smart_Managed_Switches/S6520X/",
       "is_hot": true,
-      "is_new": true,
+      "is_new": false,
       "status": "在售"
     },
     {
@@ -5685,7 +5699,7 @@
       "features": "多速率电口(5G/2.5G/1G)、PoE++ 90W、IRF智能弹性架构、VXLAN",
       "product_url": "https://www.h3c.com/cn/Products_And_Solution/Enterprise_Networking_Products/Switches/Campus_Switches/Smart_Managed_Switches/S6520X/",
       "is_hot": true,
-      "is_new": true,
+      "is_new": false,
       "status": "在售"
     },
     {
@@ -5704,7 +5718,7 @@
       "features": "多速率电口(10G/5G/2.5G/1G)、PoE++ 90W、IRF智能弹性架构、VXLAN、ISSU不中断升级",
       "product_url": "https://www.h3c.com/cn/Products_And_Solution/Enterprise_Networking_Products/Switches/Campus_Switches/Smart_Managed_Switches/S6520X/",
       "is_hot": true,
-      "is_new": true,
+      "is_new": false,
       "status": "在售"
     },
     {
@@ -5723,7 +5737,7 @@
       "features": "多速率电口(10G/5G/2.5G/1G)、SFP+三速率(1G/2.5G/10G)、IRF智能弹性架构",
       "product_url": "https://www.h3c.com/cn/Products_And_Solution/Enterprise_Networking_Products/Switches/Campus_Switches/Smart_Managed_Switches/S5130S/",
       "is_hot": true,
-      "is_new": true,
+      "is_new": false,
       "status": "在售"
     },
     {
@@ -5742,7 +5756,7 @@
       "features": "多速率电口(10G/5G/2.5G/1G)、SFP+三速率(1G/2.5G/10G)、PoE+、IRF智能弹性架构",
       "product_url": "https://www.h3c.com/cn/Products_And_Solution/Enterprise_Networking_Products/Switches/Campus_Switches/Smart_Managed_Switches/S5130S/",
       "is_hot": true,
-      "is_new": true,
+      "is_new": false,
       "status": "在售"
     },
     {
@@ -5761,7 +5775,7 @@
       "features": "多速率电口(10G/5G/2.5G/1G)、SFP+三速率(1G/2.5G/10G)、IRF智能弹性架构",
       "product_url": "https://www.h3c.com/cn/Products_And_Solution/Enterprise_Networking_Products/Switches/Campus_Switches/Smart_Managed_Switches/S5130S/",
       "is_hot": true,
-      "is_new": true,
+      "is_new": false,
       "status": "在售"
     },
     {
@@ -5780,7 +5794,7 @@
       "features": "多速率电口(10G/5G/2.5G/1G)、SFP+三速率(1G/2.5G/10G)、PoE+、IRF智能弹性架构",
       "product_url": "https://www.h3c.com/cn/Products_And_Solution/Enterprise_Networking_Products/Switches/Campus_Switches/Smart_Managed_Switches/S5130S/",
       "is_hot": true,
-      "is_new": true,
+      "is_new": false,
       "status": "在售"
     },
     {
@@ -5799,7 +5813,7 @@
       "features": "多速率电口(2.5G/5G)、IRF智能弹性架构",
       "product_url": "https://www.h3c.com/cn/Products_And_Solution/Enterprise_Networking_Products/Switches/Campus_Switches/Smart_Managed_Switches/S5130S/",
       "is_hot": true,
-      "is_new": true,
+      "is_new": false,
       "status": "在售"
     },
     {
@@ -5818,7 +5832,7 @@
       "features": "多速率电口(2.5G/5G)、PoE+、IRF智能弹性架构",
       "product_url": "https://www.h3c.com/cn/Products_And_Solution/Enterprise_Networking_Products/Switches/Campus_Switches/Smart_Managed_Switches/S5130S/",
       "is_hot": true,
-      "is_new": true,
+      "is_new": false,
       "status": "在售"
     },
     {
@@ -5837,7 +5851,7 @@
       "features": "多速率电口(2.5G/5G)、IRF智能弹性架构",
       "product_url": "https://www.h3c.com/cn/Products_And_Solution/Enterprise_Networking_Products/Switches/Campus_Switches/Smart_Managed_Switches/S5130S/",
       "is_hot": true,
-      "is_new": true,
+      "is_new": false,
       "status": "在售"
     },
     {
@@ -5856,7 +5870,7 @@
       "features": "多速率电口(2.5G/1G)、高密度SFP+上联、IRF智能弹性架构",
       "product_url": "https://www.h3c.com/cn/Products_And_Solution/Enterprise_Networking_Products/Switches/Campus_Switches/Smart_Managed_Switches/S5130S/",
       "is_hot": true,
-      "is_new": true,
+      "is_new": false,
       "status": "在售"
     },
     {
@@ -5875,7 +5889,7 @@
       "features": "多速率电口(2.5G/1G)、高密度SFP+上联、IRF智能弹性架构",
       "product_url": "https://www.h3c.com/cn/Products_And_Solution/Enterprise_Networking_Products/Switches/Campus_Switches/Smart_Managed_Switches/S5130S/",
       "is_hot": true,
-      "is_new": true,
+      "is_new": false,
       "status": "在售"
     },
     {
@@ -6117,7 +6131,7 @@
       "url": "https://www.h3c.com/cn/Products_And_Solution/InterConnect/Products/Switches/Products/Data_Center_Switch/Access_Switch/S6500/S6520X-EI/",
       "features": "IRF2堆叠、VXLAN/EVPN、SDN、MACsec、多速率接入",
       "is_hot": true,
-      "is_new": true,
+      "is_new": false,
       "status": "active"
     },
     {
@@ -6135,8 +6149,127 @@
       "url": "https://www.h3c.com/cn/Products_And_Solution/InterConnect/Products/Switches/Products/Data_Center_Switch/Access_Switch/S6500/S6520X-EI/",
       "features": "IRF2堆叠、VXLAN/EVPN、SDN、MACsec",
       "is_hot": true,
-      "is_new": true,
+      "is_new": false,
       "status": "active"
+    },
+    {
+      "vendor": "华为",
+      "series": "CloudEngine S5755-S系列",
+      "model": "CloudEngine S5755-S48T8Y",
+      "tier": "接入",
+      "switching_capacity": "2.4Tbps/24Tbps",
+      "forwarding_rate": "672Mpps",
+      "ports": "48个10/100/1000M Base-T电口，8个1/2.5/10/25GE SFP28光口",
+      "poe_support": "否",
+      "expansion_slots": "无",
+      "power_redundancy": "1+1备份",
+      "fan_redundancy": "智能调速风扇",
+      "url": "https://e.huawei.com/cn/products/switches/campus-switches/s5755-s",
+      "features": "VxLAN二三层网关、应用识别、全端口MACsec、iPCA质量感知、PoE+供电",
+      "is_hot": true,
+      "is_new": true
+    },
+    {
+      "vendor": "华为",
+      "series": "CloudEngine S5755-S系列",
+      "model": "CloudEngine S5755-S48U8Y",
+      "tier": "接入",
+      "switching_capacity": "2.4Tbps/24Tbps",
+      "forwarding_rate": "672Mpps",
+      "ports": "48个10/100/1000M Base-T电口，8个1/2.5/10/25GE SFP28光口",
+      "poe_support": "PoE++",
+      "expansion_slots": "无",
+      "power_redundancy": "3电源，N+1备份",
+      "fan_redundancy": "智能调速风扇",
+      "url": "https://e.huawei.com/cn/products/switches/campus-switches/s5755-s",
+      "features": "VxLAN二三层网关、应用识别、全端口MACsec、iPCA质量感知、PoE++供电",
+      "is_hot": true,
+      "is_new": true
+    },
+    {
+      "vendor": "华为",
+      "series": "CloudEngine S5755-S-HT系列Twins交换机",
+      "model": "CloudEngine S5755-S48T4X4Y-HT",
+      "tier": "接入",
+      "switching_capacity": "2.4Tbps/24Tbps",
+      "forwarding_rate": "672Mpps",
+      "ports": "48个10/100/1000M Base-T双引擎电口，4个1/2.5/10GE SFP+，4个1/2.5/10/25GE SFP28",
+      "poe_support": "否",
+      "expansion_slots": "无",
+      "power_redundancy": "1+1电源备份，AC/DC混合供电",
+      "fan_redundancy": "智能调速风扇",
+      "url": "https://e.huawei.com/cn/products/switches/campus-switches/s5755-s-ht-twins",
+      "features": "Twins双平面架构、管理面+转发面双冗余、亚秒级故障切换、双引擎独立在线升级、VxLAN、M-LAG",
+      "is_hot": true,
+      "is_new": true
+    },
+    {
+      "vendor": "华为",
+      "series": "CloudEngine S5755-S-HT系列Twins交换机",
+      "model": "CloudEngine S5755-S48P4X4Y-HT",
+      "tier": "接入",
+      "switching_capacity": "2.4Tbps/24Tbps",
+      "forwarding_rate": "672Mpps",
+      "ports": "48个10/100/1000M Base-T双引擎电口，4个1/2.5/10GE SFP+，4个1/2.5/10/25GE SFP28",
+      "poe_support": "PoE+",
+      "expansion_slots": "无",
+      "power_redundancy": "1+1电源备份，AC/DC混合供电",
+      "fan_redundancy": "智能调速风扇",
+      "url": "https://e.huawei.com/cn/products/switches/campus-switches/s5755-s-ht-twins",
+      "features": "Twins双平面架构、管理面+转发面双冗余、亚秒级故障切换、双引擎独立在线升级、VxLAN、M-LAG",
+      "is_hot": true,
+      "is_new": true
+    },
+    {
+      "vendor": "华为",
+      "series": "CloudEngine S6750-S系列",
+      "model": "CloudEngine S6750-S16X8YZ",
+      "tier": "汇聚",
+      "switching_capacity": "2.56Tbps/25.6Tbps",
+      "forwarding_rate": "1140Mpps",
+      "ports": "16个10GE SFP+，8个25GE SFP28",
+      "poe_support": "否",
+      "expansion_slots": "2个扩展插槽",
+      "power_redundancy": "1+1备份",
+      "fan_redundancy": "智能调速风扇",
+      "url": "https://e.huawei.com/cn/products/switches/campus-switches/s6750-s",
+      "features": "VxLAN分布式/集中式网关、BGP-EVPN、全端口MACsec、iPCA质量感知、SRv6、网络切片",
+      "is_hot": true,
+      "is_new": true
+    },
+    {
+      "vendor": "华为",
+      "series": "CloudEngine S6750-S系列",
+      "model": "CloudEngine S6750-S16X10Y2CZ",
+      "tier": "汇聚",
+      "switching_capacity": "2.56Tbps/25.6Tbps",
+      "forwarding_rate": "1515Mpps",
+      "ports": "16个10GE SFP+，10个25GE SFP28，2个40/100GE QSFP28",
+      "poe_support": "否",
+      "expansion_slots": "2个扩展插槽",
+      "power_redundancy": "1+1备份",
+      "fan_redundancy": "智能调速风扇",
+      "url": "https://e.huawei.com/cn/products/switches/campus-switches/s6750-s",
+      "features": "VxLAN分布式/集中式网关、BGP-EVPN、全端口MACsec、iPCA质量感知、SRv6、网络切片",
+      "is_hot": true,
+      "is_new": true
+    },
+    {
+      "vendor": "华为",
+      "series": "CloudEngine S6750-S系列",
+      "model": "CloudEngine S6750-S24T16X8Y2CZ",
+      "tier": "汇聚",
+      "switching_capacity": "2.56Tbps/25.6Tbps",
+      "forwarding_rate": "1476Mpps",
+      "ports": "24个10/100/1000M Base-T电口，16个10GE SFP+，8个25GE SFP28，2个40/100GE QSFP28",
+      "poe_support": "否",
+      "expansion_slots": "2个扩展插槽",
+      "power_redundancy": "1+1备份",
+      "fan_redundancy": "智能调速风扇",
+      "url": "https://e.huawei.com/cn/products/switches/campus-switches/s6750-s",
+      "features": "光电混合端口、VxLAN分布式/集中式网关、BGP-EVPN、全端口MACsec、iPCA质量感知、SRv6",
+      "is_hot": true,
+      "is_new": true
     }
   ],
   "description": "交换机数据（全量比对更新）,共356款"
