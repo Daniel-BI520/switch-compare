@@ -582,8 +582,8 @@ switchData.forEach(item => {
 });
 // 给switchData也添加标签转换
 switchData.forEach(s => {
-    s.hot_tag = (s.is_hot === true || s.is_hot === 'true') ? '🔥热门' : '';
-    s.new_tag = (s.is_new === true || s.is_new === 'true') ? '🆕新品' : '';
+    // 标签直接在渲染层用 is_hot/is_new 判断，无需预转换
+    
 });
 </script>
 <script>
@@ -6861,8 +6861,8 @@ const allSwitches = [
 ];
 // allSwitches 标签转换（布尔值→显示文本）
 allSwitches.forEach(s => {
-    s.hot_tag = (s.is_hot === true || s.is_hot === 'true') ? '🔥热门' : '';
-    s.new_tag = (s.is_new === true || s.is_new === 'true') ? '🆕新品' : '';
+    // 标签直接在渲染层用 is_hot/is_new 判断，无需预转换
+    
 });
 let currentSort = { key: null, asc: true };
 let selectedModels = new Set();
@@ -6900,8 +6900,8 @@ function applyFilters() {
         if (filters.tier && s.tier !== filters.tier) return false;
         if (filters.poe === 'yes' && !hasPoE(s.poe_support)) return false;
         if (filters.poe === 'no' && hasPoE(s.poe_support)) return false;
-        if (filters.tag === 'hot' && !s.hot_tag) return false;
-        if (filters.tag === 'new' && !s.new_tag) return false;
+        if (filters.tag === 'hot' && !(s.is_hot === true || s.is_hot === 'true')) return false;
+        if (filters.tag === 'new' && !(s.is_new === true || s.is_new === 'true')) return false;
         if (filters.search) {
             const hay = (s.model + s.series + s.features + s.ports).toLowerCase();
             if (!hay.includes(filters.search)) return false;
@@ -6926,7 +6926,7 @@ function renderTable() {
             '<td><span class="vendor-badge">' + s.vendor + '</span></td>' +
             '<td><span class="tier-badge tier-' + s.tier + '">' + s.tier + '</span></td>' +
             '<td style="font-size:12px; color:#6b7280; max-width:180px;">' + s.series + '</td>' +
-            '<td>' + (s.url && s.url !== '--' ? '<a href="' + s.url + '" target="_blank" class="model-link">' + s.model + '</a>' : s.model) + (s.hot_tag ? ' <span class="tag tag-hot">' + s.hot_tag + '</span>' : '') + (s.new_tag ? ' <span class="tag tag-new">' + s.new_tag + '</span>' : '') + '</td>' +
+            '<td>' + (s.url && s.url !== '--' ? '<a href="' + s.url + '" target="_blank" class="model-link">' + s.model + '</a>' : s.model) + ((s.is_hot === true || s.is_hot === 'true') ? ' <span class="tag tag-hot">🔥热门</span>' : '') + ((s.is_new === true || s.is_new === 'true') ? ' <span class="tag tag-new">🆕新品</span>' : '') + '</td>' +
             '<td>' + (s.switching_capacity || '-') + '</td>' +
             '<td>' + (s.forwarding_rate || '-') + '</td>' +
             '<td style="max-width:180px; font-size:12px;">' + (s.ports || '-') + '</td>' +
@@ -7262,8 +7262,8 @@ function recommendScene() {
                 html += '<div style="margin-bottom:8px;"><strong style="color:' + color + '">' + name + '：</strong>';
                 html += list.map(s => {
                     let tagHtml = '';
-                    if (s.hot_tag) tagHtml += ' <span class="tag tag-hot" style="font-size:10px; padding:0 4px;">' + s.hot_tag + '</span>';
-                    if (s.new_tag) tagHtml += ' <span class="tag tag-new" style="font-size:10px; padding:0 4px;">' + s.new_tag + '</span>';
+                    if (s.is_hot === true || s.is_hot === 'true') tagHtml += ' <span class="tag tag-hot" style="font-size:10px; padding:0 4px;">🔥热门</span>';
+                    if (s.is_new === true || s.is_new === 'true') tagHtml += ' <span class="tag tag-new" style="font-size:10px; padding:0 4px;">🆕新品</span>';
                     return (s.url && s.url !== '--' ? '<a href="' + s.url + '" target="_blank" style="color:#1e40af; margin-right:12px;">' + s.model + '</a>' : '<span style="margin-right:12px;">' + s.model + '</span>') + tagHtml;
                 }).join('');
                 html += '</div>';
@@ -8384,8 +8384,8 @@ function displayMatchResults(results) {
             html += '<div class="match-card ' + vendorClass[vendor] + (isBest ? ' match-card-best' : '') + '">';
             html += '<div class="match-card-header">';
             let modelTags = '';
-            if (sw.hot_tag) modelTags += ' <span class="tag tag-hot" style="font-size:10px;padding:0 5px;">' + sw.hot_tag + '</span>';
-            if (sw.new_tag) modelTags += ' <span class="tag tag-new" style="font-size:10px;padding:0 5px;">' + sw.new_tag + '</span>';
+            if (sw.is_hot === true || sw.is_hot === 'true') modelTags += ' <span class="tag tag-hot" style="font-size:10px;padding:0 5px;">🔥热门</span>';
+            if (sw.is_new === true || sw.is_new === 'true') modelTags += ' <span class="tag tag-new" style="font-size:10px;padding:0 5px;">🆕新品</span>';
             html += '<span class="match-card-model">' + sw.model + modelTags + '</span>';
             html += '<span class="match-score">' + sw.score + '% 匹配</span>';
             html += '</div>';
