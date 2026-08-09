@@ -1,5 +1,5 @@
 {
-  "update_time": "2026-08-09",
+  "update_time": "2026-08-10",
   "switches": [
     {
       "vendor": "锐捷",
@@ -4171,7 +4171,8 @@
       "url": "",
       "features": "三层网管型接入交换机、万兆上行、VSU虚拟化、IPv4/IPv6双栈、RLDP环路检测、CPP/NFPP安全防护",
       "is_hot": false,
-      "is_new": false
+      "is_new": false,
+      "discontinued": true
     },
     {
       "vendor": "锐捷",
@@ -4188,7 +4189,8 @@
       "url": "",
       "features": "三层网管型PoE接入交换机、PoE+供电、万兆上行、VSU虚拟化、IPv4/IPv6双栈、RLDP环路检测",
       "is_hot": false,
-      "is_new": false
+      "is_new": false,
+      "discontinued": true
     },
     {
       "vendor": "华为",
@@ -6272,5 +6274,5 @@
       "is_new": true
     }
   ],
-  "description": "交换机数据（全量比对更新）,共356款"
+  "description": "交换机数据（全量比对更新）,共363款"
 }
