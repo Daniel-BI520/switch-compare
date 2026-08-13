@@ -1,5 +1,5 @@
 {
-  "update_time": "2026-08-12",
+  "update_time": "2026-08-14",
   "switches": [
     {
       "vendor": "锐捷",
@@ -4736,7 +4736,7 @@
       "model": "CloudEngine S6750-H48Y8C",
       "tier": "汇聚",
       "switching_capacity": "8Tbps/80Tbps",
-      "forwarding_rate": "5400Mpps",
+      "forwarding_rate": "3000Mpps",
       "ports": "48个25GE SFP28光口，8个100GE QSFP28光口",
       "poe_support": "否",
       "expansion_slots": "无",
