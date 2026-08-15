@@ -1,5 +1,5 @@
 {
-  "update_time": "2026-08-14",
+  "update_time": "2026-08-16",
   "switches": [
     {
       "vendor": "锐捷",
@@ -4851,11 +4851,11 @@
     },
     {
       "vendor": "H3C",
-      "series": "S6550X-HI系列高端口密度智能交换机",
+      "series": "S6550X-HI系列多通道以太光交换机",
       "model": "S6550X-32H-HI",
       "tier": "核心",
-      "switching_capacity": "6.4Tbps",
-      "forwarding_rate": "4800Mpps",
+      "switching_capacity": "48Tbps",
+      "forwarding_rate": "9600Mpps",
       "ports": "32个40G/100G QSFP28端口，4个风扇插槽，2个电源模块插槽",
       "poe_support": "否",
       "expansion_slots": "无",
@@ -4871,8 +4871,8 @@
       "series": "S6550X-HI系列高端口密度智能交换机",
       "model": "S6550X-56HF-HI",
       "tier": "核心",
-      "switching_capacity": "4.0Tbps",
-      "forwarding_rate": "2800Mpps",
+      "switching_capacity": "8Tbps/80Tbps",
+      "forwarding_rate": "3000Mpps",
       "ports": "48个1G/10G/25G SFP28端口，8个40G/100G QSFP28端口，4个风扇插槽，2个电源模块插槽",
       "poe_support": "否",
       "expansion_slots": "无",
@@ -5558,11 +5558,11 @@
     },
     {
       "vendor": "H3C",
-      "series": "S6550X",
+      "series": "S6550X-HI系列多通道以太光交换机",
       "model": "S6550X-32Q-HI",
       "tier": "汇聚",
       "switching_capacity": "48Tbps",
-      "forwarding_rate": "2800Mpps",
+      "forwarding_rate": "9600Mpps",
       "ports": "32个40/100GE QSFP28端口",
       "poe_support": "不支持",
       "expansion_slots": "0",
@@ -6272,7 +6272,24 @@
       "features": "光电混合端口、VxLAN分布式/集中式网关、BGP-EVPN、全端口MACsec、iPCA质量感知、SRv6",
       "is_hot": true,
       "is_new": true
+    },
+    {
+      "model": "S6550X-54H-HI",
+      "vendor": "H3C",
+      "series": "S6550X-HI系列多通道以太光交换机",
+      "level": "核心",
+      "switching_capacity": "48Tbps",
+      "forwarding_rate": "9600Mpps",
+      "ports": "54个40G/100G QSFP28, 2个10G SFP+",
+      "poe": false,
+      "extended_slots": 0,
+      "power_redundancy": true,
+      "features": "IRF2堆叠, M-LAG, VXLAN, EVPN, OpenFlow 1.3, PTP, Telemetry",
+      "url": "https://www.h3c.com/cn/Products_And_Solution/InterConnect/Products/Switches/Products/EPON/All-Optical/Aggregation/S6550X_HI/",
+      "is_new": false,
+      "is_hot": false,
+      "release_date": "2025-02"
     }
   ],
-  "description": "交换机数据（全量比对更新）,共363款"
+  "description": "交换机数据（全量比对更新）,共364款"
 }
