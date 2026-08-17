@@ -1,0 +1,65 @@
+[
+  {
+    "vendor": "H3C",
+    "model": "S6520X-18C-SI",
+    "param": "forwarding_rate",
+    "old": "480Mpps",
+    "new": "360Mpps",
+    "reason": "H3C中文官网S6520X-SI系列产品规格表显示包转发率为360Mpps",
+    "source": "https://www.h3c.com/cn/Products_And_Solution/InterConnect/Products/Switches/Products/Park_Switches/Aggregation_Switch/S6500/S6520X-SI/Home/Detail_Material_List/Specifications/"
+  },
+  {
+    "vendor": "H3C",
+    "model": "S6520X-26MC-SI",
+    "param": "forwarding_rate",
+    "old": "480Mpps",
+    "new": "300Mpps",
+    "reason": "H3C中文官网S6520X-SI系列产品规格表显示包转发率为300Mpps（多千兆电口款）",
+    "source": "https://www.h3c.com/cn/Products_And_Solution/InterConnect/Products/Switches/Products/Park_Switches/Aggregation_Switch/S6500/S6520X-SI/Home/Detail_Material_List/Specifications/"
+  },
+  {
+    "vendor": "H3C",
+    "model": "S6520X-26MC-UPWR-SI",
+    "param": "forwarding_rate",
+    "old": "480Mpps",
+    "new": "300Mpps",
+    "reason": "H3C中文官网S6520X-SI系列产品规格表显示包转发率为300Mpps（多千兆电口PoE款）",
+    "source": "https://www.h3c.com/cn/Products_And_Solution/InterConnect/Products/Switches/Products/Park_Switches/Aggregation_Switch/S6500/S6520X-SI/Home/Detail_Material_List/Specifications/"
+  },
+  {
+    "vendor": "H3C",
+    "model": "S6520X-26XC-UPWR-SI",
+    "param": "forwarding_rate",
+    "old": "660Mpps",
+    "new": "720Mpps",
+    "reason": "H3C中文官网S6520X-SI系列产品规格表显示包转发率为720Mpps（万兆多速率电口UPOE款）",
+    "source": "https://www.h3c.com/cn/Products_And_Solution/InterConnect/Products/Switches/Products/Park_Switches/Aggregation_Switch/S6500/S6520X-SI/Home/Detail_Material_List/Specifications/"
+  },
+  {
+    "vendor": "H3C",
+    "model": "S6520X-54XC-UPWR-SI",
+    "param": "forwarding_rate",
+    "old": "1320Mpps",
+    "new": "1080Mpps",
+    "reason": "H3C中文官网S6520X-SI系列产品规格表显示包转发率为1080Mpps（48口万兆多速率UPOE款）",
+    "source": "https://www.h3c.com/cn/Products_And_Solution/InterConnect/Products/Switches/Products/Park_Switches/Aggregation_Switch/S6500/S6520X-SI/Home/Detail_Material_List/Specifications/"
+  },
+  {
+    "vendor": "H3C",
+    "model": "S6520X-10XT-SI",
+    "param": "forwarding_rate",
+    "old": "180Mpps",
+    "new": "240Mpps",
+    "reason": "H3C英文官网S6520X-SI系列SMB款产品规格表显示包转发率为240Mpps（8口万兆电口款）",
+    "source": "https://www.h3c.com/en/Products_and_Solutions/SMB_Products/Products/SMB_Cloudnet/Switches/S6520/H3C_S6520X-SI/"
+  },
+  {
+    "vendor": "H3C",
+    "model": "S6520X-16XT-SI",
+    "param": "forwarding_rate",
+    "old": "296Mpps",
+    "new": "240Mpps",
+    "reason": "H3C英文官网S6520X-SI系列SMB款产品规格表显示包转发率为240Mpps（14口万兆电口款）",
+    "source": "https://www.h3c.com/en/Products_and_Solutions/SMB_Products/Products/SMB_Cloudnet/Switches/S6520/H3C_S6520X-SI/"
+  }
+]
