@@ -1,0 +1,173 @@
+[
+  {
+    "vendor": "华为",
+    "model": "CE6885H-48YS8CQ",
+    "param": "switching_capacity",
+    "old": "8Tbps",
+    "new": "8Tbps/128Tbps",
+    "reason": "华为中文官网CE6800系列技术规格表验证（原仅标注单值，官网为双值）",
+    "source": "https://e.huawei.com/cn/products/switches/data-center-switches/ce6800"
+  },
+  {
+    "vendor": "华为",
+    "model": "CE6885-LL-56F",
+    "param": "switching_capacity",
+    "old": "2.4Tbps",
+    "new": "8Tbps/128Tbps",
+    "reason": "华为中文官网CE6800系列技术规格表验证（原2.4Tbps偏差较大，官网为8Tbps/128Tbps）",
+    "source": "https://e.huawei.com/cn/products/switches/data-center-switches/ce6800"
+  },
+  {
+    "vendor": "华为",
+    "model": "CE6881H-48S6CQ",
+    "param": "switching_capacity",
+    "old": "2.16Tbps",
+    "new": "4.8Tbps/96Tbps",
+    "reason": "华为中文官网CE6800系列技术规格表验证（原2.16Tbps偏差较大）",
+    "source": "https://e.huawei.com/cn/products/switches/data-center-switches/ce6800"
+  },
+  {
+    "vendor": "华为",
+    "model": "CE6881H-48T6CQ",
+    "param": "switching_capacity",
+    "old": "2.16Tbps",
+    "new": "4.8Tbps/96Tbps",
+    "reason": "华为中文官网CE6800系列技术规格表验证（原2.16Tbps偏差较大）",
+    "source": "https://e.huawei.com/cn/products/switches/data-center-switches/ce6800"
+  },
+  {
+    "vendor": "华为",
+    "model": "CE6870-48S6CQ-EI-A",
+    "param": "switching_capacity",
+    "old": "2.16Tbps",
+    "new": "2.16Tbps/19.44Tbps",
+    "reason": "华为中文官网CE6800系列技术规格表验证（原仅标注单值，官网为双值格式）",
+    "source": "https://e.huawei.com/cn/products/switches/data-center-switches/ce6800"
+  },
+  {
+    "vendor": "华为",
+    "model": "CE6870-48S6CQ-EI-A",
+    "param": "forwarding_rate",
+    "old": "720Mpps",
+    "new": "900Mpps",
+    "reason": "华为中文官网CE6800系列技术规格表验证（原720Mpps与官网不符）",
+    "source": "https://e.huawei.com/cn/products/switches/data-center-switches/ce6800"
+  },
+  {
+    "vendor": "华为",
+    "model": "CE6863E-48S6CQ",
+    "param": "switching_capacity",
+    "old": "3.6Tbps",
+    "new": "4.8Tbps/96Tbps",
+    "reason": "华为中文官网CE6800系列技术规格表验证（原3.6Tbps与官网不符）",
+    "source": "https://e.huawei.com/cn/products/switches/data-center-switches/ce6800"
+  },
+  {
+    "vendor": "华为",
+    "model": "CE6863E-48S6CQ",
+    "param": "forwarding_rate",
+    "old": "1600Mpps",
+    "new": "2000Mpps",
+    "reason": "华为中文官网CE6800系列技术规格表验证（原1600Mpps与官网不符）",
+    "source": "https://e.huawei.com/cn/products/switches/data-center-switches/ce6800"
+  },
+  {
+    "vendor": "华为",
+    "model": "CE6863H-48S6CQ",
+    "param": "switching_capacity",
+    "old": "3.6Tbps",
+    "new": "4.8Tbps/96Tbps",
+    "reason": "华为中文官网CE6800系列技术规格表验证（原3.6Tbps与官网不符）",
+    "source": "https://e.huawei.com/cn/products/switches/data-center-switches/ce6800"
+  },
+  {
+    "vendor": "华为",
+    "model": "CE6863H-48S6CQ",
+    "param": "forwarding_rate",
+    "old": "1600Mpps",
+    "new": "2000Mpps",
+    "reason": "华为中文官网CE6800系列技术规格表验证（原1600Mpps与官网不符）",
+    "source": "https://e.huawei.com/cn/products/switches/data-center-switches/ce6800"
+  },
+  {
+    "vendor": "华为",
+    "model": "CE6855-48XS8CQ",
+    "param": "switching_capacity",
+    "old": "2.56Tbps",
+    "new": "4.8Tbps/96Tbps",
+    "reason": "华为中文官网CE6800系列技术规格表验证（原2.56Tbps与官网不符）",
+    "source": "https://e.huawei.com/cn/products/switches/data-center-switches/ce6800"
+  },
+  {
+    "vendor": "华为",
+    "model": "CE6855-48XS8CQ",
+    "param": "forwarding_rate",
+    "old": "1080Mpps",
+    "new": "2000Mpps",
+    "reason": "华为中文官网CE6800系列技术规格表验证（原1080Mpps与官网不符）",
+    "source": "https://e.huawei.com/cn/products/switches/data-center-switches/ce6800"
+  },
+  {
+    "vendor": "华为",
+    "model": "CE6855-48T8CQ",
+    "param": "switching_capacity",
+    "old": "2.56Tbps",
+    "new": "4.8Tbps/96Tbps",
+    "reason": "华为中文官网CE6800系列技术规格表验证（原2.56Tbps与官网不符）",
+    "source": "https://e.huawei.com/cn/products/switches/data-center-switches/ce6800"
+  },
+  {
+    "vendor": "华为",
+    "model": "CE6855-48T8CQ",
+    "param": "forwarding_rate",
+    "old": "1080Mpps",
+    "new": "2000Mpps",
+    "reason": "华为中文官网CE6800系列技术规格表验证（原1080Mpps与官网不符）",
+    "source": "https://e.huawei.com/cn/products/switches/data-center-switches/ce6800"
+  },
+  {
+    "vendor": "华为",
+    "model": "CE6857E-48S6CQ",
+    "param": "switching_capacity",
+    "old": "4Tbps/64Tbps",
+    "new": "4.8Tbps/96Tbps",
+    "reason": "华为中文官网CE6800系列技术规格表验证（原4Tbps/64Tbps与官网不符）",
+    "source": "https://e.huawei.com/cn/products/switches/data-center-switches/ce6800"
+  },
+  {
+    "vendor": "华为",
+    "model": "CE6857F-48S6CQ",
+    "param": "switching_capacity",
+    "old": "4Tbps/64Tbps",
+    "new": "4.8Tbps/96Tbps",
+    "reason": "华为中文官网CE6800系列技术规格表验证（原4Tbps/64Tbps与官网不符）",
+    "source": "https://e.huawei.com/cn/products/switches/data-center-switches/ce6800"
+  },
+  {
+    "vendor": "华为",
+    "model": "CE6857F-48T6CQ",
+    "param": "switching_capacity",
+    "old": "4Tbps/64Tbps",
+    "new": "4.8Tbps/96Tbps",
+    "reason": "华为中文官网CE6800系列技术规格表验证（原4Tbps/64Tbps与官网不符）",
+    "source": "https://e.huawei.com/cn/products/switches/data-center-switches/ce6800"
+  },
+  {
+    "vendor": "华为",
+    "model": "CE6820-48S6CQ-A",
+    "param": "switching_capacity",
+    "old": "2.16Tbps",
+    "new": "2.56Tbps/40.96Tbps",
+    "reason": "华为中文官网CE6800系列技术规格表验证（原2.16Tbps与官网不符）",
+    "source": "https://e.huawei.com/cn/products/switches/data-center-switches/ce6800"
+  },
+  {
+    "vendor": "华为",
+    "model": "CE6820H-48S6CQ",
+    "param": "switching_capacity",
+    "old": "2.16Tbps",
+    "new": "2.56Tbps/40.96Tbps",
+    "reason": "华为中文官网CE6800系列技术规格表验证（原2.16Tbps与官网不符）",
+    "source": "https://e.huawei.com/cn/products/switches/data-center-switches/ce6800"
+  }
+]
