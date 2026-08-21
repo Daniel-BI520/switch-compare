@@ -1,0 +1,308 @@
+[
+  {
+    "vendor": "华为",
+    "model": "CloudEngine S5731-H24P4XC",
+    "param": "switching_capacity",
+    "old": "288 Gbit/s/672 Gbit/s",
+    "new": "2Tbps/20Tbps",
+    "reason": "华为中文官网S5731-H系列技术规格表验证（原288Gbit/s/672Gbit/s严重偏低）",
+    "source": "https://e.huawei.com/cn/products/switches/campus-switches/s5731-h"
+  },
+  {
+    "vendor": "华为",
+    "model": "CloudEngine S5731-H24P4XC",
+    "param": "forwarding_rate",
+    "old": "125 Mpps",
+    "new": "580Mpps",
+    "reason": "华为中文官网S5731-H系列技术规格表验证（原125Mpps严重偏低）",
+    "source": "https://e.huawei.com/cn/products/switches/campus-switches/s5731-h"
+  },
+  {
+    "vendor": "华为",
+    "model": "CloudEngine S5731-H24P4XC (待核实)",
+    "param": "removed_duplicate",
+    "old": "{\"vendor\": \"华为\", \"series\": \"CloudEngine S5731-H系列\", \"model\": \"CloudEngine S5731-H24P4XC (待核实)\", \"tier\": \"汇聚\", \"switching_capacity\": \"2Tbps/20Tbps\", \"forwarding_rate\": \"580Mpps\", \"ports\": \"24个10/100/1000BASE-T以太网端口（PoE+），4个万兆SFP+端口\", \"poe_support\": \"支持PoE+\", \"expansion_slots\": \"1个扩展插槽，支持2x40GE/2x25GE/8x10GE/8x10GE电/2x100GE子卡\", \"power_redundancy\": \"双可插拔PoE电源，1+1冗余\", \"fan_redundancy\": \"智能调速风扇\", \"url\": \"https://e.huawei.com/cn/products/switches/campus-switches/s5731-h\", \"features\": \"24口千兆PoE+万兆上行、大端口缓存、随板AC、VXLAN、SVF、iPCA质量感知、安全诱捕\", \"is_hot\": true, \"is_new\": false, \"notes\": \"与CloudEngine前缀版本参数不一致，需官网核实\"}",
+    "new": "",
+    "reason": "与主型号重复，官网参数已核实",
+    "source": "dedup"
+  },
+  {
+    "vendor": "华为",
+    "model": "CloudEngine S5731-H48P4XC",
+    "param": "switching_capacity",
+    "old": "336 Gbit/s/672 Gbit/s",
+    "new": "2Tbps/20Tbps",
+    "reason": "华为中文官网S5731-H系列技术规格表验证（原336Gbit/s/672Gbit/s严重偏低）",
+    "source": "https://e.huawei.com/cn/products/switches/campus-switches/s5731-h"
+  },
+  {
+    "vendor": "华为",
+    "model": "CloudEngine S5731-H48P4XC",
+    "param": "forwarding_rate",
+    "old": "125 Mpps",
+    "new": "620Mpps",
+    "reason": "华为中文官网S5731-H系列技术规格表验证（原125Mpps严重偏低）",
+    "source": "https://e.huawei.com/cn/products/switches/campus-switches/s5731-h"
+  },
+  {
+    "vendor": "H3C",
+    "model": "S5130S-10P-EI",
+    "param": "switching_capacity",
+    "old": "20Gbps",
+    "new": "672Gbps/6.72Tbps",
+    "reason": "H3C中文官网S5130S-EI系列产品规格表验证，原数据库参数偏低",
+    "source": "https://www.h3c.com/cn/Products_And_Solution/InterConnect/Products/Switches/Products/Park_Switches/Access_Switch/S5130/S5130S-EI/"
+  },
+  {
+    "vendor": "H3C",
+    "model": "S5130S-10P-EI",
+    "param": "forwarding_rate",
+    "old": "15Mpps",
+    "new": "102Mpps",
+    "reason": "H3C中文官网S5130S-EI系列产品规格表验证，原数据库参数偏低",
+    "source": "https://www.h3c.com/cn/Products_And_Solution/InterConnect/Products/Switches/Products/Park_Switches/Access_Switch/S5130/S5130S-EI/"
+  },
+  {
+    "vendor": "H3C",
+    "model": "S5130S-28P-EI",
+    "param": "switching_capacity",
+    "old": "256Gbps/2.56Tbps",
+    "new": "672Gbps/6.72Tbps",
+    "reason": "H3C中文官网S5130S-EI系列产品规格表验证，原数据库参数偏低",
+    "source": "https://www.h3c.com/cn/Products_And_Solution/InterConnect/Products/Switches/Products/Park_Switches/Access_Switch/S5130/S5130S-EI/"
+  },
+  {
+    "vendor": "H3C",
+    "model": "S5130S-28P-EI",
+    "param": "forwarding_rate",
+    "old": "66Mpps",
+    "new": "126Mpps",
+    "reason": "H3C中文官网S5130S-EI系列产品规格表验证，原数据库参数偏低",
+    "source": "https://www.h3c.com/cn/Products_And_Solution/InterConnect/Products/Switches/Products/Park_Switches/Access_Switch/S5130/S5130S-EI/"
+  },
+  {
+    "vendor": "H3C",
+    "model": "S5130S-28P-PWR-EI",
+    "param": "switching_capacity",
+    "old": "256Gbps/2.56Tbps",
+    "new": "672Gbps/6.72Tbps",
+    "reason": "H3C中文官网S5130S-EI系列产品规格表验证，原数据库参数偏低",
+    "source": "https://www.h3c.com/cn/Products_And_Solution/InterConnect/Products/Switches/Products/Park_Switches/Access_Switch/S5130/S5130S-EI/"
+  },
+  {
+    "vendor": "H3C",
+    "model": "S5130S-28P-PWR-EI",
+    "param": "forwarding_rate",
+    "old": "66Mpps",
+    "new": "126Mpps",
+    "reason": "H3C中文官网S5130S-EI系列产品规格表验证，原数据库参数偏低",
+    "source": "https://www.h3c.com/cn/Products_And_Solution/InterConnect/Products/Switches/Products/Park_Switches/Access_Switch/S5130/S5130S-EI/"
+  },
+  {
+    "vendor": "H3C",
+    "model": "S5130S-28S-EI",
+    "param": "switching_capacity",
+    "old": "336Gbps/3.36Tbps",
+    "new": "672Gbps/6.72Tbps",
+    "reason": "H3C中文官网S5130S-EI系列产品规格表验证，原数据库参数偏低",
+    "source": "https://www.h3c.com/cn/Products_And_Solution/InterConnect/Products/Switches/Products/Park_Switches/Access_Switch/S5130/S5130S-EI/"
+  },
+  {
+    "vendor": "H3C",
+    "model": "S5130S-28S-EI",
+    "param": "forwarding_rate",
+    "old": "108Mpps",
+    "new": "171Mpps",
+    "reason": "H3C中文官网S5130S-EI系列产品规格表验证，原数据库参数偏低",
+    "source": "https://www.h3c.com/cn/Products_And_Solution/InterConnect/Products/Switches/Products/Park_Switches/Access_Switch/S5130/S5130S-EI/"
+  },
+  {
+    "vendor": "H3C",
+    "model": "S5130S-28S-PWR-EI",
+    "param": "switching_capacity",
+    "old": "336Gbps/3.36Tbps",
+    "new": "672Gbps/6.72Tbps",
+    "reason": "H3C中文官网S5130S-EI系列产品规格表验证，原数据库参数偏低",
+    "source": "https://www.h3c.com/cn/Products_And_Solution/InterConnect/Products/Switches/Products/Park_Switches/Access_Switch/S5130/S5130S-EI/"
+  },
+  {
+    "vendor": "H3C",
+    "model": "S5130S-28S-PWR-EI",
+    "param": "forwarding_rate",
+    "old": "108Mpps",
+    "new": "171Mpps",
+    "reason": "H3C中文官网S5130S-EI系列产品规格表验证，原数据库参数偏低",
+    "source": "https://www.h3c.com/cn/Products_And_Solution/InterConnect/Products/Switches/Products/Park_Switches/Access_Switch/S5130/S5130S-EI/"
+  },
+  {
+    "vendor": "H3C",
+    "model": "S5130S-28ST-EI",
+    "param": "forwarding_rate",
+    "old": "85Mpps",
+    "new": "171Mpps",
+    "reason": "H3C中文官网S5130S-EI系列产品规格表验证，原数据库参数偏低",
+    "source": "https://www.h3c.com/cn/Products_And_Solution/InterConnect/Products/Switches/Products/Park_Switches/Access_Switch/S5130/S5130S-EI/"
+  },
+  {
+    "vendor": "H3C",
+    "model": "S5130S-28ST-PWR-EI",
+    "param": "forwarding_rate",
+    "old": "85Mpps",
+    "new": "171Mpps",
+    "reason": "H3C中文官网S5130S-EI系列产品规格表验证，原数据库参数偏低",
+    "source": "https://www.h3c.com/cn/Products_And_Solution/InterConnect/Products/Switches/Products/Park_Switches/Access_Switch/S5130/S5130S-EI/"
+  },
+  {
+    "vendor": "H3C",
+    "model": "S5130S-28TP-EI",
+    "param": "switching_capacity",
+    "old": "336Gbps/3.36Tbps",
+    "new": "672Gbps/6.72Tbps",
+    "reason": "H3C中文官网S5130S-EI系列产品规格表验证，原数据库参数偏低",
+    "source": "https://www.h3c.com/cn/Products_And_Solution/InterConnect/Products/Switches/Products/Park_Switches/Access_Switch/S5130/S5130S-EI/"
+  },
+  {
+    "vendor": "H3C",
+    "model": "S5130S-28TP-EI",
+    "param": "forwarding_rate",
+    "old": "96Mpps",
+    "new": "126Mpps",
+    "reason": "H3C中文官网S5130S-EI系列产品规格表验证，原数据库参数偏低",
+    "source": "https://www.h3c.com/cn/Products_And_Solution/InterConnect/Products/Switches/Products/Park_Switches/Access_Switch/S5130/S5130S-EI/"
+  },
+  {
+    "vendor": "H3C",
+    "model": "S5130S-52P-EI",
+    "param": "switching_capacity",
+    "old": "336Gbps/3.36Tbps",
+    "new": "672Gbps/6.72Tbps",
+    "reason": "H3C中文官网S5130S-EI系列产品规格表验证，原数据库参数偏低",
+    "source": "https://www.h3c.com/cn/Products_And_Solution/InterConnect/Products/Switches/Products/Park_Switches/Access_Switch/S5130/S5130S-EI/"
+  },
+  {
+    "vendor": "H3C",
+    "model": "S5130S-52P-EI",
+    "param": "forwarding_rate",
+    "old": "132Mpps",
+    "new": "166Mpps",
+    "reason": "H3C中文官网S5130S-EI系列产品规格表验证，原数据库参数偏低",
+    "source": "https://www.h3c.com/cn/Products_And_Solution/InterConnect/Products/Switches/Products/Park_Switches/Access_Switch/S5130/S5130S-EI/"
+  },
+  {
+    "vendor": "H3C",
+    "model": "S5130S-52S-EI",
+    "param": "switching_capacity",
+    "old": "336Gbps/3.36Tbps",
+    "new": "672Gbps/6.72Tbps",
+    "reason": "H3C中文官网S5130S-EI系列产品规格表验证，原数据库参数偏低",
+    "source": "https://www.h3c.com/cn/Products_And_Solution/InterConnect/Products/Switches/Products/Park_Switches/Access_Switch/S5130/S5130S-EI/"
+  },
+  {
+    "vendor": "H3C",
+    "model": "S5130S-52S-EI",
+    "param": "forwarding_rate",
+    "old": "144Mpps",
+    "new": "207Mpps",
+    "reason": "H3C中文官网S5130S-EI系列产品规格表验证，原数据库参数偏低",
+    "source": "https://www.h3c.com/cn/Products_And_Solution/InterConnect/Products/Switches/Products/Park_Switches/Access_Switch/S5130/S5130S-EI/"
+  },
+  {
+    "vendor": "H3C",
+    "model": "S5130S-52S-PWR-EI",
+    "param": "switching_capacity",
+    "old": "336Gbps/3.36Tbps",
+    "new": "672Gbps/6.72Tbps",
+    "reason": "H3C中文官网S5130S-EI系列产品规格表验证，原数据库参数偏低",
+    "source": "https://www.h3c.com/cn/Products_And_Solution/InterConnect/Products/Switches/Products/Park_Switches/Access_Switch/S5130/S5130S-EI/"
+  },
+  {
+    "vendor": "H3C",
+    "model": "S5130S-52S-PWR-EI",
+    "param": "forwarding_rate",
+    "old": "144Mpps",
+    "new": "207Mpps",
+    "reason": "H3C中文官网S5130S-EI系列产品规格表验证，原数据库参数偏低",
+    "source": "https://www.h3c.com/cn/Products_And_Solution/InterConnect/Products/Switches/Products/Park_Switches/Access_Switch/S5130/S5130S-EI/"
+  },
+  {
+    "vendor": "H3C",
+    "model": "S5130S-52ST-EI",
+    "param": "forwarding_rate",
+    "old": "135Mpps",
+    "new": "207Mpps",
+    "reason": "H3C中文官网S5130S-EI系列产品规格表验证，原数据库参数偏低",
+    "source": "https://www.h3c.com/cn/Products_And_Solution/InterConnect/Products/Switches/Products/Park_Switches/Access_Switch/S5130/S5130S-EI/"
+  },
+  {
+    "vendor": "H3C",
+    "model": "S5130S-52ST-PWR-EI",
+    "param": "forwarding_rate",
+    "old": "135Mpps",
+    "new": "207Mpps",
+    "reason": "H3C中文官网S5130S-EI系列产品规格表验证，原数据库参数偏低",
+    "source": "https://www.h3c.com/cn/Products_And_Solution/InterConnect/Products/Switches/Products/Park_Switches/Access_Switch/S5130/S5130S-EI/"
+  },
+  {
+    "vendor": "H3C",
+    "model": "S5130S-52TP-EI",
+    "param": "switching_capacity",
+    "old": "336Gbps/3.36Tbps",
+    "new": "672Gbps/6.72Tbps",
+    "reason": "H3C中文官网S5130S-EI系列产品规格表验证，原数据库参数偏低",
+    "source": "https://www.h3c.com/cn/Products_And_Solution/InterConnect/Products/Switches/Products/Park_Switches/Access_Switch/S5130/S5130S-EI/"
+  },
+  {
+    "vendor": "H3C",
+    "model": "S5130S-52TP-EI",
+    "param": "forwarding_rate",
+    "old": "132Mpps",
+    "new": "166Mpps",
+    "reason": "H3C中文官网S5130S-EI系列产品规格表验证，原数据库参数偏低",
+    "source": "https://www.h3c.com/cn/Products_And_Solution/InterConnect/Products/Switches/Products/Park_Switches/Access_Switch/S5130/S5130S-EI/"
+  },
+  {
+    "vendor": "H3C",
+    "model": "S5130S-10MS-UPWR-EI",
+    "param": "switching_capacity",
+    "old": "336Gbps/3.36Tbps",
+    "new": "672Gbps/6.72Tbps",
+    "reason": "H3C中文官网S5130S-EI系列产品规格表验证，原数据库参数偏低",
+    "source": "https://www.h3c.com/cn/Products_And_Solution/InterConnect/Products/Switches/Products/Park_Switches/Access_Switch/S5130/S5130S-EI/"
+  },
+  {
+    "vendor": "H3C",
+    "model": "S5130S-10MS-UPWR-EI",
+    "param": "forwarding_rate",
+    "old": "102Mpps",
+    "new": "126Mpps",
+    "reason": "H3C中文官网S5130S-EI系列产品规格表验证，原数据库参数偏低",
+    "source": "https://www.h3c.com/cn/Products_And_Solution/InterConnect/Products/Switches/Products/Park_Switches/Access_Switch/S5130/S5130S-EI/"
+  },
+  {
+    "vendor": "H3C",
+    "model": "S5130S-16S-PWR-EI",
+    "param": "switching_capacity",
+    "old": "336Gbps/3.36Tbps",
+    "new": "672Gbps/6.72Tbps",
+    "reason": "H3C中文官网S5130S-EI系列产品规格表验证，原数据库参数偏低",
+    "source": "https://www.h3c.com/cn/Products_And_Solution/InterConnect/Products/Switches/Products/Park_Switches/Access_Switch/S5130/S5130S-EI/"
+  },
+  {
+    "vendor": "H3C",
+    "model": "S5130S-16S-UPWR-EI-Q",
+    "param": "switching_capacity",
+    "old": "336Gbps/3.36Tbps",
+    "new": "672Gbps/6.72Tbps",
+    "reason": "H3C中文官网S5130S-EI系列产品规格表验证，原数据库参数偏低",
+    "source": "https://www.h3c.com/cn/Products_And_Solution/InterConnect/Products/Switches/Products/Park_Switches/Access_Switch/S5130/S5130S-EI/"
+  },
+  {
+    "vendor": "华为",
+    "model": "CloudEngine S6730-H28Y4C",
+    "param": "new_model",
+    "old": "",
+    "new": "CloudEngine S6730-H28Y4C",
+    "reason": "华为中文官网独立产品页，25GE高密汇聚交换机",
+    "source": "https://e.huawei.com/cn/products/switches/campus-switches/s6730-h-25ge"
+  }
+]
