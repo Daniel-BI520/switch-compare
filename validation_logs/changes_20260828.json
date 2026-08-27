@@ -1,0 +1,119 @@
+[
+  {
+    "vendor": "H3C",
+    "model": "S5135S-48S2T4X-EI",
+    "param": "new_model",
+    "old": "",
+    "new": "S5135S-48S2T4X-EI",
+    "reason": "官网全系列24款补全，原库仅19款，补齐缺失型号",
+    "source": "https://www.h3c.com/cn/Products_And_Solution/InterConnect/Products/Switches/Products/Park_Switches/Access_Switch/S5135/S5135S_EI/"
+  },
+  {
+    "vendor": "H3C",
+    "model": "S5135S-24P4X-EI",
+    "param": "new_model",
+    "old": "",
+    "new": "S5135S-24P4X-EI",
+    "reason": "官网全系列24款补全，原库仅19款，补齐缺失型号",
+    "source": "https://www.h3c.com/cn/Products_And_Solution/InterConnect/Products/Switches/Products/Park_Switches/Access_Switch/S5135/S5135S_EI/"
+  },
+  {
+    "vendor": "H3C",
+    "model": "S5135S-24FP4T4S-EI",
+    "param": "new_model",
+    "old": "",
+    "new": "S5135S-24FP4T4S-EI",
+    "reason": "官网全系列24款补全，原库仅19款，补齐缺失型号",
+    "source": "https://www.h3c.com/cn/Products_And_Solution/InterConnect/Products/Switches/Products/Park_Switches/Access_Switch/S5135/S5135S_EI/"
+  },
+  {
+    "vendor": "H3C",
+    "model": "S5135S-48P4S-EI",
+    "param": "new_model",
+    "old": "",
+    "new": "S5135S-48P4S-EI",
+    "reason": "官网全系列24款补全，原库仅19款，补齐缺失型号",
+    "source": "https://www.h3c.com/cn/Products_And_Solution/InterConnect/Products/Switches/Products/Park_Switches/Access_Switch/S5135/S5135S_EI/"
+  },
+  {
+    "vendor": "H3C",
+    "model": "S5135S-48FP4S-EI",
+    "param": "new_model",
+    "old": "",
+    "new": "S5135S-48FP4S-EI",
+    "reason": "官网全系列24款补全，原库仅19款，补齐缺失型号",
+    "source": "https://www.h3c.com/cn/Products_And_Solution/InterConnect/Products/Switches/Products/Park_Switches/Access_Switch/S5135/S5135S_EI/"
+  },
+  {
+    "vendor": "华为",
+    "model": "CloudEngine S5735-S24T4XE-Q-V2",
+    "param": "new_model",
+    "old": "",
+    "new": "CloudEngine S5735-S24T4XE-Q-V2",
+    "reason": "官网全系列型号补全，Z/V2款型含扩展插槽设计",
+    "source": "https://e.huawei.com/cn/products/switches/campus-switches/s5735-s-v2"
+  },
+  {
+    "vendor": "华为",
+    "model": "CloudEngine S5735-S24T4XEZ-V2",
+    "param": "new_model",
+    "old": "",
+    "new": "CloudEngine S5735-S24T4XEZ-V2",
+    "reason": "官网全系列型号补全，Z/V2款型含扩展插槽设计",
+    "source": "https://e.huawei.com/cn/products/switches/campus-switches/s5735-s-v2"
+  },
+  {
+    "vendor": "华为",
+    "model": "CloudEngine S5735-S24P4XEZ-V2",
+    "param": "new_model",
+    "old": "",
+    "new": "CloudEngine S5735-S24P4XEZ-V2",
+    "reason": "官网全系列型号补全，Z/V2款型含扩展插槽设计",
+    "source": "https://e.huawei.com/cn/products/switches/campus-switches/s5735-s-v2"
+  },
+  {
+    "vendor": "华为",
+    "model": "CloudEngine S5735-S48T4XEZ-V2",
+    "param": "new_model",
+    "old": "",
+    "new": "CloudEngine S5735-S48T4XEZ-V2",
+    "reason": "官网全系列型号补全，Z/V2款型含扩展插槽设计",
+    "source": "https://e.huawei.com/cn/products/switches/campus-switches/s5735-s-v2"
+  },
+  {
+    "vendor": "华为",
+    "model": "CloudEngine S5735-S48P4XEZ-V2",
+    "param": "new_model",
+    "old": "",
+    "new": "CloudEngine S5735-S48P4XEZ-V2",
+    "reason": "官网全系列型号补全，Z/V2款型含扩展插槽设计",
+    "source": "https://e.huawei.com/cn/products/switches/campus-switches/s5735-s-v2"
+  },
+  {
+    "vendor": "锐捷",
+    "model": "RG-S5760C-24SFP/8GT8XS-X",
+    "param": "new_model",
+    "old": "",
+    "new": "RG-S5760C-24SFP/8GT8XS-X",
+    "reason": "S5760C全系列5款补全，原库仅2款",
+    "source": "https://www.ruijie.com.cn/cp/jh-yqw-hjjh/RG-S5760C-24SFP8GT8XS-X/"
+  },
+  {
+    "vendor": "锐捷",
+    "model": "RG-S5760C-48GT4XS-HP-X",
+    "param": "new_model",
+    "old": "",
+    "new": "RG-S5760C-48GT4XS-HP-X",
+    "reason": "S5760C全系列5款补全，原库仅2款",
+    "source": "https://www.ruijie.com.cn/cp/jh-yqw-hjjh/RG-S5760C-24SFP8GT8XS-X/"
+  },
+  {
+    "vendor": "锐捷",
+    "model": "RG-S5760C-48SFP4XS-X",
+    "param": "new_model",
+    "old": "",
+    "new": "RG-S5760C-48SFP4XS-X",
+    "reason": "S5760C全系列5款补全，原库仅2款",
+    "source": "https://www.ruijie.com.cn/cp/jh-yqw-hjjh/RG-S5760C-24SFP8GT8XS-X/"
+  }
+]
