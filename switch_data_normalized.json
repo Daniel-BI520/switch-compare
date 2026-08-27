@@ -7718,7 +7718,7 @@
     },
     {
       "vendor": "H3C",
-      "series": "H3C S5135S-EI系列千兆接入交换机",
+      "series": "S5135S-EI",
       "model": "S5135S-16FP4S-EI",
       "tier": "接入",
       "switching_capacity": "672Gbps/6.72Tbps",
@@ -7736,7 +7736,7 @@
     },
     {
       "vendor": "H3C",
-      "series": "H3C S5135S-EI系列千兆接入交换机",
+      "series": "S5135S-EI",
       "model": "S5135S-16FP4X-EI",
       "tier": "接入",
       "switching_capacity": "672Gbps/6.72Tbps",
@@ -7754,7 +7754,7 @@
     },
     {
       "vendor": "H3C",
-      "series": "H3C S5135S-EI系列千兆接入交换机",
+      "series": "S5135S-EI",
       "model": "S5135S-16T4S-EI-Q",
       "tier": "接入",
       "switching_capacity": "672Gbps/6.72Tbps",
@@ -7772,7 +7772,7 @@
     },
     {
       "vendor": "H3C",
-      "series": "H3C S5135S-EI系列千兆接入交换机",
+      "series": "S5135S-EI",
       "model": "S5135S-16T4X-EI-Q",
       "tier": "接入",
       "switching_capacity": "672Gbps/6.72Tbps",
@@ -7790,7 +7790,7 @@
     },
     {
       "vendor": "H3C",
-      "series": "H3C S5135S-EI系列千兆接入交换机",
+      "series": "S5135S-EI",
       "model": "S5135S-24FP4S4X-EI",
       "tier": "接入",
       "switching_capacity": "672Gbps/6.72Tbps",
@@ -7808,7 +7808,7 @@
     },
     {
       "vendor": "H3C",
-      "series": "H3C S5135S-EI系列千兆接入交换机",
+      "series": "S5135S-EI",
       "model": "S5135S-24P4S-EI",
       "tier": "接入",
       "switching_capacity": "672Gbps/6.72Tbps",
@@ -7826,7 +7826,7 @@
     },
     {
       "vendor": "H3C",
-      "series": "H3C S5135S-EI系列千兆接入交换机",
+      "series": "S5135S-EI",
       "model": "S5135S-24T4S-EI-Q",
       "tier": "接入",
       "switching_capacity": "672Gbps/6.72Tbps",
@@ -7844,7 +7844,7 @@
     },
     {
       "vendor": "H3C",
-      "series": "H3C S5135S-EI系列千兆接入交换机",
+      "series": "S5135S-EI",
       "model": "S5135S-24T4X-EI-Q",
       "tier": "接入",
       "switching_capacity": "672Gbps/6.72Tbps",
@@ -7862,7 +7862,7 @@
     },
     {
       "vendor": "H3C",
-      "series": "H3C S5135S-EI系列千兆接入交换机",
+      "series": "S5135S-EI",
       "model": "S5135S-48FP4X-EI",
       "tier": "接入",
       "switching_capacity": "672Gbps/6.72Tbps",
@@ -7880,7 +7880,7 @@
     },
     {
       "vendor": "H3C",
-      "series": "H3C S5135S-EI系列千兆接入交换机",
+      "series": "S5135S-EI",
       "model": "S5135S-48P4X-EI",
       "tier": "接入",
       "switching_capacity": "672Gbps/6.72Tbps",
@@ -7898,7 +7898,7 @@
     },
     {
       "vendor": "H3C",
-      "series": "H3C S5135S-EI系列千兆接入交换机",
+      "series": "S5135S-EI",
       "model": "S5135S-48T4S-EI-Q",
       "tier": "接入",
       "switching_capacity": "672Gbps/6.72Tbps",
@@ -7916,7 +7916,7 @@
     },
     {
       "vendor": "H3C",
-      "series": "H3C S5135S-EI系列千兆接入交换机",
+      "series": "S5135S-EI",
       "model": "S5135S-48T4X-EI-Q",
       "tier": "接入",
       "switching_capacity": "672Gbps/6.72Tbps",
@@ -7934,7 +7934,7 @@
     },
     {
       "vendor": "H3C",
-      "series": "H3C S5135S-EI系列千兆接入交换机",
+      "series": "S5135S-EI",
       "model": "S5135S-8FP4S-EI-Q",
       "tier": "接入",
       "switching_capacity": "672Gbps/6.72Tbps",
@@ -7952,7 +7952,7 @@
     },
     {
       "vendor": "H3C",
-      "series": "H3C S5135S-EI系列千兆接入交换机",
+      "series": "S5135S-EI",
       "model": "S5135S-8T4S-EI-Q",
       "tier": "接入",
       "switching_capacity": "672Gbps/6.72Tbps",
@@ -7970,7 +7970,7 @@
     },
     {
       "vendor": "H3C",
-      "series": "H3C S5135S-EI系列千兆接入交换机",
+      "series": "S5135S-EI",
       "model": "S5135S-8T4XS-EI-Q",
       "tier": "接入",
       "switching_capacity": "672Gbps/6.72Tbps",
@@ -8312,7 +8312,8 @@
       "url": "https://www.h3c.com/cn/Products_And_Solution/InterConnect/Products/Switches/Products/EPON/All-Optical/Aggregation/S6550X_HI/",
       "is_new": false,
       "is_hot": false,
-      "release_date": "2025-02"
+      "release_date": "2025-02",
+      "tier": "汇聚"
     },
     {
       "vendor": "华为",
@@ -8350,7 +8351,7 @@
     },
     {
       "vendor": "H3C",
-      "series": "H3C S5135S-EI系列千兆接入交换机",
+      "series": "S5135S-EI",
       "model": "S5135S-10T2S2X-EI-Q",
       "tier": "接入",
       "switching_capacity": "672Gbps/6.72Tbps",
@@ -8367,7 +8368,7 @@
     },
     {
       "vendor": "H3C",
-      "series": "H3C S5135S-EI系列千兆接入交换机",
+      "series": "S5135S-EI",
       "model": "S5135S-48ST4X-EI",
       "tier": "接入",
       "switching_capacity": "672Gbps/6.72Tbps",
@@ -8384,7 +8385,7 @@
     },
     {
       "vendor": "H3C",
-      "series": "H3C S5135S-EI系列千兆接入交换机",
+      "series": "S5135S-EI",
       "model": "S5135S-24S8T4X-EI",
       "tier": "接入",
       "switching_capacity": "672Gbps/6.72Tbps",
@@ -8401,7 +8402,7 @@
     },
     {
       "vendor": "H3C",
-      "series": "H3C S5135S-EI系列千兆接入交换机",
+      "series": "S5135S-EI",
       "model": "S5135S-8FP4XS-EI-Q",
       "tier": "接入",
       "switching_capacity": "672Gbps/6.72Tbps",
