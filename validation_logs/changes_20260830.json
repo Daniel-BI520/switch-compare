@@ -1,0 +1,83 @@
+[
+  {
+    "vendor": "华为",
+    "model": "S5735-L24T4XE-A-V2",
+    "param": "switching_capacity",
+    "old": "176Gbps/520Gbps",
+    "new": "672Gbps/6.72Tbps",
+    "reason": "核心参数修正，旧版数据为176G/520G，官网最新为672G/6.72T",
+    "source": "https://e.huawei.com/cn/products/switches/campus-switches/s5735-l-v2"
+  },
+  {
+    "vendor": "华为",
+    "model": "S5735-L24T4XE-A-V2",
+    "param": "forwarding_rate",
+    "old": "132Mpps",
+    "new": "171Mpps",
+    "reason": "核心参数修正，旧版132Mpps，官网最新171Mpps",
+    "source": "https://e.huawei.com/cn/products/switches/campus-switches/s5735-l-v2"
+  },
+  {
+    "vendor": "华为",
+    "model": "S5735-L48T4XE-A-V2",
+    "param": "switching_capacity",
+    "old": "224Gbps/520Gbps",
+    "new": "672Gbps/6.72Tbps",
+    "reason": "核心参数修正，旧版数据为224G/520G，官网最新为672G/6.72T",
+    "source": "https://e.huawei.com/cn/products/switches/campus-switches/s5735-l-v2"
+  },
+  {
+    "vendor": "华为",
+    "model": "S5735-L48T4XE-A-V2",
+    "param": "forwarding_rate",
+    "old": "168Mpps",
+    "new": "207Mpps",
+    "reason": "核心参数修正，旧版168Mpps，官网最新207Mpps",
+    "source": "https://e.huawei.com/cn/products/switches/campus-switches/s5735-l-v2"
+  },
+  {
+    "vendor": "华为",
+    "model": "CloudEngine S5735-S48T4XE-XA-V2",
+    "param": "new_model",
+    "old": "",
+    "new": "CloudEngine S5735-S48T4XE-XA-V2",
+    "reason": "华为S5735-S-V2系列光电分离8J型号补全，2.5GE灵活光口设计",
+    "source": "https://e.huawei.com/cn/products/switches/campus-switches/s5735-s-v2"
+  },
+  {
+    "vendor": "华为",
+    "model": "CloudEngine S5735-S24T8J4XE-XA-V2",
+    "param": "new_model",
+    "old": "",
+    "new": "CloudEngine S5735-S24T8J4XE-XA-V2",
+    "reason": "华为S5735-S-V2系列光电分离8J型号补全，2.5GE灵活光口设计",
+    "source": "https://e.huawei.com/cn/products/switches/campus-switches/s5735-s-v2"
+  },
+  {
+    "vendor": "华为",
+    "model": "CloudEngine S5735-S24T8J4XEZ-V2",
+    "param": "new_model",
+    "old": "",
+    "new": "CloudEngine S5735-S24T8J4XEZ-V2",
+    "reason": "华为S5735-S-V2系列光电分离8J型号补全，2.5GE灵活光口设计",
+    "source": "https://e.huawei.com/cn/products/switches/campus-switches/s5735-s-v2"
+  },
+  {
+    "vendor": "华为",
+    "model": "CloudEngine S5735-S24P8J4XEZ-V2",
+    "param": "new_model",
+    "old": "",
+    "new": "CloudEngine S5735-S24P8J4XEZ-V2",
+    "reason": "华为S5735-S-V2系列光电分离8J型号补全，2.5GE灵活光口设计",
+    "source": "https://e.huawei.com/cn/products/switches/campus-switches/s5735-s-v2"
+  },
+  {
+    "vendor": "华为",
+    "model": "CloudEngine S5735-L24T8J4XE-A-V2",
+    "param": "new_model",
+    "old": "",
+    "new": "CloudEngine S5735-L24T8J4XE-A-V2",
+    "reason": "华为S5735-L-V2系列2.5GE光电分离型号新增，8个2.5GE SFP灵活光口",
+    "source": "https://e.huawei.com/cn/products/switches/campus-switches/s5735-l-v2"
+  }
+]
