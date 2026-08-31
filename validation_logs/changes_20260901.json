@@ -1,0 +1,90 @@
+{
+  "changes": [],
+  "new_models": [
+    "CloudEngine S5735-L8T4S-A-V2",
+    "CloudEngine S5735-L8P4S-A-V2",
+    "CloudEngine S5735-L16T4S-A-V2",
+    "CloudEngine S5735-L24T4S-A-V2",
+    "CloudEngine S5735-L24P4S-A-V2",
+    "CloudEngine S5735-L48T4S-A-V2",
+    "CloudEngine S5735-L48LP4S-A-V2",
+    "CloudEngine S5735-L24P4XE-A-V2",
+    "CloudEngine S5735-L48P4XE-A-V2",
+    "CloudEngine S5735-L48LP4XE-A-V2",
+    "S5590-48S4XC-EI",
+    "S5590-48P6XC-EI"
+  ],
+  "url_fixed": [
+    {
+      "model": "CloudEngine S5735-L24T4S-QA1",
+      "old": "https://e.huawei.com/cn/products/switches/campus-switches/s5735-l",
+      "new": "https://e.huawei.com/cn/products/switches/campus-switches/s5735-l-v2"
+    },
+    {
+      "model": "CloudEngine S5735-L8P4S-QA1",
+      "old": "https://e.huawei.com/cn/products/switches/campus-switches/s5735-l",
+      "new": "https://e.huawei.com/cn/products/switches/campus-switches/s5735-l-v2"
+    },
+    {
+      "model": "CloudEngine S5735-L8T4S-QA1",
+      "old": "https://e.huawei.com/cn/products/switches/campus-switches/s5735-l",
+      "new": "https://e.huawei.com/cn/products/switches/campus-switches/s5735-l-v2"
+    },
+    {
+      "model": "S5735-L16P2UM2X-QA-V2",
+      "old": "https://e.huawei.com/cn/products/switches/campus-switches/s5735-l-q-v2",
+      "new": "https://e.huawei.com/cn/products/switches/campus-switches/s5735-l-v2"
+    },
+    {
+      "model": "S5735-L16T4X-QA-V2",
+      "old": "https://e.huawei.com/cn/products/switches/campus-switches/s5735-l-q-v2",
+      "new": "https://e.huawei.com/cn/products/switches/campus-switches/s5735-l-v2"
+    },
+    {
+      "model": "S5735-L24P4S-A2",
+      "old": "https://e.huawei.com/cn/products/switches/campus-switches/s5735-l",
+      "new": "https://e.huawei.com/cn/products/switches/campus-switches/s5735-l-v2"
+    },
+    {
+      "model": "S5735-L24T4S-A2",
+      "old": "https://e.huawei.com/cn/products/switches/campus-switches/s5735-l",
+      "new": "https://e.huawei.com/cn/products/switches/campus-switches/s5735-l-v2"
+    },
+    {
+      "model": "S5735-L24T4X-QA-V2",
+      "old": "https://e.huawei.com/cn/products/switches/campus-switches/s5735-l-q-v2",
+      "new": "https://e.huawei.com/cn/products/switches/campus-switches/s5735-l-v2"
+    },
+    {
+      "model": "S5735-L48P4S-A2",
+      "old": "https://e.huawei.com/cn/products/switches/campus-switches/s5735-l",
+      "new": "https://e.huawei.com/cn/products/switches/campus-switches/s5735-l-v2"
+    },
+    {
+      "model": "S5735-L48P4X-A2",
+      "old": "https://e.huawei.com/cn/products/switches/campus-switches/s5735-l",
+      "new": "https://e.huawei.com/cn/products/switches/campus-switches/s5735-l-v2"
+    },
+    {
+      "model": "S5735-L48T4X-A2",
+      "old": "https://e.huawei.com/cn/products/switches/campus-switches/s5735-l",
+      "new": "https://e.huawei.com/cn/products/switches/campus-switches/s5735-l-v2"
+    },
+    {
+      "model": "S5735-L48T4XE",
+      "old": "https://e.huawei.com/cn/products/switches/campus-switches/s5735-l",
+      "new": "https://e.huawei.com/cn/products/switches/campus-switches/s5735-l-v2"
+    },
+    {
+      "model": "S5735-L8P4X-QA-V2",
+      "old": "https://e.huawei.com/cn/products/switches/campus-switches/s5735-l-q-v2",
+      "new": "https://e.huawei.com/cn/products/switches/campus-switches/s5735-l-v2"
+    },
+    {
+      "model": "S5735-L8T4X-QA-V2",
+      "old": "https://e.huawei.com/cn/products/switches/campus-switches/s5735-l-q-v2",
+      "new": "https://e.huawei.com/cn/products/switches/campus-switches/s5735-l-v2"
+    }
+  ],
+  "discontinued": []
+}
