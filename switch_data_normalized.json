@@ -8924,6 +8924,58 @@
       "fan_redundancy": "支持双风扇冗余（可插拔风扇模块）",
       "is_hot": false,
       "is_new": true
+    },
+    {
+      "vendor": "华为",
+      "series": "CloudEngine S5735-L-V2系列（2.5GE电口）",
+      "model": "CloudEngine S5735-L24PN4XE-A-V2",
+      "tier": "接入",
+      "switching_capacity": "672Gbps/6.72Tbps",
+      "forwarding_rate": "225Mpps",
+      "ports": "24个10/100/1000/2.5G BASE-T PoE+以太网端口，4个万兆SFP+，2个专用堆叠口",
+      "poe_support": "PoE+（400W）",
+      "url": "https://e.huawei.com/cn/products/switches/campus-switches/s5735-l-v2-ge",
+      "features": "2.5GE到桌面接入，内置AC供电，支持静态路由/RIP/OSPF三层路由，Telemetry智能运维",
+      "expansion_slots": "无",
+      "power_redundancy": "不支持（内置AC）",
+      "fan_redundancy": "智能调速风扇",
+      "is_hot": false,
+      "is_new": true
+    },
+    {
+      "vendor": "华为",
+      "series": "CloudEngine S5735-L-V2系列（2.5GE电口）",
+      "model": "CloudEngine S5735-L48PN4XE-A-V2",
+      "tier": "接入",
+      "switching_capacity": "672Gbps/6.72Tbps",
+      "forwarding_rate": "315Mpps",
+      "ports": "48个10/100/1000/2.5G BASE-T PoE+以太网端口，4个万兆SFP+，2个专用堆叠口",
+      "poe_support": "PoE+（828W）",
+      "url": "https://e.huawei.com/cn/products/switches/campus-switches/s5735-l-v2-ge",
+      "features": "2.5GE到桌面接入，48口高密度PoE+，内置AC供电，支持静态路由/RIP/OSPF三层路由",
+      "expansion_slots": "无",
+      "power_redundancy": "不支持（内置AC）",
+      "fan_redundancy": "智能调速风扇",
+      "is_hot": false,
+      "is_new": true
+    },
+    {
+      "vendor": "华为",
+      "series": "CloudEngine S5735-L-V2系列（2.5GE电口）",
+      "model": "CloudEngine S5735-L48LPN4XE-A-V2",
+      "tier": "接入",
+      "switching_capacity": "672Gbps/6.72Tbps",
+      "forwarding_rate": "315Mpps",
+      "ports": "48个10/100/1000/2.5G BASE-T PoE+以太网端口，4个万兆SFP+，2个专用堆叠口",
+      "poe_support": "PoE+（360W，长距PoE）",
+      "url": "https://e.huawei.com/cn/products/switches/campus-switches/s5735-l-v2-ge",
+      "features": "2.5GE到桌面长距PoE款，360W低功耗PoE+，内置AC供电，支持静态路由/RIP/OSPF三层路由",
+      "expansion_slots": "无",
+      "power_redundancy": "不支持（内置AC）",
+      "fan_redundancy": "智能调速风扇",
+      "is_hot": false,
+      "is_new": true
     }
-  ]
+  ],
+  "update_time": "2026-09-05"
 }

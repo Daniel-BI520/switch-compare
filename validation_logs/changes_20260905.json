@@ -1,0 +1,29 @@
+[
+  {
+    "vendor": "华为",
+    "model": "CloudEngine S5735-L24PN4XE-A-V2",
+    "param": "new_model",
+    "old": "",
+    "new": "CloudEngine S5735-L24PN4XE-A-V2",
+    "reason": "华为S5735-L-V2系列2.5GE电口PoE型号补全，2.5G到桌面场景",
+    "source": "https://e.huawei.com/cn/products/switches/campus-switches/s5735-l-v2-ge"
+  },
+  {
+    "vendor": "华为",
+    "model": "CloudEngine S5735-L48PN4XE-A-V2",
+    "param": "new_model",
+    "old": "",
+    "new": "CloudEngine S5735-L48PN4XE-A-V2",
+    "reason": "华为S5735-L-V2系列2.5GE电口PoE型号补全，2.5G到桌面场景",
+    "source": "https://e.huawei.com/cn/products/switches/campus-switches/s5735-l-v2-ge"
+  },
+  {
+    "vendor": "华为",
+    "model": "CloudEngine S5735-L48LPN4XE-A-V2",
+    "param": "new_model",
+    "old": "",
+    "new": "CloudEngine S5735-L48LPN4XE-A-V2",
+    "reason": "华为S5735-L-V2系列2.5GE电口PoE型号补全，2.5G到桌面场景",
+    "source": "https://e.huawei.com/cn/products/switches/campus-switches/s5735-l-v2-ge"
+  }
+]
