@@ -1463,8 +1463,8 @@
       "series": "RG-S5310-E 系列",
       "model": "RG-S5310-24GT4XS-E",
       "tier": "接入",
-      "switching_capacity": "1.36Tbps/13.6Tbps",
-      "forwarding_rate": "291Mpps/770Mpps",
+      "switching_capacity": "672Gbps/6.72Tbps",
+      "forwarding_rate": "171Mpps/309Mpps",
       "ports": "24个千兆电口 + 4个10G SFP+光口",
       "poe_support": "不支持",
       "expansion_slots": "0",
@@ -1473,15 +1473,16 @@
       "url": "https://www.ruijie.com.cn/cp/jh-yqw-jrjh/s531024gt4xse/",
       "features": "VSU虚拟化、CPP/NFPP安全防护、三层路由（静态/RIP/OSPF）、智能风扇",
       "is_hot": false,
-      "is_new": false
+      "is_new": false,
+      "param_note": "2026-09-11 根据官网最新彩页修正"
     },
     {
       "vendor": "锐捷",
       "series": "RG-S5310-E 系列",
       "model": "RG-S5310-24GT4XS-P-E",
       "tier": "接入",
-      "switching_capacity": "1.36Tbps/13.6Tbps",
-      "forwarding_rate": "291Mpps/770Mpps",
+      "switching_capacity": "672Gbps/6.72Tbps",
+      "forwarding_rate": "171Mpps/309Mpps",
       "ports": "24个千兆电口 + 4个10G SFP+光口",
       "poe_support": "支持PoE，最大输出740W",
       "expansion_slots": "0",
@@ -1490,30 +1491,32 @@
       "url": "https://www.ruijie.com.cn/cp/jh-yqw-jrjh/s531024gt4xse/",
       "features": "PoE供电、万兆上行、VSU、安全防护",
       "is_hot": false,
-      "is_new": false
+      "is_new": false,
+      "param_note": "2026-09-11 根据官网最新彩页修正"
     },
     {
       "vendor": "锐捷",
       "series": "RG-S5310",
       "model": "RG-S5310-48GT4XS",
       "tier": "接入",
-      "switching_capacity": "336Gbps",
-      "forwarding_rate": "108Mpps",
+      "switching_capacity": "688Gbps/6.88Tbps",
+      "forwarding_rate": "207Mpps/363Mpps",
       "ports": "48个千兆电口，4个万兆光口",
       "poe_support": "不支持",
       "expansion_slots": "0",
       "power_redundancy": "无",
       "url": "https://www.ruijie.com.cn/cp/jh-yqw-jrjh/s531024gt4xse/",
       "is_hot": false,
-      "is_new": false
+      "is_new": false,
+      "param_note": "2026-09-11 根据官网产品页修正"
     },
     {
       "vendor": "锐捷",
       "series": "RG-S5310-E 系列",
       "model": "RG-S5310-48GT4XS-E",
       "tier": "接入",
-      "switching_capacity": "1.36Tbps/13.6Tbps",
-      "forwarding_rate": "560Mpps/770Mpps",
+      "switching_capacity": "672Gbps/6.72Tbps",
+      "forwarding_rate": "207Mpps/363Mpps",
       "ports": "48个千兆电口 + 4个10G SFP+光口",
       "poe_support": "不支持",
       "expansion_slots": "0",
@@ -1522,15 +1525,16 @@
       "url": "https://www.ruijie.com.cn/cp/jh-yqw-jrjh/s531024gt4xse/",
       "features": "48千兆电+4万兆光、VSU、ERPS环网、云管理",
       "is_hot": false,
-      "is_new": false
+      "is_new": false,
+      "param_note": "2026-09-11 根据官网最新彩页修正"
     },
     {
       "vendor": "锐捷",
       "series": "RG-S5310-E 系列",
       "model": "RG-S5310-48SFP4XS-E",
       "tier": "接入",
-      "switching_capacity": "1.36Tbps/13.6Tbps",
-      "forwarding_rate": "560Mpps/770Mpps",
+      "switching_capacity": "672Gbps/6.72Tbps",
+      "forwarding_rate": "207Mpps/363Mpps",
       "ports": "48个千兆光口 + 4个10G SFP+光口",
       "poe_support": "不支持",
       "expansion_slots": "0",
@@ -1539,7 +1543,8 @@
       "url": "https://www.ruijie.com.cn/cp/jh-yqw-jrjh/s531024gt4xse/",
       "features": "全光口接入、48千兆光+4万兆光、长距离传输",
       "is_hot": false,
-      "is_new": false
+      "is_new": false,
+      "param_note": "2026-09-11 根据官网最新彩页修正"
     },
     {
       "vendor": "锐捷",
