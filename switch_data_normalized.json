@@ -2212,14 +2212,14 @@
    "series": "CloudEngine S6730-H-V2 (S6700系列) ",
    "model": "CloudEngine S6730-H24X6C-V2",
    "tier": "汇聚",
-   "switching_capacity": "4.8Tbps/25.6Tbps",
-   "forwarding_rate": "1260Mpps",
+   "switching_capacity": "4.8Tbps/48Tbps",
+   "forwarding_rate": "1620Mpps",
    "ports": "24个万兆SFP+ + 6个40/100GE QSFP28",
    "poe_support": "不支持",
    "expansion_slots": "0",
    "power_redundancy": "1+1电源备份",
    "fan_redundancy": "可插拔风扇，智能调速",
-   "url": "https://e.huawei.com/cn/products/switches/campus-switches/s6730-h",
+   "url": "https://e.huawei.com/cn/products/switches/campus-switches/s6730-h-v2-10g",
    "features": "24万兆光+6×100G、SmartLink/VRRP双上行备份、iStack堆叠",
    "is_hot": true,
    "is_new": false
@@ -2229,14 +2229,14 @@
    "series": "CloudEngine S6730-H-V2 (S6700系列) ",
    "model": "CloudEngine S6730-H28X6CZ-V2",
    "tier": "汇聚",
-   "switching_capacity": "4.8Tbps/25.6Tbps",
+   "switching_capacity": "4.8Tbps/48Tbps",
    "forwarding_rate": "1620Mpps",
    "ports": "28个万兆SFP+ + 6个40/100GE QSFP28",
    "poe_support": "不支持",
    "expansion_slots": "1个扩展插槽",
    "power_redundancy": "1+1电源备份",
    "fan_redundancy": "可插拔风扇，智能调速",
-   "url": "https://e.huawei.com/cn/products/switches/campus-switches/s6730-h",
+   "url": "https://e.huawei.com/cn/products/switches/campus-switches/s6730-h-v2-10g",
    "features": "28万兆+6×100G上行、云管理、VXLAN EVPN、RTU容量升级授权",
    "is_hot": false,
    "is_new": false
@@ -2246,14 +2246,14 @@
    "series": "CloudEngine S6730-H-V2 (S6700系列) ",
    "model": "CloudEngine S6730-H48X6CZ-V2",
    "tier": "汇聚",
-   "switching_capacity": "4.8Tbps/25.6Tbps",
+   "switching_capacity": "4.8Tbps/48Tbps",
    "forwarding_rate": "2000Mpps",
    "ports": "48个万兆SFP+ + 6个40/100GE QSFP28",
    "poe_support": "不支持",
    "expansion_slots": "1个扩展插槽",
    "power_redundancy": "1+1电源备份",
    "fan_redundancy": "可插拔风扇，智能调速",
-   "url": "https://e.huawei.com/cn/products/switches/campus-switches/s6730-h",
+   "url": "https://e.huawei.com/cn/products/switches/campus-switches/s6730-h-v2-10g",
    "features": "云管理、VXLAN、MACsec安全加密、ERPS以太环网、iStack堆叠、业务随行",
    "is_hot": false,
    "is_new": false
@@ -8977,5 +8977,6 @@
    "is_hot": false,
    "is_new": false
   }
- ]
+ ],
+ "update_time": "2026-10-13"
 }

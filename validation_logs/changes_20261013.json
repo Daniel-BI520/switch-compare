@@ -1,0 +1,65 @@
+[
+  [
+    "华为",
+    "CloudEngine S6730-H24X6C-V2",
+    "switching_capacity",
+    "4.8Tbps/25.6Tbps",
+    "4.8Tbps/48Tbps",
+    "https://e.huawei.com/cn/products/switches/campus-switches/s6730-h",
+    "https://e.huawei.com/cn/products/switches/campus-switches/s6730-h-v2-10g"
+  ],
+  [
+    "华为",
+    "CloudEngine S6730-H24X6C-V2",
+    "forwarding_rate",
+    "1260Mpps",
+    "1620Mpps",
+    "-",
+    "-"
+  ],
+  [
+    "华为",
+    "CloudEngine S6730-H24X6C-V2",
+    "url",
+    "https://e.huawei.com/cn/products/switches/campus-switches/s6730-h",
+    "https://e.huawei.com/cn/products/switches/campus-switches/s6730-h-v2-10g",
+    "-",
+    "-"
+  ],
+  [
+    "华为",
+    "CloudEngine S6730-H28X6CZ-V2",
+    "switching_capacity",
+    "4.8Tbps/25.6Tbps",
+    "4.8Tbps/48Tbps",
+    "https://e.huawei.com/cn/products/switches/campus-switches/s6730-h",
+    "https://e.huawei.com/cn/products/switches/campus-switches/s6730-h-v2-10g"
+  ],
+  [
+    "华为",
+    "CloudEngine S6730-H28X6CZ-V2",
+    "url",
+    "https://e.huawei.com/cn/products/switches/campus-switches/s6730-h",
+    "https://e.huawei.com/cn/products/switches/campus-switches/s6730-h-v2-10g",
+    "-",
+    "-"
+  ],
+  [
+    "华为",
+    "CloudEngine S6730-H48X6CZ-V2",
+    "switching_capacity",
+    "4.8Tbps/25.6Tbps",
+    "4.8Tbps/48Tbps",
+    "https://e.huawei.com/cn/products/switches/campus-switches/s6730-h",
+    "https://e.huawei.com/cn/products/switches/campus-switches/s6730-h-v2-10g"
+  ],
+  [
+    "华为",
+    "CloudEngine S6730-H48X6CZ-V2",
+    "url",
+    "https://e.huawei.com/cn/products/switches/campus-switches/s6730-h",
+    "https://e.huawei.com/cn/products/switches/campus-switches/s6730-h-v2-10g",
+    "-",
+    "-"
+  ]
+]
