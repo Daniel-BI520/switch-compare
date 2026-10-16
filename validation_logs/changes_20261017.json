@@ -1,0 +1,5 @@
+[
+  ["华为", "CloudEngine S5731-S32ST4X", "forwarding_rate", "280Mpps", "600Mpps", "-", "-"],
+  ["华为", "CloudEngine S5731-S48T4X", "forwarding_rate", "280Mpps", "560Mpps", "-", "-"],
+  ["华为", "CloudEngine S5731-S48P4X", "forwarding_rate", "280Mpps", "560Mpps", "-", "-"]
+]

@@ -3251,7 +3251,7 @@
       "model": "CloudEngine S5731-S32ST4X",
       "tier": "接入",
       "switching_capacity": "1.36Tbps/13.6Tbps",
-      "forwarding_rate": "280Mpps",
+      "forwarding_rate": "600Mpps",
       "ports": "24个1/2.5GE SFP端口，8个10/100/1000Base-T端口，4个10GE SFP+端口",
       "poe_support": "否",
       "expansion_slots": "--",
@@ -3268,7 +3268,7 @@
       "model": "CloudEngine S5731-S48P4X",
       "tier": "接入",
       "switching_capacity": "1.36Tbps/13.6Tbps",
-      "forwarding_rate": "280Mpps",
+      "forwarding_rate": "560Mpps",
       "ports": "48个10/100/1000Base-T以太网端口，4个10GE SFP+端口",
       "poe_support": "是（PoE+）",
       "expansion_slots": "--",
@@ -3285,7 +3285,7 @@
       "model": "CloudEngine S5731-S48T4X",
       "tier": "接入",
       "switching_capacity": "1.36Tbps/13.6Tbps",
-      "forwarding_rate": "280Mpps",
+      "forwarding_rate": "560Mpps",
       "ports": "48个10/100/1000Base-T以太网端口，4个10GE SFP+端口",
       "poe_support": "否",
       "expansion_slots": "--",
@@ -8978,5 +8978,5 @@
       "is_new": false
     }
   ],
-  "update_time": "2026-10-15"
+  "update_time": "2026-10-17"
 }
