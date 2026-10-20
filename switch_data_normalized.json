@@ -8250,8 +8250,8 @@
       "series": "S6850 系列",
       "model": "S6850-56HF",
       "tier": "接入",
-      "switching_capacity": "3.2Tbps",
-      "forwarding_rate": "2560Mpps",
+      "switching_capacity": "8Tbps/128Tbps",
+      "forwarding_rate": "2400Mpps",
       "ports": "48个25GE SFP28 + 8个100GE QSFP28",
       "poe_support": "否",
       "expansion_slots": "0",
@@ -8978,5 +8978,5 @@
       "is_new": false
     }
   ],
-  "update_time": "2026-10-19"
+  "update_time": "2026-10-21"
 }
