@@ -1,0 +1,29 @@
+[
+ [
+  "H3C",
+  "S6530X-48X8C",
+  "switching_capacity",
+  "4.8Tbps/48Tbps",
+  "8Tbps/80Tbps",
+  "-",
+  "-"
+ ],
+ [
+  "H3C",
+  "S5130S-48UN6X-EI-G-V2",
+  "switching_capacity",
+  "672Gbps/6.72Tbps",
+  "1.36Tbps/13.6Tbps",
+  "-",
+  "-"
+ ],
+ [
+  "H3C",
+  "S5130S-48UN6X-EI-G-V2",
+  "forwarding_rate",
+  "107Mpps",
+  "327Mpps/770Mpps",
+  "-",
+  "-"
+ ]
+]

@@ -5979,7 +5979,7 @@
       "series": "S6530X 系列",
       "model": "S6530X-48X8C",
       "tier": "汇聚",
-      "switching_capacity": "4.8Tbps/48Tbps",
+      "switching_capacity": "8Tbps/80Tbps",
       "forwarding_rate": "2000Mpps",
       "ports": "48个1G/10G SFP+端口，8个40G/100G QSFP28端口",
       "poe_support": "否",
@@ -7474,8 +7474,8 @@
       "series": "S5130S-EI-G系列",
       "model": "S5130S-48UN6X-EI-G-V2",
       "tier": "接入",
-      "switching_capacity": "672Gbps/6.72Tbps",
-      "forwarding_rate": "107Mpps",
+      "switching_capacity": "1.36Tbps/13.6Tbps",
+      "forwarding_rate": "327Mpps/770Mpps",
       "ports": "48个1G/2.5G BASE-T多速率电口 + 6个SFP+万兆光口",
       "poe_support": "否",
       "expansion_slots": "无",
@@ -8978,5 +8978,5 @@
       "is_new": false
     }
   ],
-  "update_time": "2026-10-21"
+  "update_time": "2026-10-23"
 }
