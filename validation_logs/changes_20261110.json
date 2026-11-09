@@ -1,0 +1,26 @@
+[
+  [
+    "华为",
+    "CE12804",
+    "url",
+    "https://info.support.huawei.com/info-finder/search-center/zh/enterprise/switch/ce12804-pid-22460500",
+    "https://carrier.huawei.com/cn/products/fixed-network/b2b/ethernet-switches/dc-switches/ce12800",
+    "URL红线修复：原指向support搜索中心页(非独立产品页)，替换为华为官方中文数据中心交换机CE12800系列产品页"
+  ],
+  [
+    "华为",
+    "CE12808",
+    "url",
+    "https://info.support.huawei.com/info-finder/search-center/zh/enterprise/switch/ce12808-pid-22460502",
+    "https://carrier.huawei.com/cn/products/fixed-network/b2b/ethernet-switches/dc-switches/ce12800",
+    "URL红线修复：原指向support搜索中心页(非独立产品页)，替换为华为官方中文数据中心交换机CE12800系列产品页"
+  ],
+  [
+    "华为",
+    "CE12812",
+    "url",
+    "https://info.support.huawei.com/info-finder/vue/search-center/zh/enterprise/switch/ce12812-pid-22460504",
+    "https://carrier.huawei.com/cn/products/fixed-network/b2b/ethernet-switches/dc-switches/ce12800",
+    "URL红线修复：原指向support搜索中心页(非独立产品页)，替换为华为官方中文数据中心交换机CE12800系列产品页"
+  ]
+]
