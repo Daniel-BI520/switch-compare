@@ -1599,7 +1599,7 @@
       "forwarding_rate": "17280Mpps",
       "ports": "4个业务槽位, 支持100GE/40GE线卡",
       "poe_support": "不支持",
-      "url": "https://info.support.huawei.com/info-finder/search-center/zh/enterprise/switch/ce12804-pid-22460500",
+      "url": "https://carrier.huawei.com/cn/products/fixed-network/b2b/ethernet-switches/dc-switches/ce12800",
       "features": "CLOS架构, VXLAN, TRILL, EVN, FCoE, 100GE (经典框式)",
       "expansion_slots": "",
       "power_redundancy": "",
@@ -1616,7 +1616,7 @@
       "forwarding_rate": "34560Mpps",
       "ports": "8个业务槽位, 支持100GE/40GE线卡",
       "poe_support": "不支持",
-      "url": "https://info.support.huawei.com/info-finder/search-center/zh/enterprise/switch/ce12808-pid-22460502",
+      "url": "https://carrier.huawei.com/cn/products/fixed-network/b2b/ethernet-switches/dc-switches/ce12800",
       "features": "CLOS架构, VXLAN, TRILL, EVN, FCoE, 100GE (经典框式)",
       "expansion_slots": "",
       "power_redundancy": "",
@@ -1633,7 +1633,7 @@
       "forwarding_rate": "51840Mpps",
       "ports": "12个业务槽位, 支持100GE/40GE线卡",
       "poe_support": "不支持",
-      "url": "https://info.support.huawei.com/info-finder/vue/search-center/zh/enterprise/switch/ce12812-pid-22460504",
+      "url": "https://carrier.huawei.com/cn/products/fixed-network/b2b/ethernet-switches/dc-switches/ce12800",
       "features": "CLOS架构, VXLAN, TRILL, EVN, FCoE, 100GE (旗舰型号)",
       "expansion_slots": "",
       "power_redundancy": "",
@@ -8978,5 +8978,5 @@
       "is_new": false
     }
   ],
-  "update_time": "2026-11-08"
+  "update_time": "2026-11-10"
 }
