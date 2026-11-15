@@ -1,0 +1,14 @@
+{
+  "date": "2026-11-16",
+  "total_models": 522,
+  "by_vendor": {"锐捷": 100, "华为": 188, "H3C": 234},
+  "added": 0,
+  "updated_parameters": 0,
+  "decommissioned": 0,
+  "hot_models_verified": 17,
+  "url_bad": 0,
+  "url_empty": 0,
+  "verification_scope": "核心参数优先校验(交换容量+包转发率)@17款热门型号 + 全量URL域名合规校验@522款",
+  "status": "无变化",
+  "remarks": "17款热门型号核心参数与三厂商官网CN页面一致; 522款URL全部为官方中文官网域名, 无空/第三方链接"
+}
