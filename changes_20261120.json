@@ -1,0 +1,51 @@
+{
+  "date": "2026-11-20",
+  "summary": {
+    "new": 0,
+    "param_update": 0,
+    "eol": 0,
+    "url_fix": 26,
+    "status_mark": 1,
+    "total": 522,
+    "vendors": {
+      "锐捷": 100,
+      "华为": 188,
+      "H3C": 234
+    }
+  },
+  "url_fixes": [
+    "RG-S5760C-24GT8XS-X",
+    "RG-S5760C-48GT4XS-HP-X",
+    "RG-S5760C-48SFP4XS-X",
+    "RG-S5750C-28GT4XS-H",
+    "RG-S5750C-48SFP4XS-H",
+    "RG-S6231-48XS8CQ",
+    "RG-S6231-48XT8CQ",
+    "RG-S6232-48XS8CQ",
+    "RG-S6233-48XS8CQ",
+    "RG-S5310-24GT4XS-P-E",
+    "RG-S5310-48GT4XS-E",
+    "RG-S5310-48SFP4XS-E",
+    "RG-S5300-24GT4XS-E",
+    "RG-S5300-48GT4XS-E",
+    "RG-S2910-24GT4SFP-P-L",
+    "RG-S2910-24GT4XS-L",
+    "RG-S2910-24GT4XS-P-L",
+    "RG-S2910-48GT4SFP-L",
+    "RG-S2910-48GT4XS-L",
+    "RG-S2910-24GT4XS-UP-H",
+    "RG-S6120-20XS4VS2QXS",
+    "RG-S6160-48VS8CQ-X",
+    "RG-S6160-48XMG4VS2CQ-UP-X",
+    "RG-S7805C",
+    "RG-S7808C",
+    "RG-S7810C"
+  ],
+  "status_marks": [
+    {
+      "model": "RG-S7810C",
+      "note": "退市公告: 2026-06-30停售/2026-12-31停产, 替代RG-S7810C-X"
+    }
+  ],
+  "github_commit": "8c072fb"
+}
