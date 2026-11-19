@@ -401,7 +401,7 @@
       "expansion_slots": "3个业务槽",
       "power_redundancy": "2个电源槽位，1+1冗余",
       "fan_redundancy": "1个风扇模块",
-      "url": "https://www.ruijie.com.cn/cp/jh-yqw-hxjh/S7808C/",
+      "url": "https://www.ruijie.com.cn/cp/jh-yqw-hxjh/rgs7805cx/",
       "features": "VSU虚拟化、MPLS L3VPN、OpenFlow 1.3、4U高度、442×451×175mm",
       "is_hot": false,
       "is_new": false
@@ -418,7 +418,7 @@
       "expansion_slots": "6个业务槽",
       "power_redundancy": "10个电源槽位(含外置PoE电源)，N+M冗余",
       "fan_redundancy": "风扇框1+1冗余",
-      "url": "https://www.ruijie.com.cn/cp/jh-yqw-hxjh/s7808c-cmx/",
+      "url": "https://www.ruijie.com.cn/cp/jh-shjzhx-sjzxhx/S7808C/",
       "features": "VSU虚拟化、MPLS、10U高度、支持PoE电源、ERPS环网保护",
       "is_hot": false,
       "is_new": false
@@ -452,8 +452,8 @@
       "expansion_slots": "8个业务槽",
       "power_redundancy": "电源N+M冗余",
       "fan_redundancy": "2个风扇框",
-      "url": "https://www.ruijie.com.cn/cp/jh-yqw-hxjh/S7808C/",
-      "features": "10U框式、CLOS架构、双主控+独立交换网板、VSU3.0",
+      "url": "https://www.ruijie.com.cn/cp/jh-yqw-hxjh/s7810c/",
+      "features": "10U框式、CLOS架构、双主控+独立交换网板、VSU3.0 | 已发布退市公告(2026-06-30停售, 2026-12-31停产), 替代型号RG-S7810C-X",
       "is_hot": false,
       "is_new": false
     },
@@ -538,7 +538,7 @@
       "expansion_slots": "2个扩展槽",
       "power_redundancy": "2个模块化电源插槽，1+1冗余",
       "fan_redundancy": "内置3块风扇，支持风扇冗余",
-      "url": "https://www.ruijie.com.cn/cp/jh-yqw-hjjh/a5750c48g4xh/",
+      "url": "https://www.ruijie.com.cn/cp/jh-yqw-hjjh/s5750c28g4xh/",
       "features": "VSU虚拟化（最多9台）、MPLS、SDN/OpenFlow、双扩展槽、热补丁",
       "is_hot": false,
       "is_new": false
@@ -572,7 +572,7 @@
       "expansion_slots": "2个扩展槽",
       "power_redundancy": "2个模块化电源插槽，1+1冗余",
       "fan_redundancy": "内置3块风扇，支持风扇冗余",
-      "url": "https://www.ruijie.com.cn/cp/jh-yqw-hjjh/a5750c48g4xh/",
+      "url": "https://www.ruijie.com.cn/cp/jh-yqw-hjjh/s5750c48sfp4xsh/",
       "features": "48千兆光+4万兆光、全光接入汇聚、VSU、MPLS",
       "is_hot": false,
       "is_new": false
@@ -589,7 +589,7 @@
       "expansion_slots": "",
       "power_redundancy": "双电源1+1冗余",
       "fan_redundancy": "模块化风扇",
-      "url": "https://www.ruijie.com.cn/cp/jh-yqw-hjjh/RG-S5760C-24SFP8GT8XS-X/",
+      "url": "https://www.ruijie.com.cn/cp/jh-yqw-hjjh/RG-S5760C-24GT8XS-X/",
       "features": "24千兆电+8万兆光、VSU虚拟化、三层路由全特性",
       "is_hot": false,
       "is_new": false
@@ -657,7 +657,7 @@
       "expansion_slots": "0（固化端口）",
       "power_redundancy": "2个模块化电源插槽，1+1冗余",
       "fan_redundancy": "2个模块化风扇插槽",
-      "url": "https://www.ruijie.com.cn/cp/jh-yqw-hjjh/RG-S6120-48XS8CQ/",
+      "url": "https://ruijie.com.cn/cp/jh-yqw-hjjh/s612020xs4vs2qxs/",
       "features": "VSU虚拟化、CPP/NFPP安全防护、智能风扇调速、1U高度",
       "is_hot": false,
       "is_new": false
@@ -776,7 +776,7 @@
       "expansion_slots": "0（固化端口）",
       "power_redundancy": "模块化双电源1+1冗余",
       "fan_redundancy": "模块化风扇冗余",
-      "url": "https://www.ruijie.com.cn/cp/jh-yqw-hjjh/RG-S6160-28VS8CQ-X/",
+      "url": "https://www.ruijie.com.cn/cp/jh-yqw-hjjh/rg-s6160-48vs8cq-x/",
       "features": "48口25G接入+8口100G上联、VSU、EVPN VXLAN",
       "is_hot": false,
       "is_new": false
@@ -793,7 +793,7 @@
       "expansion_slots": "0（固化端口）",
       "power_redundancy": "模块化双电源1+1冗余",
       "fan_redundancy": "模块化风扇冗余",
-      "url": "https://www.ruijie.com.cn/cp/jh-yqw-hjjh/RG-S6160-28VS8CQ-X/",
+      "url": "https://www.ruijie.com.cn/cp/jh-yqw-hjjh/rg-s6160-48xmg4vs2cq-uo-x/",
       "features": "多速率10GE电口接入、PoE++高功率供电、VSU虚拟化",
       "is_hot": false,
       "is_new": false
@@ -864,7 +864,7 @@
       "forwarding_rate": "2000Mpps",
       "ports": "48 x 10GE SFP+ + 8 x 100GE QSFP28",
       "poe_support": "不支持",
-      "url": "https://www.ruijie.com.cn/cp/jh-shjzhx-sjzxjr/s625048xs8cq/",
+      "url": "https://www.ruijie.com.cn/cp/jh-shjzhx-sjzxjr/s623148xs8cq/",
       "features": "10GE接入, 100GE上行, 740K/140K IPv4/IPv6路由表项, VXLAN, EVPN",
       "expansion_slots": "",
       "power_redundancy": "",
@@ -881,7 +881,7 @@
       "forwarding_rate": "2000Mpps",
       "ports": "48 x 10GE Base-T + 8 x 100GE QSFP28",
       "poe_support": "不支持",
-      "url": "https://www.ruijie.com.cn/cp/jh-shjzhx-sjzxjr/s625048xs8cq/",
+      "url": "https://www.ruijie.com.cn/cp/jh-shjzhx-sjzxjr/s623148xt8cq/",
       "features": "10GE电口接入, 100GE上行, VXLAN, EVPN, M-LAG",
       "expansion_slots": "",
       "power_redundancy": "",
@@ -898,7 +898,7 @@
       "forwarding_rate": "2000Mpps",
       "ports": "48 x 10GE SFP+ + 8 x 100GE QSFP28",
       "poe_support": "不支持",
-      "url": "https://www.ruijie.com.cn/cp/jh-shjzhx-sjzxjr/s625048xs8cq/",
+      "url": "https://www.ruijie.com.cn/cp/jh-shjzhx-sjzxjr/s623248xs8cq/",
       "features": "10GE接入, 100GE上行, 740K/140K IPv4/IPv6路由表项, VXLAN, EVPN",
       "expansion_slots": "",
       "power_redundancy": "",
@@ -915,7 +915,7 @@
       "forwarding_rate": "2000Mpps",
       "ports": "48 x 10GE SFP+ + 8 x 100GE QSFP28",
       "poe_support": "不支持",
-      "url": "https://www.ruijie.com.cn/cp/jh-shjzhx-sjzxjr/s625048xs8cq/",
+      "url": "https://www.ruijie.com.cn/cp/jh-shjzhx-sjzxjr/6233-48xs8cq/",
       "features": "10GE接入, 100GE上行, VXLAN, EVPN, M-LAG",
       "expansion_slots": "",
       "power_redundancy": "",
@@ -1088,7 +1088,7 @@
       "expansion_slots": "无",
       "power_redundancy": "固化单交流电源",
       "fan_redundancy": "智能调速风扇",
-      "url": "https://www.ruijie.com.cn/cp/jh-zxwljj/s2910l-24gt4sfp-l/",
+      "url": "https://www.ruijie.com.cn/cp/jh-zxwljj/s2910l-24gt4sfp-p-l",
       "features": "三层网管、PoE+供电、VSU虚拟化、一键查看PoE状态",
       "is_new": false,
       "is_hot": false
@@ -1139,7 +1139,7 @@
       "expansion_slots": "无",
       "power_redundancy": "固化单交流电源",
       "fan_redundancy": "无风扇",
-      "url": "https://www.ruijie.com.cn/cp/jh-zxwljj/s2910l-24gt4sfp-l/",
+      "url": "https://www.ruijie.com.cn/cp/jh-zxwljj/s2910l-24gt4xs-l",
       "features": "三层网管、万兆上行、VSU虚拟化、RLDP快速环路检测",
       "is_new": false,
       "is_hot": false
@@ -1156,7 +1156,7 @@
       "expansion_slots": "无",
       "power_redundancy": "固化单交流电源",
       "fan_redundancy": "智能调速风扇",
-      "url": "https://www.ruijie.com.cn/cp/jh-zxwljj/s2910l-24gt4sfp-l/",
+      "url": "https://www.ruijie.com.cn/cp/jh-zxwljj/s2910l-24gt4xs-p-l",
       "features": "三层网管、PoE+供电、万兆上行、VSU虚拟化、一键查看PoE状态",
       "is_new": false,
       "is_hot": false
@@ -1173,7 +1173,7 @@
       "expansion_slots": "0",
       "power_redundancy": "固化单电源",
       "fan_redundancy": "支持风扇调速",
-      "url": "https://www.ruijie.com.cn/cp/jh-yqw-jrjh/s291024guph/",
+      "url": "https://www.ruijie.com.cn/cp/jh-yqw-jrjh/s291024gt4xsh/",
       "features": "万兆上行PoE交换机、VSU、三层路由、PoE满载功耗<460W",
       "is_hot": false,
       "is_new": false
@@ -1190,7 +1190,7 @@
       "expansion_slots": "无",
       "power_redundancy": "固化单交流电源",
       "fan_redundancy": "无风扇",
-      "url": "https://www.ruijie.com.cn/cp/jh-zxwljj/s2910l-24gt4sfp-l/",
+      "url": "https://www.ruijie.com.cn/cp/jh-zxwljj/s2910l-48gt4sfp-l",
       "features": "三层网管、VSU虚拟化、RLDP快速环路检测、EEE节能",
       "is_new": false,
       "is_hot": false
@@ -1224,7 +1224,7 @@
       "expansion_slots": "无",
       "power_redundancy": "固化单交流电源",
       "fan_redundancy": "无风扇",
-      "url": "https://www.ruijie.com.cn/cp/jh-zxwljj/s2910l-24gt4sfp-l/",
+      "url": "https://www.ruijie.com.cn/cp/jh-zxwljj/s2910l-48gt4xs-l",
       "features": "三层网管、万兆上行、VSU虚拟化、RLDP快速环路检测",
       "is_new": false,
       "is_hot": false
@@ -1396,7 +1396,7 @@
       "expansion_slots": "0",
       "power_redundancy": "固化单电源（支持RPS冗余）",
       "fan_redundancy": "智能调速风扇",
-      "url": "https://www.ruijie.com.cn/cp/jh-yqw-jrjh/s530048gt2sfp2xse/",
+      "url": "https://www.ruijie.com.cn/cp/jh-yqw-jrjh/s530024gt4xse/",
       "features": "高性价比千兆接入、万兆上行、ERPS环网、VSU虚拟化",
       "is_hot": false,
       "is_new": false
@@ -1430,7 +1430,7 @@
       "expansion_slots": "0",
       "power_redundancy": "固化单电源（支持RPS冗余）",
       "fan_redundancy": "智能调速风扇",
-      "url": "https://www.ruijie.com.cn/cp/jh-yqw-jrjh/s530048gt2sfp2xse/",
+      "url": "https://www.ruijie.com.cn/cp/jh-yqw-jrjh/s530048gt4xse/",
       "features": "48口千兆高密接入、万兆上行",
       "is_hot": false,
       "is_new": false
@@ -1464,7 +1464,7 @@
       "expansion_slots": "0",
       "power_redundancy": "模块化双电源1+1冗余",
       "fan_redundancy": "智能调速风扇",
-      "url": "https://www.ruijie.com.cn/cp/jh-yqw-jrjh/s531024gt4xse/",
+      "url": "https://www.ruijie.com.cn/cp/jh-yqw-jrjh/s531024gt4xspe/",
       "features": "PoE供电、万兆上行、VSU、安全防护",
       "is_hot": false,
       "is_new": false
@@ -1496,7 +1496,7 @@
       "expansion_slots": "0",
       "power_redundancy": "模块化双电源1+1冗余",
       "fan_redundancy": "智能调速风扇",
-      "url": "https://www.ruijie.com.cn/cp/jh-yqw-jrjh/s531024gt4xse/",
+      "url": "https://www.ruijie.com.cn/cp/jh-yqw-jrjh/s531048gt4xse/",
       "features": "48千兆电+4万兆光、VSU、ERPS环网、云管理",
       "is_hot": false,
       "is_new": false
@@ -1513,7 +1513,7 @@
       "expansion_slots": "0",
       "power_redundancy": "模块化双电源1+1冗余",
       "fan_redundancy": "智能调速风扇",
-      "url": "https://www.ruijie.com.cn/cp/jh-yqw-jrjh/s531024gt4xse/",
+      "url": "https://www.ruijie.com.cn/cp/jh-yqw-jrjh/s531048sfp4xse/",
       "features": "全光口接入、48千兆光+4万兆光、长距离传输",
       "is_hot": false,
       "is_new": false
@@ -8578,7 +8578,7 @@
       "forwarding_rate": "660Mpps/930Mpps",
       "ports": "48个10/100/1000M自适应电口，4个1G/10G SFP+光口，支持PoE/PoE+",
       "poe_support": "支持PoE/PoE+",
-      "url": "https://www.ruijie.com.cn/cp/jh-yqw-hjjh/RG-S5760C-24SFP8GT8XS-X/",
+      "url": "https://www.ruijie.com.cn/cp/jh-yqw-hjjh/s5760c-48gt4xs-hp-x/",
       "features": "VSU虚拟化, VXLAN三层网关, EVPN, M-LAG, CPP/NFPP安全, sFlow, 三层路由, PoE+供电",
       "expansion_slots": "1个扩展插槽",
       "power_redundancy": "支持，2个模块化电源",
@@ -8595,7 +8595,7 @@
       "forwarding_rate": "660Mpps/930Mpps",
       "ports": "48个1000M SFP光接口，4个1G/10G SFP+光口",
       "poe_support": "不支持",
-      "url": "https://www.ruijie.com.cn/cp/jh-yqw-hjjh/RG-S5760C-24SFP8GT8XS-X/",
+      "url": "https://www.ruijie.com.cn/cp/jh-yqw-hjjh/s5760c-48sfp4xs-x/",
       "features": "VSU虚拟化, VXLAN三层网关, EVPN, M-LAG, CPP/NFPP安全, sFlow, 三层路由, 模块化双电源",
       "expansion_slots": "1个扩展插槽（支持M5000X-4XS2CQ扩展模块）",
       "power_redundancy": "支持，2个模块化电源",
@@ -8978,5 +8978,5 @@
       "is_new": false
     }
   ],
-  "update_time": "2026-11-18"
+  "update_time": "2026-11-20"
 }
