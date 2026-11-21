@@ -1,0 +1,86 @@
+{
+  "date": "2026-11-22",
+  "strategy": "核心参数优先校验 + 疑点深挖（轻量防反扒）",
+  "total_switches": 522,
+  "vendor_distribution": {
+    "锐捷": 100,
+    "华为": 188,
+    "H3C": 234
+  },
+  "summary": {
+    "新增": 0,
+    "参数更新": 0,
+    "下架": 0,
+    "URL修复": 0,
+    "疑点排除": 6
+  },
+  "core_checked_hot": {
+    "华为(6)": [
+      "CE8855-32CQ4BQ",
+      "S6730-H24X6C-V2",
+      "S5735-S48T4XEZ-V2",
+      "S5735-L24P4S-A-V2",
+      "CE6881-48S6CQ",
+      "CE6881E-48S6CQ"
+    ],
+    "H3C(11)": [
+      "S10506X",
+      "S7506X-G",
+      "S6850-56HF",
+      "S6520X-54HC-EI",
+      "S6530X-48X8C",
+      "S6530X-48Y8C",
+      "S5590-28S8XC-HI",
+      "S5590-48T4XC-EI",
+      "S5130S-48UN6X-EI-G-V2",
+      "S5130S-28P-PWR-EI",
+      "S5560S-28F-EI"
+    ]
+  },
+  "sampled_checked": [
+    "RG-S5760C-24GT8XS-X",
+    "RG-S5750C-28GT4XS-H",
+    "RG-N18010-X",
+    "RG-N18006-X",
+    "S5560X-30C-EI",
+    "S5130S-28P-PWR-EI",
+    "S5720-28X-SI-AC(官网口径核验)"
+  ],
+  "suspected_excluded": [
+    {
+      "model": "CE12808",
+      "issue": "官网存在旧PDF(32T/80T)、info-finder(1290/3870T系列总容量)等不同表述",
+      "conclusion": "保留库中80T/160T、34560Mpps, 对应CE12808E规格, 官网现无逐型号独立页, 不做推测修改"
+    },
+    {
+      "model": "S10508X/S10506X/S10510X",
+      "issue": "旧英文datasheet(80Tbps)与中文官网现行规格(1904/5752Tbps)不一致",
+      "conclusion": "以中文官网现行规格为准, 与库中一致, 无需修改"
+    },
+    {
+      "model": "RG-S5750C-28GT4XS-H",
+      "issue": "搜索到旧彩页758Gbps/7.58Tbps、手册598Gbps、英文页216Gbps多种版本",
+      "conclusion": "锐捷中文官网产品页确认2.56Tbps/25.6Tbps、786/822Mpps, 与库中一致"
+    },
+    {
+      "model": "RG-S5760C-48GT4XS-X",
+      "issue": "英文站787Gbps/586Mpps与中文站规格不同",
+      "conclusion": "中文官网产品页确认系列规格2.56Tbps/25.6Tbps、660/930Mpps, 与库中一致"
+    },
+    {
+      "model": "CE12800系列URL",
+      "issue": "e.huawei.com已无CE12800页面, 现URL指向carrier.huawei.com运营商域",
+      "conclusion": "URL为华为官方中文域有效链接, 保留"
+    },
+    {
+      "model": "RG-S5760C-24GT8XS-X",
+      "issue": "英文站826Gbps/614Mpps",
+      "conclusion": "以中文官网2.56Tbps/660Mpps为准, 一致"
+    }
+  ],
+  "hot_tags": "17款无变化（华为6/H3C 11，锐捷不打标签）",
+  "new_tags": "0款（本轮未发现12个月内发布且在核心/汇聚/接入范围内的新型号）",
+  "url_quality": "全库0空URL、0第三方链接（扫描结果）",
+  "deploy_github": "commit待填",
+  "accessed": "华为e.huawei CE6800系列页、info-finder、H3C S10500X-G官网、锐捷官网产品页×4（请求间隔控制+搜索snippet优先，未触发反扒）"
+}
