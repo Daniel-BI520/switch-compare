@@ -1,0 +1,251 @@
+{
+  "date": "2026-11-24",
+  "summary": {
+    "新增": 0,
+    "参数更新": 19,
+    "下架": 0,
+    "URL修复": 0
+  },
+  "param_updates": [
+    {
+      "model": "S6730-S24X6Q-V2",
+      "changes": [
+        [
+          "交换容量",
+          "1.68Tbps/2.4Tbps",
+          "4.8Tbps/48Tbps"
+        ],
+        [
+          "包转发率",
+          "490Mpps",
+          "1620Mpps"
+        ],
+        [
+          "端口",
+          "24个1/10GE SFP+端口，6个40/100GE QSFP28端口",
+          "24个万兆SFP+，6个40/100GE QSFP28"
+        ]
+      ]
+    },
+    {
+      "model": "S5130S-10MS-UPWR-EI",
+      "changes": [
+        [
+          "交换容量",
+          "336Gbps/3.36Tbps",
+          "672Gbps/6.72Tbps"
+        ]
+      ]
+    },
+    {
+      "model": "S5130S-10P-EI",
+      "changes": [
+        [
+          "交换容量",
+          "336Gbps/3.36Tbps",
+          "672Gbps/6.72Tbps"
+        ]
+      ]
+    },
+    {
+      "model": "S5130S-16S-PWR-EI",
+      "changes": [
+        [
+          "交换容量",
+          "336Gbps/3.36Tbps",
+          "672Gbps/6.72Tbps"
+        ]
+      ]
+    },
+    {
+      "model": "S5130S-16S-UPWR-EI-Q",
+      "changes": [
+        [
+          "交换容量",
+          "336Gbps/3.36Tbps",
+          "672Gbps/6.72Tbps"
+        ]
+      ]
+    },
+    {
+      "model": "S5130S-20P-EI",
+      "changes": [
+        [
+          "交换容量",
+          "336Gbps/3.36Tbps",
+          "672Gbps/6.72Tbps"
+        ]
+      ]
+    },
+    {
+      "model": "S5130S-28P-EI",
+      "changes": [
+        [
+          "交换容量",
+          "336Gbps/3.36Tbps",
+          "672Gbps/6.72Tbps"
+        ]
+      ]
+    },
+    {
+      "model": "S5130S-28P-PWR-EI",
+      "changes": [
+        [
+          "交换容量",
+          "336Gbps/3.36Tbps",
+          "672Gbps/6.72Tbps"
+        ]
+      ]
+    },
+    {
+      "model": "S5130S-28S-EI",
+      "changes": [
+        [
+          "交换容量",
+          "336Gbps/3.36Tbps",
+          "672Gbps/6.72Tbps"
+        ],
+        [
+          "包转发率",
+          "126Mpps",
+          "171Mpps"
+        ]
+      ]
+    },
+    {
+      "model": "S5130S-28S-PWR-EI",
+      "changes": [
+        [
+          "交换容量",
+          "336Gbps/3.36Tbps",
+          "672Gbps/6.72Tbps"
+        ],
+        [
+          "包转发率",
+          "126Mpps",
+          "171Mpps"
+        ]
+      ]
+    },
+    {
+      "model": "S5130S-28ST-EI",
+      "changes": [
+        [
+          "交换容量",
+          "336Gbps/3.36Tbps",
+          "672Gbps/6.72Tbps"
+        ],
+        [
+          "包转发率",
+          "126Mpps",
+          "171Mpps"
+        ]
+      ]
+    },
+    {
+      "model": "S5130S-28ST-PWR-EI",
+      "changes": [
+        [
+          "交换容量",
+          "336Gbps/3.36Tbps",
+          "672Gbps/6.72Tbps"
+        ],
+        [
+          "包转发率",
+          "126Mpps",
+          "171Mpps"
+        ]
+      ]
+    },
+    {
+      "model": "S5130S-28TP-EI",
+      "changes": [
+        [
+          "交换容量",
+          "336Gbps/3.36Tbps",
+          "672Gbps/6.72Tbps"
+        ]
+      ]
+    },
+    {
+      "model": "S5130S-52P-EI",
+      "changes": [
+        [
+          "交换容量",
+          "432Gbps/4.32Tbps",
+          "672Gbps/6.72Tbps"
+        ]
+      ]
+    },
+    {
+      "model": "S5130S-52S-EI",
+      "changes": [
+        [
+          "交换容量",
+          "432Gbps/4.32Tbps",
+          "672Gbps/6.72Tbps"
+        ],
+        [
+          "包转发率",
+          "166Mpps",
+          "207Mpps"
+        ]
+      ]
+    },
+    {
+      "model": "S5130S-52S-PWR-EI",
+      "changes": [
+        [
+          "交换容量",
+          "432Gbps/4.32Tbps",
+          "672Gbps/6.72Tbps"
+        ],
+        [
+          "包转发率",
+          "166Mpps",
+          "207Mpps"
+        ]
+      ]
+    },
+    {
+      "model": "S5130S-52ST-EI",
+      "changes": [
+        [
+          "交换容量",
+          "432Gbps/4.32Tbps",
+          "672Gbps/6.72Tbps"
+        ],
+        [
+          "包转发率",
+          "166Mpps",
+          "207Mpps"
+        ]
+      ]
+    },
+    {
+      "model": "S5130S-52ST-PWR-EI",
+      "changes": [
+        [
+          "交换容量",
+          "432Gbps/4.32Tbps",
+          "672Gbps/6.72Tbps"
+        ],
+        [
+          "包转发率",
+          "166Mpps",
+          "207Mpps"
+        ]
+      ]
+    },
+    {
+      "model": "S5130S-52TP-EI",
+      "changes": [
+        [
+          "交换容量",
+          "432Gbps/4.32Tbps",
+          "672Gbps/6.72Tbps"
+        ]
+      ]
+    }
+  ]
+}
