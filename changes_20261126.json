@@ -1,0 +1,18 @@
+{
+  "date": "2026-11-26",
+  "summary": {
+    "新增": 0,
+    "参数更新": 0,
+    "下架": 0,
+    "URL修复": 0,
+    "数据规范修正": 1
+  },
+  "param_updates": [],
+  "notes": [
+    "17款热门型号核心参数(交换容量+包转发率)全部与官网CN一致",
+    "抽查 CE6857F-48S6CQ/S6520X-30QC-EI/RG-S5760C 系列与官网CN一致",
+    "S6550X-54H-HI: 旧字段结构(level/poe/extended_slots/release_date)修正为标准结构(tier/poe_support/expansion_slots/power_redundancy/fan_redundancy), 官网2026-04-24发布, 标'新'标签",
+    "RG-S6503-48VS8CQ 中文官网无独立产品页(404), 按URL红线不入库",
+    "H3C/华为智算互联新品(S9828-64FP/S9828-128EO/S12500R-64EP等)不在入库范围"
+  ]
+}
