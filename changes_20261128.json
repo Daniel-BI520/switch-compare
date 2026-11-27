@@ -1,0 +1,50 @@
+{
+  "date": "2026-11-28",
+  "summary": {
+    "新增": 3,
+    "参数更新": 5,
+    "下架": 0,
+    "URL修复": 19
+  },
+  "added": [
+    "S5130S-48S6X-EI-G-V2",
+    "S5130S-48T6X-EI-G-V2",
+    "S5130S-48P6X-EI-G-V2"
+  ],
+  "param_updates": [
+    "S5130S-24UN8X-EI-G-V2: switching_capacity 672Gbps/6.72Tbps→1.36Tbps/13.6Tbps",
+    "S5130S-24UN8X-EI-G-V2: forwarding_rate 74Mpps→291Mpps/770Mpps",
+    "S5130S-28MP-EI: forwarding_rate 126Mpps→126Mpps",
+    "S5130S-28MP-HPWR-EI: forwarding_rate 126Mpps→126Mpps",
+    "S5130S-52MP-EI: forwarding_rate 166Mpps→166Mpps"
+  ],
+  "url_fix": [
+    "S5130S-10P-EI",
+    "S5130S-24UN8X-EI-G-V2",
+    "S5130S-28MP-EI",
+    "S5130S-28MP-HPWR-EI",
+    "S5130S-28P-EI",
+    "S5130S-28P-PWR-EI",
+    "S5130S-28S-EI",
+    "S5130S-28S-PWR-EI",
+    "S5130S-28ST-EI",
+    "S5130S-28ST-PWR-EI",
+    "S5130S-28TP-EI",
+    "S5130S-48UN6X-EI-G-V2",
+    "S5130S-52MP-EI",
+    "S5130S-52P-EI",
+    "S5130S-52S-EI",
+    "S5130S-52S-PWR-EI",
+    "S5130S-52ST-EI",
+    "S5130S-52ST-PWR-EI",
+    "S5130S-52TP-EI"
+  ],
+  "notes": [
+    "H3C S5130S-EI官网存在新旧两路径: 旧路径H3C_S5130S-EI仍显示336G旧数据, 新路径S5130S-EI显示672G与库中一致, 本轮将16款常规型号URL统一修正到新路径",
+    "3款MP型号(S5130S-28MP-EI/52MP-EI/28MP-HPWR-EI)按官网S5130S-MP-EI独立页修正包转发率(42/74/42→126/166/126Mpps), URL同步指向独立页",
+    "2款G-V2型号URL指向S5130S_EI_G_V2系列页; S5130S-24UN8X-EI-G-V2参数按官网修正(672G/74Mpps→1.36T/291Mpps/770Mpps)",
+    "新增3款H3C S5130S-EI-G-V2系列(48S6X/48T6X/48P6X)官方中文规格明确, 发布时间≤12个月标'新'",
+    "17款热门型号核心参数(交换容量+包转发率)全部与官网CN一致",
+    "锐捷/华为本轮抽查(N18006-X/S7808C-V2/S7805C/CE8855-32CQ4BQ/S6730-H24X6C-V2等)与官网一致"
+  ]
+}
